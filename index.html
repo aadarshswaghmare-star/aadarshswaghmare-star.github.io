@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:#f5f9f6;
+background:#f4f8f5;
 overflow-x:hidden;
 }
 
@@ -42,7 +42,7 @@ box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
 
 .logo{
-height:75px;
+height:80px;
 }
 
 .cart-btn{
@@ -96,15 +96,36 @@ font-size:13px;
 font-weight:bold;
 }
 
-.old{
-text-decoration:line-through;
-color:gray;
+/* Stars */
+.stars{
+color:#f5a623;
+font-size:14px;
+margin:6px 0;
 }
-.price{
-color:#1f6f3e;
+.rating-count{
+color:#555;
+font-size:13px;
+margin-left:5px;
+}
+
+/* Stock */
+.stock{
+font-size:14px;
 font-weight:bold;
-font-size:20px;
+margin:5px 0;
 }
+.low-stock{
+color:red;
+animation:blink 1s infinite;
+}
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0.4;}
+100%{opacity:1;}
+}
+
+.old{text-decoration:line-through;color:gray}
+.price{color:#1f6f3e;font-weight:bold;font-size:20px}
 
 .qty-box{
 display:flex;
@@ -137,7 +158,7 @@ transition:0.3s;
 transform:scale(0.95);
 }
 
-/* SLIDE CART PANEL */
+/* CART PANEL */
 .cart-panel{
 position:fixed;
 right:-400px;
@@ -197,11 +218,6 @@ font-size:24px;
 flex-direction:column;
 display:none;
 z-index:3000;
-animation:fadeIn 0.5s ease;
-}
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
 }
 
 /* FOOTER */
@@ -240,39 +256,9 @@ document.body.appendChild(leaf);
 <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
 </header>
 
-<div class="container">
+<div class="container" id="productContainer"></div>
 
-<div class="product">
-<div class="badge">80% OFF</div>
-<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/heart.png">
-<h3>Heart Special Gift</h3>
-<div class="old">₹999</div>
-<div class="price">₹199</div>
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty('Heart Special Gift',199,-1)">-</button>
-<span id="qty-Heart Special Gift">0</span>
-<button class="qty-btn" onclick="changeQty('Heart Special Gift',199,1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('Heart Special Gift',199)">Add to Cart</button>
-</div>
-
-<div class="product">
-<div class="badge">75% OFF</div>
-<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/teddy.png">
-<h3>Teddy Gift Box</h3>
-<div class="old">₹1499</div>
-<div class="price">₹299</div>
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty('Teddy Gift Box',299,-1)">-</button>
-<span id="qty-Teddy Gift Box">0</span>
-<button class="qty-btn" onclick="changeQty('Teddy Gift Box',299,1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('Teddy Gift Box',299)">Add to Cart</button>
-</div>
-
-</div>
-
-<!-- CART PANEL -->
+<!-- CART -->
 <div class="cart-panel" id="cartPanel">
 <div class="close-cart" onclick="toggleCart()">✖ Close</div>
 <h3>Your Cart</h3>
@@ -305,40 +291,83 @@ Redirecting to WhatsApp...
 </div>
 
 <script>
+let products=[
+{name:"Heart Special Gift",price:199,old:999,stock:5,rating:"★★★★★",reviews:"(1,245)",img:"heart.png",badge:"80% OFF"},
+{name:"Teddy Gift Box",price:299,old:1499,stock:6,rating:"★★★★☆",reviews:"(932)",img:"teddy.png",badge:"75% OFF"},
+{name:"Couple Combo",price:599,old:1999,stock:4,rating:"★★★★★",reviews:"(2,104)",img:"couple.png",badge:"70% OFF"},
+{name:"I Love You Frame",price:279,old:799,stock:7,rating:"★★★★☆",reviews:"(654)",img:"iloveyou.png",badge:"65% OFF"},
+{name:"Premium Surprise Packaging",price:149,old:399,stock:8,rating:"★★★★★",reviews:"(311)",img:"packaging.png",badge:"Add-on"}
+];
+
 let cart=[];
+
+let container=document.getElementById("productContainer");
+
+products.forEach(p=>{
+container.innerHTML+=`
+<div class="product">
+<div class="badge">${p.badge}</div>
+<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/${p.img}">
+<h3>${p.name}</h3>
+<div class="stars">${p.rating}<span class="rating-count">${p.reviews}</span></div>
+<div class="stock" id="stock-${p.name}">Only ${p.stock} left in stock</div>
+<div class="old">₹${p.old}</div>
+<div class="price">₹${p.price}</div>
+<div class="qty-box">
+<button class="qty-btn" onclick="changeQty('${p.name}',-1)">-</button>
+<span id="qty-${p.name}">0</span>
+<button class="qty-btn" onclick="changeQty('${p.name}',1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('${p.name}')">Add to Cart</button>
+</div>
+`;
+});
 
 function toggleCart(){
 document.getElementById("cartPanel").classList.toggle("active");
 }
 
-function changeQty(name,price,change){
+function changeQty(name,change){
 let el=document.getElementById("qty-"+name);
 let qty=parseInt(el.innerText)+change;
 if(qty<0) qty=0;
 el.innerText=qty;
 }
 
-function addToCart(name,price){
+function addToCart(name){
+let product=products.find(p=>p.name===name);
 let qty=parseInt(document.getElementById("qty-"+name).innerText);
 if(qty===0) qty=1;
 
+if(product.stock<qty){
+alert("Only "+product.stock+" left!");
+return;
+}
+
+product.stock-=qty;
+
 let item=cart.find(p=>p.name===name);
 if(item){item.qty+=qty;}
-else{cart.push({name,price,qty});}
+else{cart.push({name,price:product.price,qty});}
 
 document.getElementById("qty-"+name).innerText=0;
+updateStock(name,product.stock);
 updateCart();
+}
+
+function updateStock(name,stock){
+let el=document.getElementById("stock-"+name);
+el.innerText="Only "+stock+" left in stock";
+if(stock<=3) el.classList.add("low-stock");
 }
 
 function updateCart(){
 let html="";
 let subtotal=0;
-
 cart.forEach(item=>{
 subtotal+=item.price*item.qty;
 html+=`${item.name} x${item.qty} = ₹${item.price*item.qty}<br>`;
 });
-
 let delivery=subtotal>=999?0:49;
 let total=subtotal+delivery;
 
