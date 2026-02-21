@@ -9,51 +9,52 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(to bottom,#1a1a2e,#16213e);
-color:white;
+background:linear-gradient(to bottom,#f5f9f6,#e8f5e9);
+color:#2e4d32;
 }
 
 /* HEADER */
 header{
 text-align:center;
-padding:30px 20px;
-background:#0f3460;
-box-shadow:0 4px 20px rgba(0,0,0,0.4);
+padding:35px 20px;
+background:#ffffff;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 header img{
-width:180px;   /* Bigger logo */
+width:200px;
 margin-bottom:10px;
 }
 
 header h1{
 margin:0;
 font-size:28px;
+color:#2e7d32;
 }
 
 /* SECTION */
 section{
-padding:40px 20px;
+padding:50px 20px;
 }
 
-/* PRODUCT CARD */
+/* PRODUCTS */
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
 }
 
 .card{
-background:#1f4068;
+background:#ffffff;
 padding:20px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:0.3s;
 position:relative;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
 }
 
 .card img{
@@ -61,36 +62,34 @@ width:100%;
 border-radius:15px;
 }
 
-/* DISCOUNT BADGE */
 .badge{
 position:absolute;
 top:15px;
 left:15px;
-background:#ff4d6d;
+background:#66bb6a;
+color:white;
 padding:6px 12px;
 border-radius:20px;
-font-size:14px;
+font-size:13px;
 }
 
-/* PRICE STYLE */
 .oldprice{
 text-decoration:line-through;
-color:#ccc;
+color:#999;
 }
 
 .price{
-color:#00ff88;
+color:#2e7d32;
 font-size:20px;
 font-weight:bold;
 }
 
-/* BUTTON */
 button{
-margin-top:10px;
+margin-top:12px;
 padding:10px;
 border:none;
-background:#00ff88;
-color:black;
+background:#43a047;
+color:white;
 border-radius:10px;
 cursor:pointer;
 font-weight:bold;
@@ -98,47 +97,51 @@ width:100%;
 }
 
 button:hover{
-background:#00cc6a;
+background:#2e7d32;
 }
 
 /* PACKAGING */
 .packaging{
 text-align:center;
+background:#ffffff;
+padding:40px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .packaging img{
-width:250px;
+width:260px;
 border-radius:15px;
 margin-top:15px;
-box-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
 
-/* ORDER FORM */
+/* FORM */
 form{
-background:#1f4068;
-padding:20px;
+background:#ffffff;
+padding:30px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 form input, form select{
 width:95%;
 padding:10px;
-margin:8px 0;
-border:none;
-border-radius:8px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #c8e6c9;
 }
 
 footer{
 text-align:center;
-padding:20px;
-background:#0f3460;
-margin-top:40px;
+padding:25px;
+background:#ffffff;
+margin-top:50px;
 }
 
 a{
-color:#00ff88;
+color:#2e7d32;
 text-decoration:none;
+font-weight:bold;
 }
 
 </style>
@@ -148,7 +151,7 @@ text-decoration:none;
 
 <header>
 <img src="images/logo.png">
-<h1>Premium Love Gift Collection ❤️</h1>
+<h1>Ecofy Premium Love Collection 🌿</h1>
 </header>
 
 <section>
@@ -183,14 +186,19 @@ text-decoration:none;
 </div>
 </section>
 
-<section class="packaging">
+<section>
+<div class="packaging">
 <h2>Premium Packaging 🎁</h2>
-<p>All gifts come in beautiful eco-friendly packaging.</p>
+<p>
+All gifts come in beautiful eco-friendly packaging with Plant Track QR code Scanner.
+You can check growth of plant week by week and get proper usage & care instructions.
+</p>
 <img src="images/packaging.png">
+</div>
 </section>
 
 <section>
-<h2>Place Your Order</h2>
+<h2 style="text-align:center;">Place Your Order</h2>
 
 <form onsubmit="sendOrder(); return false;">
 
@@ -239,10 +247,18 @@ var product=document.getElementById("product").value;
 
 var delivery=(state=="Maharashtra")?69:96;
 
+/* Product Links */
+var link="";
+if(product.includes("Heart")) link="https://aadarshswaghmare-star.github.io/#heart";
+if(product.includes("Teddy")) link="https://aadarshswaghmare-star.github.io/#teddy";
+if(product.includes("I Love You")) link="https://aadarshswaghmare-star.github.io/#iloveyou";
+if(product.includes("Couple")) link="https://aadarshswaghmare-star.github.io/#couple";
+
 var message="New Order%0A"
 +"Name: "+name+"%0A"
 +"Phone: "+phone+"%0A"
 +"Product: "+product+"%0A"
++"Product Link: "+link+"%0A"
 +"Delivery: ₹"+delivery+"%0A"
 +"Address: "+address;
 
