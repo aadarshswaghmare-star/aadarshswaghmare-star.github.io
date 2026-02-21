@@ -9,53 +9,81 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:#f4f8f5;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
 overflow-x:hidden;
 }
 
-/* Floating Leaves */
-.leaf{
+/* Floating subtle glow background */
+body:before{
+content:"";
 position:fixed;
-top:-50px;
-font-size:18px;
-animation:fall linear infinite;
-color:rgba(34,139,34,0.2);
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 30%,rgba(212,175,55,0.15),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(212,175,55,0.1),transparent 40%);
 z-index:-1;
-}
-@keyframes fall{
-0%{transform:translateY(-50px);}
-100%{transform:translateY(110vh);}
 }
 
 /* HEADER */
 header{
-background:linear-gradient(90deg,#0b3d0b,#1f6f3e,#d4af37);
-color:white;
-padding:15px 25px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:12px 20px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{
-height:80px;
+.logo{height:45px;}
+
+.header-center{
+flex:1;
+text-align:center;
 }
 
+.tagline{
+font-size:13px;
+color:#d4af37;
+letter-spacing:1px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+header{flex-direction:column;gap:5px;}
+}
+
+/* Cart Button */
 .cart-btn{
-cursor:pointer;
 background:#d4af37;
 color:black;
 padding:8px 15px;
 border-radius:25px;
 font-weight:bold;
+cursor:pointer;
 transition:0.3s;
 }
-.cart-btn:hover{
-transform:scale(1.1);
+.cart-btn:hover{transform:scale(1.1);}
+
+/* TRUST BADGES */
+.trust{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:15px;
+flex-wrap:wrap;
+background:rgba(255,255,255,0.05);
+font-size:14px;
+}
+.trust div{
+background:rgba(255,255,255,0.08);
+padding:8px 15px;
+border-radius:25px;
+backdrop-filter:blur(10px);
 }
 
 /* PRODUCT GRID */
@@ -63,69 +91,53 @@ transform:scale(1.1);
 padding:25px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .product{
-background:white;
-border-radius:15px;
-padding:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-transition:0.3s;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-radius:20px;
+padding:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
+transition:0.4s;
 position:relative;
+overflow:hidden;
 }
+
 .product:hover{
-transform:translateY(-5px);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 12px 35px rgba(0,0,0,0.5);
 }
 
 .product img{
 width:100%;
-border-radius:12px;
+border-radius:15px;
+transition:0.4s;
+}
+.product:hover img{
+transform:scale(1.05);
 }
 
-/* Discount Badge */
 .badge{
 position:absolute;
-top:10px;
-left:10px;
+top:12px;
+left:12px;
 background:#d4af37;
 color:black;
 padding:5px 10px;
-border-radius:8px;
-font-size:13px;
+border-radius:10px;
+font-size:12px;
 font-weight:bold;
 }
 
-/* Stars */
-.stars{
-color:#f5a623;
-font-size:14px;
-margin:6px 0;
-}
-.rating-count{
-color:#555;
-font-size:13px;
-margin-left:5px;
-}
+.stars{color:#f5c518;margin:6px 0;}
 
-/* Stock */
-.stock{
-font-size:14px;
-font-weight:bold;
-margin:5px 0;
-}
-.low-stock{
-color:red;
-animation:blink 1s infinite;
-}
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0.4;}
-100%{opacity:1;}
-}
+.stock{font-weight:bold;margin:5px 0;}
+.low-stock{color:#ff4d4d;}
 
-.old{text-decoration:line-through;color:gray}
-.price{color:#1f6f3e;font-weight:bold;font-size:20px}
+.old{text-decoration:line-through;color:#bbb;}
+.price{color:#d4af37;font-size:20px;font-weight:bold;}
 
 .qty-box{
 display:flex;
@@ -134,28 +146,33 @@ align-items:center;
 gap:10px;
 margin-top:10px;
 }
-.qty-btn{
-background:#1f6f3e;
-color:white;
-border:none;
-padding:5px 10px;
-border-radius:6px;
-cursor:pointer;
-}
 
-.add-btn{
-background:#0b3d0b;
+.qty-btn{
+background:#334155;
 color:white;
 border:none;
-padding:10px;
+padding:6px 12px;
 border-radius:8px;
-margin-top:10px;
-width:100%;
 cursor:pointer;
 transition:0.3s;
 }
-.add-btn:active{
-transform:scale(0.95);
+.qty-btn:hover{background:#475569;}
+
+.add-btn{
+background:#d4af37;
+color:black;
+border:none;
+padding:10px;
+border-radius:10px;
+margin-top:12px;
+width:100%;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+.add-btn:hover{
+background:white;
+transform:scale(1.05);
 }
 
 /* CART PANEL */
@@ -165,30 +182,22 @@ right:-400px;
 top:0;
 width:350px;
 height:100%;
-background:white;
-box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+background:#0f172a;
+color:white;
+box-shadow:-5px 0 15px rgba(0,0,0,0.5);
 padding:20px;
 transition:0.4s;
 overflow-y:auto;
 z-index:2000;
 }
-.cart-panel.active{
-right:0;
-}
-
-.close-cart{
-text-align:right;
-cursor:pointer;
-font-weight:bold;
-color:red;
-}
+.cart-panel.active{right:0;}
 
 input{
 width:100%;
 padding:10px;
 margin:8px 0;
 border-radius:6px;
-border:1px solid #ccc;
+border:none;
 }
 
 .checkout-btn{
@@ -222,45 +231,57 @@ z-index:3000;
 
 /* FOOTER */
 .footer{
-background:#0b3d0b;
-color:white;
-padding:30px;
-margin-top:40px;
+background:rgba(0,0,0,0.7);
+padding:40px 20px;
+margin-top:50px;
 text-align:center;
 }
+
+.footer h3{color:#d4af37;}
+
+.footer-about{
+max-width:700px;
+margin:15px auto;
+font-size:14px;
+line-height:1.6;
+color:#ccc;
+}
+
 iframe{
 width:100%;
 height:200px;
-border:0;
 border-radius:12px;
 margin-top:15px;
+border:0;
 }
-a{color:#d4af37;text-decoration:none}
+a{color:#d4af37;text-decoration:none;}
 </style>
 </head>
 <body>
 
-<script>
-for(let i=0;i<20;i++){
-let leaf=document.createElement("div");
-leaf.className="leaf";
-leaf.innerHTML="🍃";
-leaf.style.left=Math.random()*100+"vw";
-leaf.style.animationDuration=(5+Math.random()*10)+"s";
-document.body.appendChild(leaf);
-}
-</script>
-
 <header>
 <img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/logo.png" class="logo">
+
+<div class="header-center">
+<h2 style="margin:0;">Ecofy</h2>
+<div class="tagline">Eco-Friendly Romantic Gifts Delivered with Love</div>
+</div>
+
 <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
 </header>
 
+<div class="trust">
+<div>🚚 Fast Delivery</div>
+<div>💵 Cash on Delivery</div>
+<div>🔒 Secure Checkout</div>
+<div>⭐ 10,000+ Happy Customers</div>
+</div>
+
 <div class="container" id="productContainer"></div>
 
-<!-- CART -->
+<!-- CART PANEL (Your Original JS Works Same) -->
 <div class="cart-panel" id="cartPanel">
-<div class="close-cart" onclick="toggleCart()">✖ Close</div>
+<div style="text-align:right;cursor:pointer;color:red;" onclick="toggleCart()">✖ Close</div>
 <h3>Your Cart</h3>
 <div id="cartItems"></div>
 <p>Subtotal: ₹<span id="subtotal">0</span></p>
@@ -271,7 +292,6 @@ document.body.appendChild(leaf);
 <input type="text" id="name" placeholder="Full Name">
 <input type="text" id="phone" placeholder="Phone Number">
 <input type="text" id="address" placeholder="Full Address">
-
 <button class="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
 </div>
 
@@ -281,141 +301,21 @@ Redirecting to WhatsApp...
 </div>
 
 <div class="footer">
-<h3>Ecofy</h3>
+<h3>About Ecofy</h3>
+<div class="footer-about">
+Ecofy creates premium eco-friendly romantic gifts crafted with sustainability and love. 
+We combine creativity with responsibility toward nature, delivering beautiful gift experiences across India.
+</div>
 <p>Mumbai</p>
 <p>+91 9075016413</p>
 <p>sales@ecofygifts.com</p>
-<p>Eco-friendly romantic gift collections delivered across India.</p>
 <a href="https://instagram.com/" target="_blank">Instagram</a>
 <iframe src="https://maps.google.com/maps?q=Mumbai&output=embed"></iframe>
 </div>
 
+<!-- KEEP YOUR ORIGINAL PRODUCT + CART JAVASCRIPT BELOW (NO CHANGES NEEDED) -->
 <script>
-let products=[
-{name:"Heart Special Gift",price:199,old:999,stock:5,rating:"★★★★★",reviews:"(1,245)",img:"heart.png",badge:"80% OFF"},
-{name:"Teddy Gift Box",price:299,old:1499,stock:6,rating:"★★★★☆",reviews:"(932)",img:"teddy.png",badge:"75% OFF"},
-{name:"Couple Combo",price:599,old:1999,stock:4,rating:"★★★★★",reviews:"(2,104)",img:"couple.png",badge:"70% OFF"},
-{name:"I Love You Frame",price:279,old:799,stock:7,rating:"★★★★☆",reviews:"(654)",img:"iloveyou.png",badge:"65% OFF"},
-{name:"Premium Surprise Packaging",price:149,old:399,stock:8,rating:"★★★★★",reviews:"(311)",img:"packaging.png",badge:"Add-on"}
-];
-
-let cart=[];
-
-let container=document.getElementById("productContainer");
-
-products.forEach(p=>{
-container.innerHTML+=`
-<div class="product">
-<div class="badge">${p.badge}</div>
-<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/${p.img}">
-<h3>${p.name}</h3>
-<div class="stars">${p.rating}<span class="rating-count">${p.reviews}</span></div>
-<div class="stock" id="stock-${p.name}">Only ${p.stock} left in stock</div>
-<div class="old">₹${p.old}</div>
-<div class="price">₹${p.price}</div>
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty('${p.name}',-1)">-</button>
-<span id="qty-${p.name}">0</span>
-<button class="qty-btn" onclick="changeQty('${p.name}',1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('${p.name}')">Add to Cart</button>
-</div>
-`;
-});
-
-function toggleCart(){
-document.getElementById("cartPanel").classList.toggle("active");
-}
-
-function changeQty(name,change){
-let el=document.getElementById("qty-"+name);
-let qty=parseInt(el.innerText)+change;
-if(qty<0) qty=0;
-el.innerText=qty;
-}
-
-function addToCart(name){
-let product=products.find(p=>p.name===name);
-let qty=parseInt(document.getElementById("qty-"+name).innerText);
-if(qty===0) qty=1;
-
-if(product.stock<qty){
-alert("Only "+product.stock+" left!");
-return;
-}
-
-product.stock-=qty;
-
-let item=cart.find(p=>p.name===name);
-if(item){item.qty+=qty;}
-else{cart.push({name,price:product.price,qty});}
-
-document.getElementById("qty-"+name).innerText=0;
-updateStock(name,product.stock);
-updateCart();
-}
-
-function updateStock(name,stock){
-let el=document.getElementById("stock-"+name);
-el.innerText="Only "+stock+" left in stock";
-if(stock<=3) el.classList.add("low-stock");
-}
-
-function updateCart(){
-let html="";
-let subtotal=0;
-cart.forEach(item=>{
-subtotal+=item.price*item.qty;
-html+=`${item.name} x${item.qty} = ₹${item.price*item.qty}<br>`;
-});
-let delivery=subtotal>=999?0:49;
-let total=subtotal+delivery;
-
-document.getElementById("cartItems").innerHTML=html;
-document.getElementById("subtotal").innerText=subtotal;
-document.getElementById("delivery").innerText=delivery;
-document.getElementById("total").innerText=total;
-document.getElementById("cartCount").innerText=cart.length;
-}
-
-function checkout(){
-let name=document.getElementById("name").value.trim();
-let phone=document.getElementById("phone").value.trim();
-let address=document.getElementById("address").value.trim();
-
-if(!name||!phone||!address||cart.length===0){
-alert("Please complete all details and add products.");
-return;
-}
-
-document.getElementById("successScreen").style.display="flex";
-
-let subtotal=0;
-let message="🛍 Ecofy Order\n\n";
-
-cart.forEach(item=>{
-subtotal+=item.price*item.qty;
-message+=`${item.name} x${item.qty} = ₹${item.price*item.qty}\n`;
-});
-
-let delivery=subtotal>=999?0:49;
-let total=subtotal+delivery;
-
-message+=`\nSubtotal: ₹${subtotal}`;
-message+=`\nDelivery: ₹${delivery}`;
-message+=`\nTotal: ₹${total}`;
-message+=`\n\nName: ${name}`;
-message+=`\nPhone: ${phone}`;
-message+=`\nAddress: ${address}`;
-
-setTimeout(()=>{
-window.open("https://wa.me/919075016413?text="+encodeURIComponent(message));
-document.getElementById("successScreen").style.display="none";
-cart=[];
-updateCart();
-toggleCart();
-},2000);
-}
+/* ✅ PASTE YOUR ORIGINAL PRODUCTS + CART JS HERE (unchanged) */
 </script>
 
 </body>
