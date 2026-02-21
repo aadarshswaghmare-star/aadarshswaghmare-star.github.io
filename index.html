@@ -1,218 +1,196 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<title>Ecofy Gifts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Gift Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
 body{
-background:linear-gradient(135deg,#141e30,#243b55);
+margin:0;
+font-family:Arial;
+background:#111;
 color:white;
 }
 
 header{
 padding:20px;
 text-align:center;
-font-size:24px;
-font-weight:700;
-background:#111;
+background:#000;
+}
+
+header img{
+width:120px;
+display:block;
+margin:0 auto 10px;
+}
+
+section{
+padding:40px 20px;
+text-align:center;
 }
 
 .products{
-padding:40px 20px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-max-width:1200px;
-margin:auto;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
 
 .card{
-background:#1e2a3a;
+background:#1c1c1c;
 padding:20px;
-border-radius:15px;
-text-align:center;
-transition:0.3s;
-position:relative;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
-
-.card:hover{transform:translateY(-8px);}
 
 .card img{
 width:100%;
-border-radius:12px;
-margin-bottom:15px;
-}
-
-.badge{
-position:absolute;
-top:10px;
-left:10px;
-background:#ff4e50;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
+border-radius:10px;
 }
 
 .price{
+color:#00ff88;
 font-size:18px;
 margin:10px 0;
-color:#f9d423;
-}
-
-.old{
-text-decoration:line-through;
-color:#aaa;
-font-size:14px;
 }
 
 button{
-padding:10px 20px;
+padding:10px 15px;
 border:none;
-border-radius:25px;
-background:#ff4e50;
-color:white;
+background:#00ff88;
+color:black;
+border-radius:8px;
 cursor:pointer;
-font-weight:600;
+font-weight:bold;
 }
 
-.cart{
-position:fixed;
-right:20px;
-top:20px;
-background:#25D366;
-padding:15px;
-border-radius:50%;
-cursor:pointer;
+form input, form textarea, form select{
+width:90%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:none;
 }
 
-.cart-box{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#111;
-width:300px;
+footer{
+background:#000;
 padding:20px;
-border-radius:15px;
-display:none;
+text-align:center;
+margin-top:40px;
 }
 
-.cart-box h3{margin-bottom:10px;}
-
-.cart-item{font-size:14px;margin-bottom:5px;}
-
-.total{margin-top:10px;font-weight:600;}
-
-.checkout{
-margin-top:10px;
-width:100%;
-background:#25D366;
+a{
+color:#00ff88;
+text-decoration:none;
 }
-
 </style>
 </head>
 
 <body>
 
-<header>Premium Love Gift Collection ❤️</header>
+<header>
+<img src="images/logo.png">
+<h2>Ecofy Gifts ❤️</h2>
+</header>
 
-<div class="cart" onclick="toggleCart()">🛒</div>
+<section>
+<h2>Our Products</h2>
 
 <div class="products">
 
 <div class="card">
-<div class="badge">10% OFF</div>
-<img src="images/heart.png">
-<h3>Heart Special</h3>
-<div class="price"><span class="old">₹249</span> ₹199</div>
-<button onclick="addToCart('Heart Special',199)">Add to Cart</button>
+<img src="images/heart.jpg">
+<h3>Heart</h3>
+<div class="price">₹199</div>
 </div>
 
 <div class="card">
-<div class="badge">15% OFF</div>
-<img src="images/teddy.png">
-<h3>Love Teddy</h3>
-<div class="price"><span class="old">₹349</span> ₹299</div>
-<button onclick="addToCart('Love Teddy',299)">Add to Cart</button>
+<img src="images/teddy.jpg">
+<h3>Teddy</h3>
+<div class="price">₹299</div>
 </div>
 
 <div class="card">
-<div class="badge">20% OFF</div>
-<img src="images/iloveyou.png">
-<h3>I Love You Gift</h3>
-<div class="price"><span class="old">₹499</span> ₹399</div>
-<button onclick="addToCart('I Love You Gift',399)">Add to Cart</button>
+<img src="images/iloveyou.jpg">
+<h3>I Love You</h3>
+<div class="price">₹399</div>
 </div>
 
 <div class="card">
-<div class="badge">25% OFF</div>
-<img src="images/couple.png">
-<h3>Couple Special</h3>
-<div class="price"><span class="old">₹599</span> ₹499</div>
-<button onclick="addToCart('Couple Special',499)">Add to Cart</button>
+<img src="images/couple.jpg">
+<h3>Couple Gift</h3>
+<div class="price">₹499</div>
 </div>
 
 </div>
+</section>
 
-<div class="cart-box" id="cartBox">
-<h3>Your Cart</h3>
-<div id="cartItems"></div>
-<div class="total" id="totalPrice"></div>
-<button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
-</div>
+<section>
+<h2>Premium Packaging 🎁</h2>
+<p>
+All Ecofy Gifts come with premium eco-friendly packaging.  
+Safe wrapping, beautiful presentation & ready to gift.  
+</p>
+</section>
+
+<section>
+<h2>Place Your Order</h2>
+
+<form onsubmit="sendOrder(); return false;">
+
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="text" id="phone" placeholder="Contact Number" required>
+
+<select id="state" required>
+<option value="">Select State</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Other">Other State</option>
+</select>
+
+<input type="text" id="address" placeholder="Delivery Address" required>
+
+<select id="product" required>
+<option value="">Select Product</option>
+<option value="Heart - 199">Heart - ₹199</option>
+<option value="Teddy - 299">Teddy - ₹299</option>
+<option value="I Love You - 399">I Love You - ₹399</option>
+<option value="Couple - 499">Couple - ₹499</option>
+</select>
+
+<button type="submit">Order on WhatsApp</button>
+
+</form>
+</section>
+
+<footer>
+<p>Follow Us</p>
+<a href="https://www.instagram.com/iamtree_official?igsh=MW43NGt4ZG84MmszZw==" target="_blank">
+Instagram
+</a>
+
+<br><br>
+© 2026 Ecofy Gifts
+</footer>
 
 <script>
-let cart = [];
-let delivery = 50;
+function sendOrder(){
 
-function addToCart(name,price){
-cart.push({name,price});
-alert(name + " added to cart");
-updateCart();
-}
+var name = document.getElementById("name").value;
+var phone = document.getElementById("phone").value;
+var state = document.getElementById("state").value;
+var address = document.getElementById("address").value;
+var product = document.getElementById("product").value;
 
-function toggleCart(){
-let box=document.getElementById("cartBox");
-box.style.display=box.style.display==="block"?"none":"block";
-}
+var delivery = (state=="Maharashtra") ? 69 : 96;
 
-function updateCart(){
-let items="";
-let total=0;
+var message = "New Order%0A"
++ "Name: " + name + "%0A"
++ "Phone: " + phone + "%0A"
++ "Product: " + product + "%0A"
++ "Delivery Charge: ₹" + delivery + "%0A"
++ "Address: " + address;
 
-cart.forEach(item=>{
-items += "<div class='cart-item'>"+item.name+" - ₹"+item.price+"</div>";
-total += item.price;
-});
+window.open("https://wa.me/919075016413?text=" + message, "_blank");
 
-if(cart.length>0){
-total += delivery;
-items += "<div class='cart-item'>Delivery - ₹"+delivery+"</div>";
-}
-
-document.getElementById("cartItems").innerHTML=items;
-document.getElementById("totalPrice").innerHTML="Total: ₹"+total;
-}
-
-function checkout(){
-let message="I want to order:%0A";
-let total=0;
-
-cart.forEach(item=>{
-message += item.name+" - ₹"+item.price+"%0A";
-total += item.price;
-});
-
-if(cart.length>0){
-message += "Delivery - ₹"+delivery+"%0A";
-total += delivery;
-message += "Total: ₹"+total;
-window.open("https://wa.me/919075016413?text="+message);
-}
 }
 </script>
 
