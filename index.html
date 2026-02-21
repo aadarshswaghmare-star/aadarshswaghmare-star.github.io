@@ -7,8 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<script src="https://kit.fontawesome.com/4c5f6d1e4f.js" crossorigin="anonymous"></script>
-
 <style>
 
 html { scroll-behavior: smooth; }
@@ -16,72 +14,46 @@ html { scroll-behavior: smooth; }
 body{
 margin:0;
 font-family:'Inter',sans-serif;
-background:linear-gradient(135deg,#eaf5ee,#f4fbf7);
-overflow-x:hidden;
+background:#f4efe6; /* Luxury champagne beige */
 color:#1a1a1a;
-}
-
-/* LOADER */
-#loader{
-position:fixed;
-width:100%;
-height:100vh;
-background:#0d3b2e;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-flex-direction:column;
-color:white;
-font-family:'Playfair Display',serif;
-}
-
-.seed{
-width:20px;
-height:20px;
-background:#6bbf8b;
-border-radius:50%;
-animation:sprout 2s ease forwards;
-}
-
-@keyframes sprout{
-0%{transform:translateY(0) scale(1);}
-50%{transform:translateY(-40px) scale(1.3);}
-100%{transform:translateY(-60px) scale(1.5);opacity:0;}
+overflow-x:hidden;
 }
 
 /* HEADER */
 header{
-background:linear-gradient(135deg,#0d3b2e,#157a5c);
+background:white;
+padding:25px;
 text-align:center;
-padding:30px;
-color:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
 header img{
-height:75px;
-animation:fadeIn 2s ease;
+height:80px;
+animation:logoGrow 1.5s ease forwards;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
+@keyframes logoGrow{
+0%{transform:scale(0);opacity:0;}
+60%{transform:scale(1.1);}
+100%{transform:scale(1);opacity:1;}
+}
+
+header p{
+font-family:'Playfair Display',serif;
+letter-spacing:2px;
+color:#0f3d2e;
 }
 
 /* HERO */
 .hero{
 text-align:center;
 padding:120px 20px;
-position:relative;
 }
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:58px;
-background:linear-gradient(90deg,#0f3d2e,#1f6b4f);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:fadeIn 2s ease;
+font-size:56px;
+color:#0f3d2e;
 }
 
 .hero p{
@@ -96,20 +68,19 @@ margin-top:20px;
 margin-top:35px;
 display:inline-block;
 padding:15px 40px;
-background:linear-gradient(135deg,#0f3d2e,#157a5c);
+background:#0f3d2e;
 color:white;
 border-radius:40px;
 text-decoration:none;
 transition:.4s;
-box-shadow:0 8px 25px rgba(21,122,92,.4);
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.05);
-box-shadow:0 15px 40px rgba(21,122,92,.6);
+transform:translateY(-5px);
+background:#145c43;
 }
 
-/* PRODUCT CARDS */
+/* PRODUCTS */
 .products{
 padding:100px 20px;
 text-align:center;
@@ -117,8 +88,9 @@ text-align:center;
 
 .products h2{
 font-family:'Playfair Display',serif;
-font-size:42px;
+font-size:40px;
 margin-bottom:60px;
+color:#0f3d2e;
 }
 
 .grid{
@@ -128,22 +100,25 @@ gap:40px;
 }
 
 .card{
-background:rgba(255,255,255,.6);
-backdrop-filter:blur(14px);
+background:white;
 padding:25px;
-border-radius:25px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-transition:.5s;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.4s;
 }
 
 .card:hover{
-transform:translateY(-15px);
-box-shadow:0 20px 60px rgba(0,0,0,.2);
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 .card img{
 width:100%;
-border-radius:20px;
+border-radius:15px;
+}
+
+.card h3{
+margin:15px 0 5px;
 }
 
 .price{
@@ -154,41 +129,20 @@ margin-top:10px;
 
 /* TESTIMONIAL */
 .testimonial{
-padding:100px 20px;
-background:#eef7f2;
+padding:80px 20px;
+background:white;
 text-align:center;
 }
 
-.quote{
-font-style:italic;
+.testimonial p{
 max-width:600px;
 margin:auto;
-animation:fadeIn 2s ease;
+font-style:italic;
 }
 
-/* FAQ */
-.faq{
-padding:100px 20px;
-}
-
-.faq h2{
-text-align:center;
-font-family:'Playfair Display',serif;
-margin-bottom:40px;
-}
-
-details{
-background:white;
-padding:20px;
-margin:10px auto;
-max-width:700px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-/* SOCIAL FOOTER */
+/* FOOTER */
 footer{
-background:linear-gradient(135deg,#0d3b2e,#157a5c);
+background:#0f3d2e;
 color:white;
 padding:50px 20px;
 text-align:center;
@@ -202,12 +156,13 @@ margin-top:20px;
 color:white;
 margin:0 15px;
 font-size:22px;
-transition:.4s;
+text-decoration:none;
+transition:.3s;
 }
 
 .social a:hover{
 color:#6bbf8b;
-transform:scale(1.3);
+transform:scale(1.2);
 }
 
 /* WHATSAPP */
@@ -220,8 +175,8 @@ color:white;
 padding:15px 18px;
 border-radius:50px;
 text-decoration:none;
-font-size:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
+font-size:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
 </style>
@@ -229,46 +184,41 @@ box-shadow:0 10px 30px rgba(0,0,0,.3);
 
 <body>
 
-<div id="loader">
-<div class="seed"></div>
-<p>Growing Luxury...</p>
-</div>
-
 <header>
-<img src="images/logo.png">
+<img src="images/logo.png" alt="Ecofy Logo">
 <p>Eco Is The New Luxury</p>
 </header>
 
 <section class="hero">
 <h1>Luxury That Grows.</h1>
-<p>Premium eco-friendly gifts that grow into life. 3–5 Day Delivery | UPI Only</p>
-<a href="#" class="btn">Order Now</a>
+<p>Premium eco-friendly seed ball gifts. Delivery in 3–5 days across India. UPI Only.</p>
+<a href="https://wa.me/919075016413" class="btn">Order Now</a>
 </section>
 
 <section class="products">
-<h2>Signature Collection</h2>
+<h2>Our Collection</h2>
 <div class="grid">
 
 <div class="card">
-<img src="images/heart.png">
+<img src="images/heart.png" alt="Heart Shape">
 <h3>Heart Shape</h3>
 <p class="price">₹159</p>
 </div>
 
 <div class="card">
-<img src="images/teddy.png">
+<img src="images/teddy.png" alt="Teddy Shape">
 <h3>Teddy Shape</h3>
 <p class="price">₹169</p>
 </div>
 
 <div class="card">
-<img src="images/iloveyou.png">
+<img src="images/iloveyou.png" alt="I Love You">
 <h3>I Love You Letters</h3>
 <p class="price">₹299</p>
 </div>
 
 <div class="card">
-<img src="images/couple.png">
+<img src="images/couple.png" alt="Couple">
 <h3>Kissing Couple</h3>
 <p class="price">₹399</p>
 </div>
@@ -278,39 +228,21 @@ box-shadow:0 10px 30px rgba(0,0,0,.3);
 
 <section class="testimonial">
 <h2>Trusted by 500+ Eco Lovers</h2>
-<p class="quote">"The most premium eco gift I’ve ever seen. Beautiful packaging and fast delivery!"</p>
-</section>
-
-<section class="faq">
-<h2>Frequently Asked Questions</h2>
-<details>
-<summary>How long is delivery?</summary>
-<p>3–5 days across India.</p>
-</details>
-<details>
-<summary>What payment methods?</summary>
-<p>UPI only for secure transactions.</p>
-</details>
+<p>"Beautiful packaging, premium quality, and fast delivery. Truly luxury eco gifting."</p>
 </section>
 
 <footer>
 <h3>Get Connected</h3>
 <div class="social">
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
-<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#">LinkedIn</a>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+<a href="#">Facebook</a>
 </div>
 <p>Ecofy Gifts | India</p>
 </footer>
 
-<a href="https://wa.me/919075016413" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-
-<script>
-window.onload=function(){
-document.getElementById("loader").style.display="none";
-};
-</script>
+<a href="https://wa.me/919075016413" class="whatsapp">WhatsApp</a>
 
 </body>
 </html>
