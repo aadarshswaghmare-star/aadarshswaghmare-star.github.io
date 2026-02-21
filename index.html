@@ -42,7 +42,6 @@ position:sticky;
 top:0;
 z-index:10;
 }
-header img{width:160px;}
 
 .cart-btn{
 background:#2d6a4f;
@@ -50,7 +49,6 @@ color:white;
 padding:10px 18px;
 border-radius:30px;
 cursor:pointer;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Products */
@@ -59,48 +57,46 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:40px;
 padding:60px 40px;
-position:relative;
 z-index:1;
 }
 
 .card{
 background:rgba(255,255,255,0.7);
-backdrop-filter:blur(15px);
 padding:20px;
 border-radius:25px;
 box-shadow:0 20px 40px rgba(0,0,0,0.1);
-transition:0.4s;
 cursor:pointer;
-transform-style:preserve-3d;
+transition:0.4s;
 }
-.card:hover{
-transform:rotateY(8deg) rotateX(5deg);
+.card:hover{transform:scale(1.05);}
+
+.price-old{
+text-decoration:line-through;
+color:gray;
+font-size:14px;
 }
-.card img{
-width:100%;
-border-radius:15px;
-transition:0.3s;
-}
-.card img:hover{
-transform:scale(1.1);
-}
-.price{
-font-weight:bold;
+.price-new{
 color:#2d6a4f;
+font-weight:bold;
+font-size:18px;
+}
+.badge{
+background:red;
+color:white;
+padding:4px 8px;
+border-radius:20px;
+font-size:12px;
 }
 
 /* Modal */
 .modal{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 background:rgba(0,0,0,0.6);
 justify-content:center;
 align-items:center;
-z-index:100;
 }
 .modal-content{
 background:white;
@@ -110,7 +106,7 @@ width:90%;
 max-width:400px;
 }
 
-/* Cart Drawer */
+/* Cart */
 .cart{
 position:fixed;
 right:-400px;
@@ -126,12 +122,12 @@ z-index:200;
 }
 .cart.open{right:0;}
 
-input, select{
-width:95%;
-padding:8px;
-margin:8px 0;
-border-radius:10px;
-border:1px solid #ddd;
+.close-cart{
+position:absolute;
+top:10px;
+right:15px;
+font-size:22px;
+cursor:pointer;
 }
 
 button{
@@ -141,17 +137,16 @@ border:none;
 padding:10px;
 width:100%;
 border-radius:12px;
-cursor:pointer;
 margin-top:8px;
+cursor:pointer;
 }
 
+/* Success */
 .success{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 background:white;
 justify-content:center;
 align-items:center;
@@ -159,16 +154,33 @@ flex-direction:column;
 z-index:500;
 }
 
-@media(max-width:768px){
-.products{padding:20px;}
+/* Footer */
+footer{
+background:#1b4332;
+color:white;
+padding:40px 20px;
+text-align:center;
+margin-top:50px;
 }
 
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+z-index:999;
+}
 </style>
 </head>
 <body>
 
 <script>
-for(let i=0;i<30;i++){
+for(let i=0;i<25;i++){
 let leaf=document.createElement("div");
 leaf.className="leaf";
 leaf.innerHTML="🌿";
@@ -179,34 +191,36 @@ document.body.appendChild(leaf);
 </script>
 
 <header>
-<img src="images/logo.png">
+<h2>Ecofy 🌿</h2>
 <div class="cart-btn" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
 </header>
 
 <section class="products">
-<div class="card" onclick="openModal('Heart Special',199)">
-<img src="images/heart.png">
+
+<div class="card" onclick="openModal('Heart Special',249,199)">
+<span class="badge">20% OFF</span>
 <h3>Heart Special</h3>
-<p class="price">₹199</p>
+<p class="price-old">₹249</p>
+<p class="price-new">₹199</p>
+<p>Eco-friendly handmade love gift 🌿</p>
 </div>
 
-<div class="card" onclick="openModal('Teddy',299)">
-<img src="images/teddy.png">
-<h3>Teddy</h3>
-<p class="price">₹299</p>
+<div class="card" onclick="openModal('Luxury Love Combo',1999,1499)">
+<span class="badge">25% OFF</span>
+<h3>Luxury Love Combo</h3>
+<p class="price-old">₹1999</p>
+<p class="price-new">₹1499</p>
+<p>Premium high-value eco celebration box 💚</p>
 </div>
 
-<div class="card" onclick="openModal('I Love You',399)">
-<img src="images/iloveyou.png">
-<h3>I Love You</h3>
-<p class="price">₹399</p>
-</div>
-
-<div class="card" onclick="openModal('Couple Gift',499)">
-<img src="images/couple.png">
+<div class="card" onclick="openModal('Couple Gift',599,499)">
+<span class="badge">17% OFF</span>
 <h3>Couple Gift</h3>
-<p class="price">₹499</p>
+<p class="price-old">₹599</p>
+<p class="price-new">₹499</p>
+<p>Beautiful sustainable romantic sculpture</p>
 </div>
+
 </section>
 
 <div class="modal" id="modal">
@@ -220,20 +234,18 @@ document.body.appendChild(leaf);
 </div>
 
 <div class="cart" id="cart">
+<div class="close-cart" onclick="toggleCart()">❌</div>
 <h2>Your Cart</h2>
 <div id="cartItems"></div>
 
-<input type="text" id="custName" placeholder="Your Name">
-<input type="text" id="custPhone" placeholder="Phone">
-<input type="text" id="custAddress" placeholder="Address">
-
-<input type="text" id="coupon" placeholder="Coupon Code">
-<button onclick="applyCoupon()">Apply Coupon</button>
+<input type="text" id="custName" placeholder="Your Name" required>
+<input type="text" id="custPhone" placeholder="Phone" required>
+<input type="text" id="custAddress" placeholder="Address" required>
 
 <h3>Total: ₹<span id="total">0</span></h3>
 
 <button onclick="payUPI()">Pay via UPI</button>
-<button onclick="confirmPayment()">I Have Paid</button>
+<button onclick="placeWhatsApp()">Order on WhatsApp</button>
 </div>
 
 <div class="success" id="successPage">
@@ -242,17 +254,26 @@ document.body.appendChild(leaf);
 <button onclick="closeSuccess()">Close</button>
 </div>
 
+<div class="whatsapp-float" onclick="chatWhatsApp()">💬</div>
+
+<footer>
+<h3>About Ecofy 🌿</h3>
+<p>We create eco-friendly, sustainable gifts that spread love without harming nature.</p>
+<p>Follow us on Instagram:</p>
+<a href="https://instagram.com/ecofy" target="_blank" style="color:#95d5b2;">@ecofy</a>
+</footer>
+
 <script>
-let cart=[],total=0,discount=0,current={};
+let cart=[],total=0,current={};
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("open");
 }
 
-function openModal(name,price){
-current={name,price};
+function openModal(name,oldPrice,newPrice){
+current={name,price:newPrice};
 document.getElementById("mName").innerText=name;
-document.getElementById("mPrice").innerText="₹"+price;
+document.getElementById("mPrice").innerText="Special Price ₹"+newPrice;
 document.getElementById("modal").style.display="flex";
 }
 
@@ -276,49 +297,47 @@ cart.forEach(i=>{
 html+=i.name+" x"+i.qty+" = ₹"+i.itemTotal+"<br>";
 });
 document.getElementById("cartItems").innerHTML=html;
-document.getElementById("total").innerText=total-discount;
+document.getElementById("total").innerText=total;
 }
 
-function applyCoupon(){
-if(document.getElementById("coupon").value==="ECO10"){
-discount=total*0.1;
-alert("10% Discount Applied");
+function validateForm(){
+let n=document.getElementById("custName").value;
+let p=document.getElementById("custPhone").value;
+let a=document.getElementById("custAddress").value;
+if(!n||!p||!a){
+alert("Please fill all details!");
+return false;
 }
-updateCart();
+return true;
 }
 
 function payUPI(){
 if(cart.length==0){alert("Cart empty");return;}
-let final=total-discount;
-let link="upi://pay?pa=adarshw86@oksbi&pn=Ecofy&am="+final+"&cu=INR";
+if(!validateForm()) return;
+
+let link="upi://pay?pa=adarshw86@oksbi&pn=Ecofy&am="+total+"&cu=INR";
 window.location.href=link;
+
+setTimeout(()=>{confirmOrder();},4000);
 }
 
-function confirmPayment(){
-if(cart.length==0){alert("Cart empty");return;}
-
+function confirmOrder(){
 let orderID="ECO"+Math.floor(Math.random()*100000);
-localStorage.setItem(orderID,JSON.stringify(cart));
-
 document.getElementById("orderID").innerText="Order ID: "+orderID;
 document.getElementById("successPage").style.display="flex";
-
-generateInvoice(orderID);
-cart=[];total=0;discount=0;
+cart=[];total=0;
 updateCart();
 }
 
-function generateInvoice(orderID){
-const { jsPDF } = window.jspdf;
-let doc=new jsPDF();
-doc.text("Ecofy Invoice",20,20);
-doc.text("Order ID: "+orderID,20,30);
-let y=40;
-cart.forEach(i=>{
-doc.text(i.name+" x"+i.qty+" = ₹"+i.itemTotal,20,y);
-y+=10;
-});
-doc.save(orderID+".pdf");
+function placeWhatsApp(){
+if(cart.length==0){alert("Cart empty");return;}
+let msg="Hello Ecofy, I want to order:\n";
+cart.forEach(i=>{msg+=i.name+" x"+i.qty+"\n";});
+window.open("https://wa.me/91YOURNUMBER?text="+encodeURIComponent(msg));
+}
+
+function chatWhatsApp(){
+window.open("https://wa.me/91YOURNUMBER");
 }
 
 function closeSuccess(){
