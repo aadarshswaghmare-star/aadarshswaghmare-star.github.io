@@ -5,76 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 body{
 margin:0;
-font-family:Arial;
-background:#111;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(to bottom,#1a1a2e,#16213e);
 color:white;
 }
 
+/* HEADER */
 header{
-padding:20px;
 text-align:center;
-background:#000;
+padding:30px 20px;
+background:#0f3460;
+box-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
 
 header img{
-width:120px;
-display:block;
-margin:0 auto 10px;
+width:180px;   /* Bigger logo */
+margin-bottom:10px;
 }
 
+header h1{
+margin:0;
+font-size:28px;
+}
+
+/* SECTION */
 section{
 padding:40px 20px;
-text-align:center;
 }
 
+/* PRODUCT CARD */
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .card{
-background:#1c1c1c;
+background:#1f4068;
 padding:20px;
-border-radius:12px;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
-border-radius:10px;
+border-radius:15px;
+}
+
+/* DISCOUNT BADGE */
+.badge{
+position:absolute;
+top:15px;
+left:15px;
+background:#ff4d6d;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+}
+
+/* PRICE STYLE */
+.oldprice{
+text-decoration:line-through;
+color:#ccc;
 }
 
 .price{
 color:#00ff88;
-font-size:18px;
-margin:10px 0;
-}
-
-button{
-padding:10px 15px;
-border:none;
-background:#00ff88;
-color:black;
-border-radius:8px;
-cursor:pointer;
+font-size:20px;
 font-weight:bold;
 }
 
-form input, form textarea, form select{
-width:90%;
+/* BUTTON */
+button{
+margin-top:10px;
+padding:10px;
+border:none;
+background:#00ff88;
+color:black;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+width:100%;
+}
+
+button:hover{
+background:#00cc6a;
+}
+
+/* PACKAGING */
+.packaging{
+text-align:center;
+}
+
+.packaging img{
+width:250px;
+border-radius:15px;
+margin-top:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* ORDER FORM */
+form{
+background:#1f4068;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+form input, form select{
+width:95%;
 padding:10px;
 margin:8px 0;
-border-radius:6px;
 border:none;
+border-radius:8px;
 }
 
 footer{
-background:#000;
-padding:20px;
 text-align:center;
+padding:20px;
+background:#0f3460;
 margin-top:40px;
 }
 
@@ -82,6 +140,7 @@ a{
 color:#00ff88;
 text-decoration:none;
 }
+
 </style>
 </head>
 
@@ -89,47 +148,45 @@ text-decoration:none;
 
 <header>
 <img src="images/logo.png">
-<h2>Ecofy Gifts ❤️</h2>
+<h1>Premium Love Gift Collection ❤️</h1>
 </header>
 
 <section>
-<h2>Our Products</h2>
-
 <div class="products">
 
 <div class="card">
+<div class="badge">10% OFF</div>
 <img src="images/heart.png">
-<h3>Heart</h3>
-<div class="price">₹199</div>
+<h3>Heart Special</h3>
+<p class="oldprice">₹249</p>
+<p class="price">₹199</p>
 </div>
 
 <div class="card">
 <img src="images/teddy.png">
 <h3>Teddy</h3>
-<div class="price">₹299</div>
+<p class="price">₹299</p>
 </div>
 
 <div class="card">
 <img src="images/iloveyou.png">
 <h3>I Love You</h3>
-<div class="price">₹399</div>
+<p class="price">₹399</p>
 </div>
 
 <div class="card">
 <img src="images/couple.png">
 <h3>Couple Gift</h3>
-<div class="price">₹499</div>
+<p class="price">₹499</p>
 </div>
 
 </div>
 </section>
 
-<section>
+<section class="packaging">
 <h2>Premium Packaging 🎁</h2>
-<p>
-All Ecofy Gifts come with premium eco-friendly packaging.
-Safe wrapping, beautiful presentation & ready to gift.
-</p>
+<p>All gifts come in beautiful eco-friendly packaging.</p>
+<img src="images/packaging.png">
 </section>
 
 <section>
@@ -142,8 +199,8 @@ Safe wrapping, beautiful presentation & ready to gift.
 
 <select id="state" required>
 <option value="">Select State</option>
-<option value="Maharashtra">Maharashtra</option>
-<option value="Other">Other State</option>
+<option value="Maharashtra">Maharashtra (₹69)</option>
+<option value="Other">Other State (₹96)</option>
 </select>
 
 <input type="text" id="address" placeholder="Delivery Address" required>
@@ -156,17 +213,17 @@ Safe wrapping, beautiful presentation & ready to gift.
 <option value="Couple - ₹499">Couple - ₹499</option>
 </select>
 
-<button type="submit">Order on WhatsApp</button>
+<button type="submit">Checkout via WhatsApp</button>
 
 </form>
 </section>
 
 <footer>
-<p>Follow Us</p>
+Follow Us:
+<br><br>
 <a href="https://www.instagram.com/iamtree_official?igsh=MW43NGt4ZG84MmszZw==" target="_blank">
 Instagram
 </a>
-
 <br><br>
 © 2026 Ecofy Gifts
 </footer>
@@ -174,23 +231,22 @@ Instagram
 <script>
 function sendOrder(){
 
-var name = document.getElementById("name").value;
-var phone = document.getElementById("phone").value;
-var state = document.getElementById("state").value;
-var address = document.getElementById("address").value;
-var product = document.getElementById("product").value;
+var name=document.getElementById("name").value;
+var phone=document.getElementById("phone").value;
+var state=document.getElementById("state").value;
+var address=document.getElementById("address").value;
+var product=document.getElementById("product").value;
 
-var delivery = (state=="Maharashtra") ? 69 : 96;
+var delivery=(state=="Maharashtra")?69:96;
 
-var message = "New Order%0A"
-+ "Name: " + name + "%0A"
-+ "Phone: " + phone + "%0A"
-+ "Product: " + product + "%0A"
-+ "Delivery Charge: ₹" + delivery + "%0A"
-+ "Address: " + address;
+var message="New Order%0A"
++"Name: "+name+"%0A"
++"Phone: "+phone+"%0A"
++"Product: "+product+"%0A"
++"Delivery: ₹"+delivery+"%0A"
++"Address: "+address;
 
-window.open("https://wa.me/919075016413?text=" + message, "_blank");
-
+window.open("https://wa.me/919075016413?text="+message,"_blank");
 }
 </script>
 
