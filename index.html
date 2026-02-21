@@ -1,347 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ecofy Premium 3D Store</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+<title>Ecofy Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-html{scroll-behavior:smooth;}
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#e6fff4,#d8f3dc,#b7e4c7);
-overflow-x:hidden;
-color:#1b4332;
-}
-
-/* Floating Leaves */
-.leaf{
-position:fixed;
-top:-50px;
-font-size:20px;
-animation:fall linear infinite;
-opacity:0.5;
-z-index:0;
-}
-@keyframes fall{
-0%{transform:translateY(-50px) rotate(0deg);}
-100%{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* Header */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 30px;
-background:rgba(255,255,255,0.6);
-backdrop-filter:blur(10px);
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-position:sticky;
-top:0;
-z-index:10;
-}
-
-.cart-btn{
-background:#2d6a4f;
-color:white;
-padding:10px 18px;
-border-radius:30px;
-cursor:pointer;
-}
-
-/* Products */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-padding:60px 40px;
-z-index:1;
-}
-
-.card{
-background:rgba(255,255,255,0.7);
-padding:20px;
-border-radius:25px;
-box-shadow:0 20px 40px rgba(0,0,0,0.1);
-cursor:pointer;
-transition:0.4s;
-}
-.card:hover{transform:scale(1.05);}
-
-.price-old{
-text-decoration:line-through;
-color:gray;
-font-size:14px;
-}
-.price-new{
-color:#2d6a4f;
-font-weight:bold;
-font-size:18px;
-}
-.badge{
-background:red;
-color:white;
-padding:4px 8px;
-border-radius:20px;
-font-size:12px;
-}
-
-/* Modal */
-.modal{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-justify-content:center;
-align-items:center;
-}
-.modal-content{
-background:white;
-padding:30px;
-border-radius:20px;
-width:90%;
-max-width:400px;
-}
-
-/* Cart */
-.cart{
-position:fixed;
-right:-400px;
-top:0;
-width:350px;
-height:100%;
-background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-padding:20px;
-transition:0.4s;
-overflow:auto;
-z-index:200;
-}
-.cart.open{right:0;}
-
-.close-cart{
-position:absolute;
-top:10px;
-right:15px;
-font-size:22px;
-cursor:pointer;
-}
-
-button{
-background:#40916c;
-color:white;
-border:none;
-padding:10px;
-width:100%;
-border-radius:12px;
-margin-top:8px;
-cursor:pointer;
-}
-
-/* Success */
-.success{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:white;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:500;
-}
-
-/* Footer */
-footer{
-background:#1b4332;
-color:white;
-padding:40px 20px;
-text-align:center;
-margin-top:50px;
-}
-
-.whatsapp-float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-font-size:22px;
-cursor:pointer;
-z-index:999;
-}
+body{font-family:Arial;margin:0;padding:0;background:#f5f5f5}
+header{background:#111;color:#fff;padding:15px;text-align:center}
+.product{background:#fff;margin:15px;padding:15px;border-radius:10px}
+.product img{width:100%;border-radius:10px}
+button{padding:8px 12px;margin:5px;border:none;border-radius:5px;cursor:pointer}
+.add{background:#28a745;color:#fff}
+.cartBtn{position:fixed;top:15px;right:15px;background:red;color:#fff;border-radius:50%;width:40px;height:40px}
+#cart{position:fixed;right:-100%;top:0;width:100%;max-width:400px;height:100%;background:#fff;padding:15px;overflow:auto;transition:0.4s}
+.showCart{right:0 !important}
+.qtyBtn{background:#ddd}
+.whatsapp{background:#25D366;color:#fff;width:100%}
+input,textarea{width:100%;padding:8px;margin:6px 0}
 </style>
 </head>
 <body>
 
-<script>
-for(let i=0;i<25;i++){
-let leaf=document.createElement("div");
-leaf.className="leaf";
-leaf.innerHTML="🌿";
-leaf.style.left=Math.random()*100+"vw";
-leaf.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(leaf);
-}
-</script>
-
 <header>
-<h2>Ecofy 🌿</h2>
-<div class="cart-btn" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
+<h2>Ecofy</h2>
+<button class="cartBtn" onclick="openCart()">🛒 <span id="count">0</span></button>
 </header>
 
-<section class="products">
-
-<div class="card" onclick="openModal('Heart Special',249,199)">
-<span class="badge">20% OFF</span>
-<h3>Heart Special</h3>
-<p class="price-old">₹249</p>
-<p class="price-new">₹199</p>
-<p>Eco-friendly handmade love gift 🌿</p>
+<div class="product">
+<img src="https://via.placeholder.com/300" />
+<h3>Heart Gift Box</h3>
+<p><strike>₹1999</strike> <b>₹999</b></p>
+<button class="add" onclick="addToCart('Heart Gift Box',999)">Add to Cart</button>
 </div>
 
-<div class="card" onclick="openModal('Luxury Love Combo',1999,1499)">
-<span class="badge">25% OFF</span>
-<h3>Luxury Love Combo</h3>
-<p class="price-old">₹1999</p>
-<p class="price-new">₹1499</p>
-<p>Premium high-value eco celebration box 💚</p>
+<div class="product">
+<img src="https://via.placeholder.com/300" />
+<h3>Teddy Combo</h3>
+<p><strike>₹1499</strike> <b>₹799</b></p>
+<button class="add" onclick="addToCart('Teddy Combo',799)">Add to Cart</button>
 </div>
 
-<div class="card" onclick="openModal('Couple Gift',599,499)">
-<span class="badge">17% OFF</span>
-<h3>Couple Gift</h3>
-<p class="price-old">₹599</p>
-<p class="price-new">₹499</p>
-<p>Beautiful sustainable romantic sculpture</p>
-</div>
-
-</section>
-
-<div class="modal" id="modal">
-<div class="modal-content">
-<h3 id="mName"></h3>
-<p id="mPrice"></p>
-<input type="number" id="mQty" value="1" min="1">
-<button onclick="addToCart()">Add to Cart</button>
-<button onclick="closeModal()">Close</button>
-</div>
-</div>
-
-<div class="cart" id="cart">
-<div class="close-cart" onclick="toggleCart()">❌</div>
-<h2>Your Cart</h2>
+<div id="cart">
+<h3>Your Cart</h3>
 <div id="cartItems"></div>
 
-<input type="text" id="custName" placeholder="Your Name" required>
-<input type="text" id="custPhone" placeholder="Phone" required>
-<input type="text" id="custAddress" placeholder="Address" required>
+<h4>Customer Details</h4>
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="address" placeholder="Full Address" required></textarea>
 
-<h3>Total: ₹<span id="total">0</span></h3>
-
-<button onclick="payUPI()">Pay via UPI</button>
-<button onclick="placeWhatsApp()">Order on WhatsApp</button>
+<button class="whatsapp" onclick="checkout()">Checkout on WhatsApp</button>
 </div>
-
-<div class="success" id="successPage">
-<h1>🎉 Order Successful!</h1>
-<p id="orderID"></p>
-<button onclick="closeSuccess()">Close</button>
-</div>
-
-<div class="whatsapp-float" onclick="chatWhatsApp()">💬</div>
-
-<footer>
-<h3>About Ecofy 🌿</h3>
-<p>We create eco-friendly, sustainable gifts that spread love without harming nature.</p>
-<p>Follow us on Instagram:</p>
-<a href="https://instagram.com/ecofy" target="_blank" style="color:#95d5b2;">@ecofy</a>
-</footer>
 
 <script>
-let cart=[],total=0,current={};
+let cart=[];
 
-function toggleCart(){
-document.getElementById("cart").classList.toggle("open");
+function openCart(){
+document.getElementById("cart").classList.toggle("showCart");
 }
 
-function openModal(name,oldPrice,newPrice){
-current={name,price:newPrice};
-document.getElementById("mName").innerText=name;
-document.getElementById("mPrice").innerText="Special Price ₹"+newPrice;
-document.getElementById("modal").style.display="flex";
+function addToCart(name,price){
+let item=cart.find(p=>p.name===name);
+if(item){
+item.qty++;
+}else{
+cart.push({name,price,qty:1});
 }
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function addToCart(){
-let qty=parseInt(document.getElementById("mQty").value);
-let itemTotal=current.price*qty;
-cart.push({...current,qty,itemTotal});
-total+=itemTotal;
-document.getElementById("cartCount").innerText=cart.length;
 updateCart();
-closeModal();
+}
+
+function changeQty(name,type){
+let item=cart.find(p=>p.name===name);
+if(type==="plus"){item.qty++;}
+if(type==="minus"){item.qty--; if(item.qty<=0){cart=cart.filter(p=>p.name!==name);}}
+updateCart();
 }
 
 function updateCart(){
-let html="";
-cart.forEach(i=>{
-html+=i.name+" x"+i.qty+" = ₹"+i.itemTotal+"<br>";
+let cartItems=document.getElementById("cartItems");
+cartItems.innerHTML="";
+let total=0;
+
+cart.forEach(item=>{
+total+=item.price*item.qty;
+cartItems.innerHTML+=`
+<div>
+<b>${item.name}</b><br>
+₹${item.price} x ${item.qty} = ₹${item.price*item.qty}<br>
+<button class="qtyBtn" onclick="changeQty('${item.name}','minus')">➖</button>
+<button class="qtyBtn" onclick="changeQty('${item.name}','plus')">➕</button>
+<hr>
+</div>`;
 });
-document.getElementById("cartItems").innerHTML=html;
-document.getElementById("total").innerText=total;
+
+cartItems.innerHTML+=`<h4>Total: ₹${total}</h4>`;
+document.getElementById("count").innerText=cart.length;
 }
 
-function validateForm(){
-let n=document.getElementById("custName").value;
-let p=document.getElementById("custPhone").value;
-let a=document.getElementById("custAddress").value;
-if(!n||!p||!a){
-alert("Please fill all details!");
-return false;
-}
-return true;
-}
+function checkout(){
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let address=document.getElementById("address").value.trim();
 
-function payUPI(){
-if(cart.length==0){alert("Cart empty");return;}
-if(!validateForm()) return;
-
-let link="upi://pay?pa=adarshw86@oksbi&pn=Ecofy&am="+total+"&cu=INR";
-window.location.href=link;
-
-setTimeout(()=>{confirmOrder();},4000);
+if(!name || !phone || !address){
+alert("Please fill all customer details before checkout.");
+return;
 }
 
-function confirmOrder(){
-let orderID="ECO"+Math.floor(Math.random()*100000);
-document.getElementById("orderID").innerText="Order ID: "+orderID;
-document.getElementById("successPage").style.display="flex";
-cart=[];total=0;
-updateCart();
+if(cart.length===0){
+alert("Cart is empty.");
+return;
 }
 
-function placeWhatsApp(){
-if(cart.length==0){alert("Cart empty");return;}
-let msg="Hello Ecofy, I want to order:\n";
-cart.forEach(i=>{msg+=i.name+" x"+i.qty+"\n";});
-window.open("https://wa.me/91YOURNUMBER?text="+encodeURIComponent(msg));
-}
+let total=0;
+let message="🛍 *New Order - Ecofy*%0A%0A";
 
-function chatWhatsApp(){
-window.open("https://wa.me/91YOURNUMBER");
-}
+cart.forEach(item=>{
+total+=item.price*item.qty;
+message+=`${item.name} x ${item.qty} = ₹${item.price*item.qty}%0A`;
+});
 
-function closeSuccess(){
-document.getElementById("successPage").style.display="none";
+message+=`%0A💰 Total: ₹${total}%0A%0A`;
+message+=`👤 Name: ${name}%0A📞 Phone: ${phone}%0A🏠 Address: ${address}`;
+
+window.open(`https://wa.me/919075016413?text=${message}`);
 }
 </script>
 
