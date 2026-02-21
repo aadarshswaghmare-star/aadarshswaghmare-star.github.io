@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ecofy Gifts</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecofy Gifts</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0f172a; /* Dark blue background */
-            color: white;
-            text-align: center;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: white;
+        text-align: center;
+    }
 
-        header {
-            padding: 20px;
-        }
+    header {
+        padding: 40px 20px 20px;
+    }
 
-        .logo {
-            width: 140px;
-            margin-top: 20px;
-        }
+    .logo {
+        width: 150px;
+        filter: drop-shadow(0 0 15px #00ff88);
+    }
 
+    h1 {
+        color: #00ff88;
+        font-size: 40px;
+        margin: 15px 0;
+    }
+
+    .heart {
+        width: 130px;
+        margin: 30px 0 10px;
+        filter: drop-shadow(0 0 10px #00ff88);
+    }
+
+    p {
+        font-size: 20px;
+        color: #d1d5db;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 35px;
+        background-color: #00ff88;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #00cc6a;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
         h1 {
-            color: #00ff88;
-            margin-top: 10px;
+            font-size: 32px;
         }
-
-        .heart {
+        .logo {
             width: 120px;
-            margin: 20px 0;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #00ff88;
-            color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+        .heart {
+            width: 100px;
         }
-
-        .btn:hover {
-            background-color: #00cc6a;
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
 
 <header>
-    <img src="logo.png" alt="Ecofy Logo" class="logo">
+    <img src="images/logo.png" alt="Ecofy Logo" class="logo">
     <h1>Ecofy Gifts</h1>
 </header>
 
 <section>
-    <img src="heart.png" alt="Heart Image" class="heart">
+    <img src="images/heart.png" alt="Heart Image" class="heart">
     <p>Eco-friendly gifts made with love 💚</p>
-    <br>
     <a href="#" class="btn">Shop Now</a>
 </section>
 
