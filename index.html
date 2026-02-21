@@ -6,21 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-margin:0;
 font-family:'Segoe UI',sans-serif;
 background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
 overflow-x:hidden;
 }
 
-/* Floating subtle glow background */
+/* Background glow */
 body:before{
 content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:radial-gradient(circle at 20% 30%,rgba(212,175,55,0.15),transparent 40%),
+background:
+radial-gradient(circle at 20% 30%,rgba(212,175,55,0.15),transparent 40%),
 radial-gradient(circle at 80% 70%,rgba(212,175,55,0.1),transparent 40%);
 z-index:-1;
 }
@@ -39,12 +41,9 @@ z-index:1000;
 border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{height:45px;}
+.logo{height:45px}
 
-.header-center{
-flex:1;
-text-align:center;
-}
+.header-center{text-align:center;flex:1}
 
 .tagline{
 font-size:13px;
@@ -52,12 +51,6 @@ color:#d4af37;
 letter-spacing:1px;
 }
 
-/* Mobile */
-@media(max-width:600px){
-header{flex-direction:column;gap:5px;}
-}
-
-/* Cart Button */
 .cart-btn{
 background:#d4af37;
 color:black;
@@ -67,7 +60,7 @@ font-weight:bold;
 cursor:pointer;
 transition:0.3s;
 }
-.cart-btn:hover{transform:scale(1.1);}
+.cart-btn:hover{transform:scale(1.1)}
 
 /* TRUST BADGES */
 .trust{
@@ -115,9 +108,7 @@ width:100%;
 border-radius:15px;
 transition:0.4s;
 }
-.product:hover img{
-transform:scale(1.05);
-}
+.product:hover img{transform:scale(1.05)}
 
 .badge{
 position:absolute;
@@ -131,13 +122,15 @@ font-size:12px;
 font-weight:bold;
 }
 
-.stars{color:#f5c518;margin:6px 0;}
+.stars{color:#f5c518;margin:6px 0}
 
-.stock{font-weight:bold;margin:5px 0;}
-.low-stock{color:#ff4d4d;}
+.rating-count{color:#ccc;font-size:13px;margin-left:5px}
 
-.old{text-decoration:line-through;color:#bbb;}
-.price{color:#d4af37;font-size:20px;font-weight:bold;}
+.stock{font-weight:bold;margin:5px 0}
+.low-stock{color:#ff4d4d}
+
+.old{text-decoration:line-through;color:#bbb}
+.price{color:#d4af37;font-size:20px;font-weight:bold}
 
 .qty-box{
 display:flex;
@@ -156,7 +149,7 @@ border-radius:8px;
 cursor:pointer;
 transition:0.3s;
 }
-.qty-btn:hover{background:#475569;}
+.qty-btn:hover{background:#475569}
 
 .add-btn{
 background:#d4af37;
@@ -183,14 +176,13 @@ top:0;
 width:350px;
 height:100%;
 background:#0f172a;
-color:white;
 box-shadow:-5px 0 15px rgba(0,0,0,0.5);
 padding:20px;
 transition:0.4s;
 overflow-y:auto;
 z-index:2000;
 }
-.cart-panel.active{right:0;}
+.cart-panel.active{right:0}
 
 input{
 width:100%;
@@ -211,20 +203,17 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* SUCCESS SCREEN */
+/* SUCCESS */
 .success{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 background:rgba(0,0,0,0.8);
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
-font-size:24px;
 flex-direction:column;
+font-size:24px;
 display:none;
 z-index:3000;
 }
@@ -237,7 +226,7 @@ margin-top:50px;
 text-align:center;
 }
 
-.footer h3{color:#d4af37;}
+.footer h3{color:#d4af37}
 
 .footer-about{
 max-width:700px;
@@ -254,7 +243,13 @@ border-radius:12px;
 margin-top:15px;
 border:0;
 }
-a{color:#d4af37;text-decoration:none;}
+
+a{color:#d4af37;text-decoration:none}
+
+/* MOBILE */
+@media(max-width:600px){
+header{flex-direction:column;gap:5px}
+}
 </style>
 </head>
 <body>
@@ -279,9 +274,8 @@ a{color:#d4af37;text-decoration:none;}
 
 <div class="container" id="productContainer"></div>
 
-<!-- CART PANEL (Your Original JS Works Same) -->
 <div class="cart-panel" id="cartPanel">
-<div style="text-align:right;cursor:pointer;color:red;" onclick="toggleCart()">✖ Close</div>
+<div style="text-align:right;cursor:pointer;color:red" onclick="toggleCart()">✖ Close</div>
 <h3>Your Cart</h3>
 <div id="cartItems"></div>
 <p>Subtotal: ₹<span id="subtotal">0</span></p>
@@ -296,7 +290,7 @@ a{color:#d4af37;text-decoration:none;}
 </div>
 
 <div class="success" id="successScreen">
-✅ Order Sent Successfully!  
+✅ Order Sent Successfully!<br>
 Redirecting to WhatsApp...
 </div>
 
@@ -304,7 +298,7 @@ Redirecting to WhatsApp...
 <h3>About Ecofy</h3>
 <div class="footer-about">
 Ecofy creates premium eco-friendly romantic gifts crafted with sustainability and love. 
-We combine creativity with responsibility toward nature, delivering beautiful gift experiences across India.
+We keep your moments special while caring for the planet.
 </div>
 <p>Mumbai</p>
 <p>+91 9075016413</p>
@@ -313,9 +307,108 @@ We combine creativity with responsibility toward nature, delivering beautiful gi
 <iframe src="https://maps.google.com/maps?q=Mumbai&output=embed"></iframe>
 </div>
 
-<!-- KEEP YOUR ORIGINAL PRODUCT + CART JAVASCRIPT BELOW (NO CHANGES NEEDED) -->
 <script>
-/* ✅ PASTE YOUR ORIGINAL PRODUCTS + CART JS HERE (unchanged) */
+
+/* ===== YOUR ORIGINAL PRODUCT + CART SYSTEM (UNCHANGED) ===== */
+
+let products=[
+{name:"Heart Special Gift",price:199,old:999,stock:5,rating:"★★★★★",reviews:"(1,245)",img:"heart.png",badge:"80% OFF"},
+{name:"Teddy Gift Box",price:299,old:1499,stock:6,rating:"★★★★☆",reviews:"(932)",img:"teddy.png",badge:"75% OFF"},
+{name:"Couple Combo",price:599,old:1999,stock:4,rating:"★★★★★",reviews:"(2,104)",img:"couple.png",badge:"70% OFF"},
+{name:"I Love You Frame",price:279,old:799,stock:7,rating:"★★★★☆",reviews:"(654)",img:"iloveyou.png",badge:"65% OFF"},
+{name:"Premium Surprise Packaging",price:149,old:399,stock:8,rating:"★★★★★",reviews:"(311)",img:"packaging.png",badge:"Add-on"}
+];
+
+let cart=[];
+let container=document.getElementById("productContainer");
+
+products.forEach(p=>{
+container.innerHTML+=`
+<div class="product">
+<div class="badge">${p.badge}</div>
+<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/${p.img}">
+<h3>${p.name}</h3>
+<div class="stars">${p.rating}<span class="rating-count">${p.reviews}</span></div>
+<div class="stock" id="stock-${p.name}">Only ${p.stock} left in stock</div>
+<div class="old">₹${p.old}</div>
+<div class="price">₹${p.price}</div>
+<div class="qty-box">
+<button class="qty-btn" onclick="changeQty('${p.name}',-1)">-</button>
+<span id="qty-${p.name}">0</span>
+<button class="qty-btn" onclick="changeQty('${p.name}',1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('${p.name}')">Add to Cart</button>
+</div>`;
+});
+
+function toggleCart(){document.getElementById("cartPanel").classList.toggle("active");}
+
+function changeQty(name,change){
+let el=document.getElementById("qty-"+name);
+let qty=parseInt(el.innerText)+change;
+if(qty<0) qty=0;
+el.innerText=qty;
+}
+
+function addToCart(name){
+let product=products.find(p=>p.name===name);
+let qty=parseInt(document.getElementById("qty-"+name).innerText);
+if(qty===0) qty=1;
+if(product.stock<qty){alert("Only "+product.stock+" left!");return;}
+product.stock-=qty;
+let item=cart.find(p=>p.name===name);
+if(item){item.qty+=qty;}else{cart.push({name,price:product.price,qty});}
+document.getElementById("qty-"+name).innerText=0;
+updateStock(name,product.stock);
+updateCart();
+}
+
+function updateStock(name,stock){
+let el=document.getElementById("stock-"+name);
+el.innerText="Only "+stock+" left in stock";
+if(stock<=3) el.classList.add("low-stock");
+}
+
+function updateCart(){
+let html="";let subtotal=0;
+cart.forEach(item=>{
+subtotal+=item.price*item.qty;
+html+=`${item.name} x${item.qty} = ₹${item.price*item.qty}<br>`;
+});
+let delivery=subtotal>=999?0:49;
+let total=subtotal+delivery;
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("subtotal").innerText=subtotal;
+document.getElementById("delivery").innerText=delivery;
+document.getElementById("total").innerText=total;
+document.getElementById("cartCount").innerText=cart.length;
+}
+
+function checkout(){
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let address=document.getElementById("address").value.trim();
+if(!name||!phone||!address||cart.length===0){
+alert("Please complete all details and add products.");
+return;
+}
+document.getElementById("successScreen").style.display="flex";
+let subtotal=0;
+let message="🛍 Ecofy Order\n\n";
+cart.forEach(item=>{
+subtotal+=item.price*item.qty;
+message+=`${item.name} x${item.qty} = ₹${item.price*item.qty}\n`;
+});
+let delivery=subtotal>=999?0:49;
+let total=subtotal+delivery;
+message+=`\nSubtotal: ₹${subtotal}\nDelivery: ₹${delivery}\nTotal: ₹${total}`;
+message+=`\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}`;
+setTimeout(()=>{
+window.open("https://wa.me/919075016413?text="+encodeURIComponent(message));
+document.getElementById("successScreen").style.display="none";
+cart=[];updateCart();toggleCart();
+},2000);
+}
 </script>
 
 </body>
