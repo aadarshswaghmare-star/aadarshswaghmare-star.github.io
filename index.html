@@ -1,116 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ecofy Premium Store</title>
+<title>Ecofy Premium 3D Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 html{scroll-behavior:smooth;}
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#f6fff8;
+background:linear-gradient(135deg,#e6fff4,#d8f3dc,#b7e4c7);
+overflow-x:hidden;
 color:#1b4332;
 }
 
-/* LOADING SCREEN */
-#loader{
+/* Floating Leaves */
+.leaf{
 position:fixed;
-width:100%;
-height:100%;
-background:white;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-font-size:22px;
-font-weight:bold;
-animation:fadeOut 1s ease forwards;
-animation-delay:2s;
+top:-50px;
+font-size:20px;
+animation:fall linear infinite;
+opacity:0.5;
+z-index:0;
+}
+@keyframes fall{
+0%{transform:translateY(-50px) rotate(0deg);}
+100%{transform:translateY(110vh) rotate(360deg);}
 }
 
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
-
-/* HEADER */
+/* Header */
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
-background:white;
-box-shadow:0 4px 20px rgba(0,0,0,0.05);
+padding:20px 30px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
-z-index:100;
+z-index:10;
 }
-
 header img{width:160px;}
 
 .cart-btn{
-cursor:pointer;
 background:#2d6a4f;
 color:white;
-padding:10px 15px;
-border-radius:20px;
+padding:10px 18px;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* PRODUCTS */
+/* Products */
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:40px;
-padding:60px;
+padding:60px 40px;
+position:relative;
+z-index:1;
 }
 
 .card{
-background:white;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(15px);
 padding:20px;
 border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:0.3s;
-position:relative;
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+transition:0.4s;
+cursor:pointer;
+transform-style:preserve-3d;
 }
-
 .card:hover{
-transform:translateY(-10px);
+transform:rotateY(8deg) rotateX(5deg);
 }
-
 .card img{
 width:100%;
-border-radius:20px;
-}
-
-.price{
-color:#2d6a4f;
-font-weight:bold;
-font-size:20px;
-}
-
-.quantity{
-width:60px;
-padding:5px;
-margin-top:8px;
-}
-
-.add-btn{
-margin-top:10px;
-background:#40916c;
-color:white;
-border:none;
-padding:10px;
-width:100%;
-border-radius:12px;
-cursor:pointer;
+border-radius:15px;
 transition:0.3s;
 }
-
-.add-btn:hover{
-background:#2d6a4f;
+.card img:hover{
+transform:scale(1.1);
+}
+.price{
+font-weight:bold;
+color:#2d6a4f;
 }
 
-/* CART DRAWER */
+/* Modal */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+z-index:100;
+}
+.modal-content{
+background:white;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+}
+
+/* Cart Drawer */
 .cart{
 position:fixed;
 right:-400px;
@@ -118,143 +118,211 @@ top:0;
 width:350px;
 height:100%;
 background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,0.1);
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
 padding:20px;
 transition:0.4s;
 overflow:auto;
 z-index:200;
 }
-
 .cart.open{right:0;}
 
-.cart h2{margin-top:0;}
-
-.cart-item{
-border-bottom:1px solid #ddd;
-padding:10px 0;
+input, select{
+width:95%;
+padding:8px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #ddd;
 }
 
-.checkout{
-background:#2d6a4f;
+button{
+background:#40916c;
 color:white;
 border:none;
-padding:12px;
+padding:10px;
 width:100%;
-border-radius:15px;
-margin-top:15px;
+border-radius:12px;
 cursor:pointer;
+margin-top:8px;
 }
 
-/* ANIMATION WHEN ADDED */
-.added{
-position:absolute;
-top:10px;
-right:10px;
-background:#52b788;
-color:white;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
-animation:pop 0.5s ease;
+.success{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:500;
 }
 
-@keyframes pop{
-0%{transform:scale(0);}
-100%{transform:scale(1);}
+@media(max-width:768px){
+.products{padding:20px;}
 }
 
 </style>
 </head>
 <body>
 
-<div id="loader">Loading Ecofy Store 🌿</div>
+<script>
+for(let i=0;i<30;i++){
+let leaf=document.createElement("div");
+leaf.className="leaf";
+leaf.innerHTML="🌿";
+leaf.style.left=Math.random()*100+"vw";
+leaf.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(leaf);
+}
+</script>
 
 <header>
 <img src="images/logo.png">
-<div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+<div class="cart-btn" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
 </header>
 
 <section class="products">
-
-<div class="card">
+<div class="card" onclick="openModal('Heart Special',199)">
 <img src="images/heart.png">
 <h3>Heart Special</h3>
 <p class="price">₹199</p>
-<input type="number" value="1" min="1" class="quantity" id="q1">
-<button class="add-btn" onclick="addToCart('Heart Special',199,'q1',this)">Add to Cart</button>
 </div>
 
-<div class="card">
+<div class="card" onclick="openModal('Teddy',299)">
 <img src="images/teddy.png">
 <h3>Teddy</h3>
 <p class="price">₹299</p>
-<input type="number" value="1" min="1" class="quantity" id="q2">
-<button class="add-btn" onclick="addToCart('Teddy',299,'q2',this)">Add to Cart</button>
 </div>
 
-<div class="card">
+<div class="card" onclick="openModal('I Love You',399)">
 <img src="images/iloveyou.png">
 <h3>I Love You</h3>
 <p class="price">₹399</p>
-<input type="number" value="1" min="1" class="quantity" id="q3">
-<button class="add-btn" onclick="addToCart('I Love You',399,'q3',this)">Add to Cart</button>
 </div>
 
-<div class="card">
+<div class="card" onclick="openModal('Couple Gift',499)">
 <img src="images/couple.png">
 <h3>Couple Gift</h3>
 <p class="price">₹499</p>
-<input type="number" value="1" min="1" class="quantity" id="q4">
-<button class="add-btn" onclick="addToCart('Couple Gift',499,'q4',this)">Add to Cart</button>
 </div>
-
 </section>
 
-<!-- CART DRAWER -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3 id="mName"></h3>
+<p id="mPrice"></p>
+<input type="number" id="mQty" value="1" min="1">
+<button onclick="addToCart()">Add to Cart</button>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
 <div class="cart" id="cart">
 <h2>Your Cart</h2>
 <div id="cartItems"></div>
-<h3>Total: ₹<span id="cartTotal">0</span></h3>
-<button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
+
+<input type="text" id="custName" placeholder="Your Name">
+<input type="text" id="custPhone" placeholder="Phone">
+<input type="text" id="custAddress" placeholder="Address">
+
+<input type="text" id="coupon" placeholder="Coupon Code">
+<button onclick="applyCoupon()">Apply Coupon</button>
+
+<h3>Total: ₹<span id="total">0</span></h3>
+
+<button onclick="payUPI()">Pay via UPI</button>
+<button onclick="confirmPayment()">I Have Paid</button>
+</div>
+
+<div class="success" id="successPage">
+<h1>🎉 Order Successful!</h1>
+<p id="orderID"></p>
+<button onclick="closeSuccess()">Close</button>
 </div>
 
 <script>
-let cart=[];
-let total=0;
+let cart=[],total=0,discount=0,current={};
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("open");
 }
 
-function addToCart(name,price,qtyId,btn){
-let qty=parseInt(document.getElementById(qtyId).value);
-let itemTotal=price*qty;
-cart.push({name,price,qty,itemTotal});
-total+=itemTotal;
-
-document.getElementById("cartCount").innerText=cart.length;
-document.getElementById("cartTotal").innerText=total;
-
-let div=document.createElement("div");
-div.className="cart-item";
-div.innerHTML=name+" x"+qty+" = ₹"+itemTotal;
-document.getElementById("cartItems").appendChild(div);
-
-/* Animation */
-let badge=document.createElement("div");
-badge.className="added";
-badge.innerText="Added ✓";
-btn.parentElement.appendChild(badge);
-setTimeout(()=>badge.remove(),1000);
+function openModal(name,price){
+current={name,price};
+document.getElementById("mName").innerText=name;
+document.getElementById("mPrice").innerText="₹"+price;
+document.getElementById("modal").style.display="flex";
 }
 
-function checkout(){
-let message="New Order%0A";
-cart.forEach(item=>{
-message+=item.name+" x"+item.qty+" = ₹"+item.itemTotal+"%0A";
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function addToCart(){
+let qty=parseInt(document.getElementById("mQty").value);
+let itemTotal=current.price*qty;
+cart.push({...current,qty,itemTotal});
+total+=itemTotal;
+document.getElementById("cartCount").innerText=cart.length;
+updateCart();
+closeModal();
+}
+
+function updateCart(){
+let html="";
+cart.forEach(i=>{
+html+=i.name+" x"+i.qty+" = ₹"+i.itemTotal+"<br>";
 });
-message+="Total: ₹"+total;
-window.open("https://wa.me/919075016413?text="+message,"_blank");
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText=total-discount;
+}
+
+function applyCoupon(){
+if(document.getElementById("coupon").value==="ECO10"){
+discount=total*0.1;
+alert("10% Discount Applied");
+}
+updateCart();
+}
+
+function payUPI(){
+if(cart.length==0){alert("Cart empty");return;}
+let final=total-discount;
+let link="upi://pay?pa=adarshw86@oksbi&pn=Ecofy&am="+final+"&cu=INR";
+window.location.href=link;
+}
+
+function confirmPayment(){
+if(cart.length==0){alert("Cart empty");return;}
+
+let orderID="ECO"+Math.floor(Math.random()*100000);
+localStorage.setItem(orderID,JSON.stringify(cart));
+
+document.getElementById("orderID").innerText="Order ID: "+orderID;
+document.getElementById("successPage").style.display="flex";
+
+generateInvoice(orderID);
+cart=[];total=0;discount=0;
+updateCart();
+}
+
+function generateInvoice(orderID){
+const { jsPDF } = window.jspdf;
+let doc=new jsPDF();
+doc.text("Ecofy Invoice",20,20);
+doc.text("Order ID: "+orderID,20,30);
+let y=40;
+cart.forEach(i=>{
+doc.text(i.name+" x"+i.qty+" = ₹"+i.itemTotal,20,y);
+y+=10;
+});
+doc.save(orderID+".pdf");
+}
+
+function closeSuccess(){
+document.getElementById("successPage").style.display="none";
 }
 </script>
 
