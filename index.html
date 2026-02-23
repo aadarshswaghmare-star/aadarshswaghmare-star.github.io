@@ -31,7 +31,13 @@ z-index:1000;
 box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-.logo img{ height:50px; }
+.logo{
+font-size:24px;
+font-weight:700;
+color:#2e7d32;
+}
+
+.logo span{ color:black; font-weight:400; }
 
 nav ul{
 list-style:none;
@@ -56,24 +62,32 @@ cursor:pointer;
 
 /* HERO */
 .hero{
+position:relative;
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:120px 20px;
-background:#fafafa;
+background:linear-gradient(to bottom,#ffffff 70%, #4caf50 100%);
+overflow:hidden;
 }
 
-.hero h1{ font-size:60px; }
+.hero h1{
+font-size:90px;
+z-index:2;
+}
 
 .green{color:#2e7d32;}
 .red{color:#d32f2f;}
 
-.hero img{
+.leaf-img{
+position:absolute;
+bottom:40px;
 width:420px;
-max-width:90%;
-margin-top:20px;
 }
 
 .big-btn{
-display:inline-block;
 margin-top:30px;
 background:#2e7d32;
 color:white;
@@ -81,6 +95,7 @@ padding:15px 40px;
 border-radius:10px;
 text-decoration:none;
 font-weight:bold;
+z-index:2;
 }
 
 /* MODERN */
@@ -239,7 +254,7 @@ border-radius:8px;
 }
 
 @media(max-width:900px){
-.hero h1{ font-size:40px; }
+.hero h1{ font-size:45px; }
 .modern,.healing-section{ flex-direction:column; }
 .modern-left,.modern-right,
 .healing-left,.healing-right{ width:100%; }
@@ -250,9 +265,7 @@ border-radius:8px;
 <body>
 
 <header>
-<div class="logo">
-<img src="images/logo.png">
-</div>
+<div class="logo">Ecofy<span>gifts.com</span></div>
 
 <nav>
 <ul>
@@ -267,8 +280,7 @@ border-radius:8px;
 
 <section class="hero">
 <h1><span class="green">Eco-friendly</span> <span class="red">Gifts</span></h1>
-<img src="images/leaves.png">
-<br>
+<img src="images/leaf.png" class="leaf-img">
 <a href="#products" class="big-btn">Shop Now</a>
 </section>
 
@@ -295,10 +307,8 @@ border-radius:8px;
 
 <section class="products" id="products">
 <h2>Our Eco Products</h2>
-
 <div class="grid">
 
-<!-- Shiva -->
 <div class="card">
 <div class="discount">50% OFF</div>
 <img src="images/lord-shiva.png">
@@ -313,7 +323,6 @@ border-radius:8px;
 <button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
 </div>
 
-<!-- Ganesha -->
 <div class="card">
 <div class="discount">50% OFF</div>
 <img src="images/lord-ganesh.png">
@@ -326,66 +335,6 @@ border-radius:8px;
 <button onclick="changeQty(this,1)">+</button>
 </div>
 <button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
-</div>
-
-<!-- Customised -->
-<div class="card">
-<div class="discount">70% OFF</div>
-<img src="images/customised-names.png">
-<h3>Customised Name</h3>
-<div class="old">₹699</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Customised Name',199,this)">Add to Cart</button>
-</div>
-
-<!-- Teddy -->
-<div class="card">
-<div class="discount">63% OFF</div>
-<img src="images/cute-teddy.png">
-<h3>Cute Teddy</h3>
-<div class="old">₹589</div>
-<div class="new">₹219</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
-</div>
-
-<!-- Hearts -->
-<div class="card">
-<div class="discount">60% OFF</div>
-<img src="images/cute-hearts.png">
-<h3>Cute Hearts</h3>
-<div class="old">₹499</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
-</div>
-
-<!-- Seed Balls -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/only seed balls.png">
-<h3>Seed Balls (6 pcs)</h3>
-<div class="old">₹299</div>
-<div class="new">₹150</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
 </div>
 
 </div>
