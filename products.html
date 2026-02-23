@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ecofy Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+body{background:#f5f5f5;}
+
+nav{
+display:flex;justify-content:space-between;
+padding:20px 8%;background:#fff;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{text-decoration:none;color:#333;font-weight:500;}
+
+.cart-count{
+background:#e53935;color:#fff;
+padding:3px 8px;border-radius:50px;
+font-size:12px;
+}
+
+/* PRODUCTS */
+
+.products{padding:80px 8%;}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#fff;border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.1);
+overflow:hidden;
+}
+
+.card img{width:100%;height:250px;object-fit:cover;}
+.card-body{padding:20px;}
+.price{color:#2e7d32;font-weight:700;}
+.old{text-decoration:line-through;color:#999;}
+
+.qty{display:flex;gap:10px;margin:15px 0;}
+.qty button{
+width:30px;height:30px;
+background:#2e7d32;color:white;
+border:none;border-radius:5px;
+}
+
+.add-btn{
+background:#e53935;color:white;
+padding:10px;border:none;
+border-radius:10px;width:100%;
+}
+
+/* CART DRAWER */
+
+.cart{
+position:fixed;right:-400px;top:0;
+width:350px;height:100%;
+background:#fff;
+box-shadow:-10px 0 40px rgba(0,0,0,.2);
+padding:20px;transition:.4s;
+overflow-y:auto;
+}
+
+.cart.active{right:0;}
+
+.close-btn{
+background:#e53935;color:white;
+border:none;padding:5px 10px;
+border-radius:5px;float:right;
+}
+
+input,textarea{
+width:100%;padding:10px;
+margin:8px 0;border:1px solid #ccc;
+border-radius:5px;
+}
+
+.checkout{
+background:#25D366;color:white;
+padding:12px;border:none;
+border-radius:10px;width:100%;
+margin-top:10px;
+}
+
+footer{
+background:#111;color:#fff;
+text-align:center;padding:30px;
+margin-top:80px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<img src="images/logo.png" height="40">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="about.html">About</a></li>
+<li onclick="toggleCart()">Cart 
+<span class="cart-count" id="cartCount">0</span>
+</li>
+</ul>
+</nav>
+
+<section class="products">
+<div class="grid">
+
+<!-- Shiva -->
+<div class="card">
+<img src="images/lord-shiva.png">
+<div class="card-body">
+<h3>Lord Shiva</h3>
+<p class="price">₹399 <span class="old">₹699</span></p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('Lord Shiva',399,this)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Ganesha -->
+<div class="card">
+<img src="images/lord-ganesh.png">
+<div class="card-body">
+<h3>Lord Ganesha</h3>
+<p class="price">₹399 <span class="old">₹699</span></p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('Lord Ganesha',399,this)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Teddy -->
+<div class="card">
+<img src="images/cute-teddy.png">
+<div class="card-body">
+<h3>Cute Teddy</h3>
+<p class="price">₹399 <span class="old">₹699</span></p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('Cute Teddy',399,this)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Hearts -->
+<div class="card">
+<img src="images/cute-hearts.png">
+<div class="card-body">
+<h3>Cute Hearts</h3>
+<p class="price">₹299 <span class="old">₹599</span></p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('Cute Hearts',299,this)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Custom -->
+<div class="card">
+<img src="images/customised-names.png">
+<div class="card-body">
+<h3>Customised Names</h3>
+<p class="price">₹299 <span class="old">₹599</span></p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addToCart('Customised Names',299,this)">Add to Cart</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CART -->
+<div class="cart" id="cart">
+<button class="close-btn" onclick="toggleCart()">Close</button>
+<h3>Your Cart</h3>
+<div id="cartItems"></div>
+<h4>Total ₹<span id="total">0</span></h4>
+
+<h3>Customer Details</h3>
+<input type="text" id="name" placeholder="Full Name" required>
+<textarea id="address" placeholder="Delivery Address" required></textarea>
+<input type="text" id="contact" placeholder="Contact Number" required>
+<input type="text" id="altcontact" placeholder="Alternate Contact Number" required>
+<input type="email" id="email" placeholder="Email ID" required>
+
+<button class="checkout" onclick="checkout()">Checkout on WhatsApp</button>
+</div>
+
+<footer>© 2026 Ecofy Gifts</footer>
+
+<script>
+let cart=[];
+let total=0;
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("active");
+}
+
+function changeQty(btn,amount){
+let span=btn.parentElement.querySelector("span");
+let qty=parseInt(span.innerText);
+qty+=amount;
+if(qty<1) qty=1;
+span.innerText=qty;
+}
+
+function addToCart(name,price,btn){
+let qty=parseInt(btn.parentElement.querySelector("span").innerText);
+cart.push({name,price,qty});
+total+=price*qty;
+updateCart();
+}
+
+function updateCart(){
+document.getElementById("cartCount").innerText=cart.length;
+let container=document.getElementById("cartItems");
+container.innerHTML="";
+cart.forEach(item=>{
+container.innerHTML+=`
+<div style="display:flex;justify-content:space-between;margin:8px 0;">
+<span>${item.name} x${item.qty}</span>
+<span>₹${item.price*item.qty}</span>
+</div>`;
+});
+document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+
+let name=document.getElementById("name").value;
+let address=document.getElementById("address").value;
+let contact=document.getElementById("contact").value;
+let alt=document.getElementById("altcontact").value;
+let email=document.getElementById("email").value;
+
+if(!name||!address||!contact||!alt||!email){
+alert("Please fill all details before checkout!");
+return;
+}
+
+let message="New Order%0A";
+cart.forEach(item=>{
+message+=`${item.name} x${item.qty} - ₹${item.price*item.qty}%0A`;
+});
+message+=`Total: ₹${total}%0A%0A`;
+message+=`Name: ${name}%0AAddress: ${address}%0AContact: ${contact}%0AAlternate: ${alt}%0AEmail: ${email}`;
+
+window.open(`https://wa.me/919075016413?text=${message}`);
+}
+</script>
+
+</body>
+</html>
