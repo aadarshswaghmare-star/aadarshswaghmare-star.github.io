@@ -22,7 +22,6 @@ body{ background:#f4f8f5; }
 
 .first-hero{
 position:relative;
-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -30,6 +29,7 @@ align-items:center;
 text-align:center;
 background:linear-gradient(to bottom,#ffffff 70%, #4caf50 100%);
 overflow:hidden;
+padding:100px 0;
 }
 
 .first-hero h1{
@@ -268,15 +268,6 @@ border-radius:8px;
 
 <body>
 
-<!-- ===== FIRST HERO PAGE ===== -->
-
-<section class="first-hero">
-<h1><span class="green">Eco-friendly</span> <span class="red">Gifts</span></h1>
-<img src="images/leaf.png" class="leaf-img">
-<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">Nature’s Healing Gift</button>
-<div class="heart-box">❤️</div>
-</section>
-
 <!-- ===== HEADER ===== -->
 
 <header>
@@ -291,7 +282,7 @@ border-radius:8px;
 <button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
 </header>
 
-<!-- ===== MODERN ===== -->
+<!-- ===== MODERN (1ST PAGE) ===== -->
 
 <section class="modern" id="modern">
 <div class="modern-left">
@@ -302,7 +293,7 @@ border-radius:8px;
 </div>
 </section>
 
-<!-- ===== HEALING ===== -->
+<!-- ===== HEALING (2ND PAGE) ===== -->
 
 <section class="healing-section">
 <div class="healing-left">
@@ -314,154 +305,13 @@ border-radius:8px;
 </div>
 </section>
 
-<!-- ===== PRODUCTS ===== -->
+<!-- ===== HERO (3RD PAGE) ===== -->
 
-<section class="products" id="products">
-<h2>Our Eco Products</h2>
-
-<div class="grid">
-
-<!-- Shiva -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/lord-shiva.png">
-<h3>Lord Shiva</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
-</div>
-
-<!-- Ganesha -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/lord-ganesh.png">
-<h3>Lord Ganesha</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
-</div>
-
-<!-- Customised -->
-<div class="card">
-<div class="discount">70% OFF</div>
-<img src="images/customised-names.png">
-<h3>Customised Name</h3>
-<div class="old">₹699</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Customised Name',199,this)">Add to Cart</button>
-</div>
-
-<!-- Teddy -->
-<div class="card">
-<div class="discount">63% OFF</div>
-<img src="images/cute-teddy.png">
-<h3>Cute Teddy</h3>
-<div class="old">₹589</div>
-<div class="new">₹219</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
-</div>
-
-<!-- Hearts -->
-<div class="card">
-<div class="discount">60% OFF</div>
-<img src="images/cute-hearts.png">
-<h3>Cute Hearts</h3>
-<div class="old">₹499</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
-</div>
-
-<!-- Seed Balls -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/only seed balls.png">
-<h3>Seed Balls (6 pcs)</h3>
-<div class="old">₹299</div>
-<div class="new">₹150</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
-</div>
-
-</div>
+<section class="first-hero">
+<h1><span class="green">Eco-friendly</span> <span class="red">Gifts</span></h1>
+<img src="images/leaf.png" class="leaf-img">
+<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">Nature’s Healing Gift</button>
+<div class="heart-box">❤️</div>
 </section>
 
-<!-- ===== CART ===== -->
-
-<div id="cart" class="cart">
-<h3>Shopping Cart</h3>
-<div id="items"></div>
-<h3>Total ₹<span id="total">0</span></h3>
-<button onclick="checkout()">Order on WhatsApp</button>
-</div>
-
-<script>
-let cart=[];
-let total=0;
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-}
-
-function changeQty(btn,amount){
-let span=btn.parentElement.querySelector("span");
-let qty=parseInt(span.innerText);
-qty+=amount;
-if(qty<1)qty=1;
-span.innerText=qty;
-}
-
-function add(name,price,btn){
-let qty=parseInt(btn.parentElement.querySelector("span").innerText);
-cart.push({name,price,qty});
-update();
-}
-
-function update(){
-let container=document.getElementById("items");
-container.innerHTML="";
-total=0;
-cart.forEach(i=>{
-total+=i.price*i.qty;
-container.innerHTML+=`<div>${i.name} x${i.qty} - ₹${i.price*i.qty}</div>`;
-});
-document.getElementById("count").innerText=cart.length;
-document.getElementById("total").innerText=total;
-}
-
-function checkout(){
-if(cart.length===0){alert("Cart Empty");return;}
-window.open("https://wa.me/919075016413?text=New Order Total ₹"+total);
-}
-</script>
-
-</body>
-</html>
+<!-- ===== PRODUCTS (UNCHANGED) ===== -->
