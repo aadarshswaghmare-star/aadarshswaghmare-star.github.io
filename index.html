@@ -49,7 +49,6 @@ nav ul li a{
     text-decoration:none;
     font-weight:500;
     color:#888;
-    position:relative;
     transition:0.3s;
 }
 
@@ -77,13 +76,8 @@ nav ul li a.active{
     opacity:0;
 }
 
-.green{
-    color:#4caf50;
-}
-
-.red{
-    color:#d32f2f;
-}
+.green{ color:#4caf50; }
+.red{ color:#d32f2f; }
 
 .leaf-img{
     margin-top:20px;
@@ -93,7 +87,7 @@ nav ul li a.active{
     animation:floatLeaf 4s ease-in-out infinite;
 }
 
-/* ===== Big Button ===== */
+/* ===== Button ===== */
 .big-btn{
     display:inline-block;
     margin-top:35px;
@@ -111,7 +105,6 @@ nav ul li a.active{
 .big-btn:hover{
     background:#1b5e20;
     transform:scale(1.08);
-    box-shadow:0 15px 35px rgba(46,125,50,0.6);
 }
 
 .big-btn:active{
@@ -142,16 +135,72 @@ nav ul li a.active{
     background:linear-gradient(to right,#4caf50,#a5d6a7);
 }
 
+/* ================= HEALING SECTION ================= */
+.healing-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px 60px;
+    background:#f2f2f2;
+    gap:50px;
+}
+
+.healing-left{
+    background:#6ab04c;
+    padding:25px;
+    border-radius:20px;
+    width:50%;
+}
+
+.healing-left img{
+    width:100%;
+    border-radius:15px;
+}
+
+.healing-right{
+    width:50%;
+}
+
+.healing-right h1{
+    font-size:70px;
+    font-weight:700;
+}
+
+.healing-card{
+    margin-top:30px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.healing-card h3{
+    background:#4caf50;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.healing-card p{
+    font-size:14px;
+    color:#555;
+    line-height:1.6;
+}
+
+.arrow-text{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+    font-weight:600;
+    color:#4caf50;
+}
+
 /* ===== Animations ===== */
 @keyframes slideUp{
-    from{
-        transform:translateY(40px);
-        opacity:0;
-    }
-    to{
-        transform:translateY(0);
-        opacity:1;
-    }
+    from{ transform:translateY(40px); opacity:0; }
+    to{ transform:translateY(0); opacity:1; }
 }
 
 @keyframes floatLeaf{
@@ -164,43 +213,34 @@ nav ul li a.active{
     50%{ transform:translateY(-60%); }
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
+/* ===== Responsive ===== */
+@media(max-width:900px){
 
-    header{
-        padding:20px;
-    }
+.hero h1{ font-size:42px; }
+.leaf-img{ width:300px; }
 
-    .hero h1{
-        font-size:42px;
-    }
+.healing-section{
+    flex-direction:column;
+    padding:40px 20px;
+}
 
-    .leaf-img{
-        width:300px;
-    }
+.healing-left, .healing-right{
+    width:100%;
+}
 
-    .heart-box{
-        right:5%;
-        top:65%;
-    }
-
-    nav ul{
-        gap:20px;
-        font-size:14px;
-    }
-
-    .big-btn{
-        font-size:16px;
-        padding:14px 30px;
-    }
+.healing-right h1{
+    font-size:40px;
+    text-align:center;
+}
 }
 </style>
 </head>
+
 <body>
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Ecofy Logo">
+        <img src="images/oneleaf.png" alt="Logo">
     </div>
     <nav>
         <ul>
@@ -212,30 +252,58 @@ nav ul li a.active{
     </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
     <h1>
         <span class="green">Eco-friendly</span>
         <span class="red">Gifts</span>
     </h1>
 
-    <img src="images/leaf.png" alt="Leaf" class="leaf-img">
+    <img src="images/leaf.png" class="leaf-img">
 
     <br>
 
     <a href="products.html" class="big-btn">See Products</a>
 
     <div class="heart-box">❤️</div>
-
     <div class="bottom-strip"></div>
 </section>
 
+<!-- HEALING POWER SECTION -->
+<section class="healing-section">
+
+    <div class="healing-left">
+        <img src="images/instructions.png" alt="Instructions">
+    </div>
+
+    <div class="healing-right">
+        <h1>
+            <span class="red">Healing</span>
+            <span class="green">Power</span>
+        </h1>
+
+        <div class="healing-card">
+            <h3>Positive Feeling</h3>
+
+            <p>
+                Offering different type of Gods Statue which regrow into plants 
+                spreads positivity by showing continuous growth.
+            </p>
+
+            <div class="arrow-text">
+                <span>→</span>
+                <span>Green Earth</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <script>
-/* Page fade in */
 document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add("loaded");
 });
 
-/* Smooth fade-out transition */
 document.querySelector(".big-btn").addEventListener("click", function(e){
     e.preventDefault();
     document.body.classList.remove("loaded");
