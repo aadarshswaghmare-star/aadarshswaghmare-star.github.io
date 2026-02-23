@@ -1,333 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ecofy Gifts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecofy Gifts - Eco Friendly Gifting</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
 
 body{
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#0b1220,#111827);
-color:#ffffff;
-overflow-x:hidden;
+background:#ffffff;
+color:#222;
 }
 
-/* Premium Glow Background */
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 20% 30%, rgba(212,175,55,0.12), transparent 40%),
-radial-gradient(circle at 80% 70%, rgba(212,175,55,0.08), transparent 40%);
-z-index:-1;
-}
-
-/* HEADER */
+/* Header */
 header{
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(18px);
-padding:14px 20px;
 display:flex;
-align-items:center;
 justify-content:space-between;
-position:sticky;
-top:0;
-z-index:1000;
-border-bottom:1px solid rgba(212,175,55,0.15);
+align-items:center;
+padding:20px 60px;
+background:#ffffff;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo{height:48px;}
-.header-center{text-align:center;flex:1}
-.tagline{font-size:12px;color:#d4af37;letter-spacing:1.2px;opacity:0.9;}
-
-.cart-btn{
-background:linear-gradient(135deg,#d4af37,#f5d06f);
-color:black;
-padding:8px 18px;
-border-radius:30px;
+.logo{
+font-size:28px;
 font-weight:bold;
-cursor:pointer;
-transition:all 0.3s ease;
-box-shadow:0 4px 15px rgba(212,175,55,0.3);
-}
-.cart-btn:hover{
-transform:scale(1.08);
-box-shadow:0 6px 25px rgba(212,175,55,0.6);
+color:#0a8f2f;
 }
 
-/* TRUST BADGES */
-.trust{
-display:flex;
-justify-content:center;
-gap:15px;
-padding:15px;
-flex-wrap:wrap;
-background:rgba(255,255,255,0.04);
-}
-
-.trust div{
-background:rgba(212,175,55,0.15);
-padding:8px 18px;
-border-radius:30px;
-backdrop-filter:blur(10px);
-font-size:13px;
-box-shadow:0 4px 15px rgba(212,175,55,0.1);
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#333;
+font-weight:500;
 transition:0.3s;
 }
-.trust div:hover{
-transform:translateY(-3px);
-box-shadow:0 6px 20px rgba(212,175,55,0.3);
+
+nav a:hover{
+color:#0a8f2f;
 }
 
-/* PRODUCT GRID */
-.container{
-padding:30px;
+/* Hero Section */
+.hero{
+text-align:center;
+padding:80px 20px;
+background:#f5fff7;
+}
+
+.hero h1{
+font-size:42px;
+color:#0a8f2f;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+max-width:700px;
+margin:auto;
+color:#555;
+}
+
+/* About Section */
+.about{
+padding:80px 10%;
+}
+
+.about h2{
+font-size:32px;
+margin-bottom:20px;
+color:#0a8f2f;
+}
+
+.about p{
+font-size:17px;
+line-height:1.7;
+color:#444;
+margin-bottom:15px;
+}
+
+/* Products */
+.products{
+padding:80px 10%;
+background:#f9f9f9;
+}
+
+.products h2{
+text-align:center;
+font-size:32px;
+margin-bottom:50px;
+color:#0a8f2f;
+}
+
+.product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-.product{
-background:rgba(255,255,255,0.10);
-backdrop-filter:blur(22px);
-border-radius:22px;
-padding:20px;
-box-shadow:0 15px 35px rgba(0,0,0,0.6);
-transition:all 0.4s ease;
-position:relative;
-overflow:hidden;
-border:1px solid rgba(212,175,55,0.1);
-}
-.product:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 25px 50px rgba(0,0,0,0.8);
-}
-
-.product::before{
-content:"";
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.15),transparent);
-transition:0.6s;
-}
-.product:hover::before{left:100%;}
-
-.product img{width:100%;border-radius:15px;transition:0.4s;}
-.product:hover img{transform:scale(1.06);}
-
-.badge{
-position:absolute;
-top:12px;
-left:12px;
-background:linear-gradient(135deg,#d4af37,#f5d06f);
-color:black;
-padding:6px 12px;
+.card{
+background:white;
+padding:25px;
 border-radius:12px;
-font-size:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h3{
+margin-bottom:15px;
+color:#0a8f2f;
+}
+
+.old{
+text-decoration:line-through;
+color:#999;
+font-size:14px;
+}
+
+.price{
+font-size:22px;
+color:#e63946;
 font-weight:bold;
+margin:5px 0;
 }
 
-.stars{color:#f5c518;margin:6px 0;}
-.rating-count{color:#ccc;font-size:13px;margin-left:5px}
-.stock{font-weight:bold;margin:5px 0;}
-.low-stock{color:#ff4d4d;}
-.old{text-decoration:line-through;color:#bbb;}
-.price{color:#f5d06f;font-size:22px;font-weight:bold;}
-
-.qty-box{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px;}
-.qty-btn{
-background:#1f2937;color:white;border:none;
-padding:6px 12px;border-radius:8px;cursor:pointer;
-}
-.add-btn{
-background:linear-gradient(135deg,#d4af37,#f5d06f);
-color:black;border:none;padding:12px;border-radius:12px;
-margin-top:12px;width:100%;font-weight:bold;cursor:pointer;
+.discount{
+background:#0a8f2f;
+color:white;
+padding:5px 10px;
+display:inline-block;
+border-radius:20px;
+font-size:12px;
+margin-bottom:10px;
 }
 
-.cart-panel{
-position:fixed;right:-400px;top:0;width:350px;height:100%;
-background:#0f172a;padding:20px;transition:0.4s;
-overflow-y:auto;z-index:2000;
-}
-.cart-panel.active{right:0}
-
-input{width:100%;padding:10px;margin:8px 0;border-radius:6px;border:none;}
-.checkout-btn{
-background:linear-gradient(135deg,#d4af37,#f5d06f);
-color:black;padding:12px;border:none;border-radius:10px;width:100%;
-font-weight:bold;cursor:pointer;
+/* Footer */
+footer{
+text-align:center;
+padding:30px;
+background:#0a8f2f;
+color:white;
+margin-top:50px;
 }
 
-.success{
-position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.85);display:flex;
-justify-content:center;align-items:center;
-flex-direction:column;font-size:24px;display:none;z-index:3000;
+button{
+background:#0a8f2f;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+cursor:pointer;
+margin-top:10px;
 }
 
-.footer{
-background:linear-gradient(to top,#0b1220,#111827);
-padding:50px 20px;margin-top:60px;text-align:center;
+button:hover{
+background:#087224;
 }
-.footer h3{color:#d4af37;margin-bottom:10px}
-.footer-about{max-width:700px;margin:15px auto;font-size:14px;line-height:1.7;color:#ccc;}
 
-@media(max-width:600px){
-header{flex-direction:column;gap:6px}
-.logo{height:40px}
-.cart-btn{margin-top:5px}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/logo.png" class="logo">
-<div class="header-center">
-<h2>Ecofy</h2>
-<div class="tagline">Eco-Friendly Romantic Gifts Delivered with Love</div>
-</div>
-<div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+<div class="logo">Ecofy Gifts 🌿</div>
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#products">Products</a>
+</nav>
 </header>
 
-<div class="trust">
-<div>🚚 Fast Delivery</div>
-<div>💵 Cash on Delivery</div>
-<div>🔒 Secure Checkout</div>
-<div>⭐ 10,000+ Happy Customers</div>
+<section class="hero">
+<h1>Next Gen Eco-Friendly Gifting</h1>
+<p>Grow plants, save environment & gift something that reproduces life 🌱</p>
+</section>
+
+<section class="about" id="about">
+<h2>About Ecofy</h2>
+<p><strong>Ecofy (Ecofy Gifts)</strong> is a next-generation eco-friendly gifting company focused on saving the environment by promoting plant growth through innovative seed-based products.</p>
+
+<p>We provide eco-friendly seedballs in unique shapes like <strong>God Statues (Shiva, Ganesh & more)</strong>. Once planted, they grow into beautiful small plants. After the plant decomposes or you bury it again, new plants can grow — making it a gift that reproduces life.</p>
+
+<p>We also build customized name seed plants and offer corporate gifting solutions that help companies promote sustainability while gifting something meaningful and green.</p>
+</section>
+
+<section class="products" id="products">
+<h2>Our Products & Pricing</h2>
+
+<div class="product-grid">
+
+<div class="card">
+<div class="discount">40% OFF</div>
+<h3>God Statue Seed Plant</h3>
+<p>Re-grow plant in shape of Shiva, Ganesh & more.</p>
+<div class="old">₹1000</div>
+<div class="price">₹599</div>
+<button>Order Now</button>
 </div>
 
-<div class="container" id="productContainer"></div>
-
-<div class="cart-panel" id="cartPanel">
-<div style="text-align:right;cursor:pointer;color:red" onclick="toggleCart()">✖ Close</div>
-<h3>Your Cart</h3>
-<div id="cartItems"></div>
-<p>Subtotal: ₹<span id="subtotal">0</span></p>
-<p>Delivery: ₹<span id="delivery">0</span></p>
-<h4>Total: ₹<span id="total">0</span></h4>
-
-<h4>Customer Details</h4>
-<input type="text" id="name" placeholder="Full Name">
-<input type="text" id="phone" placeholder="Phone Number">
-<input type="text" id="address" placeholder="Full Address">
-<button class="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+<div class="card">
+<div class="discount">60% OFF</div>
+<h3>Customized Name Seed Plant</h3>
+<p>Personalized plant gifts with your custom name.</p>
+<div class="old">₹1220</div>
+<div class="price">₹499</div>
+<button>Order Now</button>
 </div>
 
-<div class="success" id="successScreen">
-✅ Order Sent Successfully!<br>Redirecting to WhatsApp...
+<div class="card">
+<div class="discount">70% OFF</div>
+<h3>Heart & Cute Shape Seed Gifts</h3>
+<p>Beautiful eco-friendly shapes for special occasions.</p>
+<div class="old">₹899</div>
+<div class="price">₹299</div>
+<button>Order Now</button>
 </div>
 
-<script>
-let products=[
-{name:"Heart Special Gift",price:199,old:999,stock:5,rating:"★★★★★",reviews:"(1,245)",img:"heart.png",badge:"80% OFF"},
-{name:"Teddy Gift Box",price:299,old:1499,stock:6,rating:"★★★★☆",reviews:"(932)",img:"teddy.png",badge:"75% OFF"},
-{name:"Couple Combo",price:599,old:1999,stock:4,rating:"★★★★★",reviews:"(2,104)",img:"couple.png",badge:"70% OFF"},
-{name:"I Love You Frame",price:279,old:799,stock:7,rating:"★★★★☆",reviews:"(654)",img:"iloveyou.png",badge:"65% OFF"},
-{name:"Premium Surprise Packaging",price:149,old:399,stock:8,rating:"★★★★★",reviews:"(311)",img:"packaging.png",badge:"Add-on"}
-];
-
-let cart=[];
-let container=document.getElementById("productContainer");
-
-products.forEach(p=>{
-container.innerHTML+=`
-<div class="product">
-<div class="badge">${p.badge}</div>
-<img src="https://raw.githubusercontent.com/aadarshswaghmare-star/aadarshswaghmare-star.github.io/main/images/${p.img}">
-<h3>${p.name}</h3>
-<div class="stars">${p.rating}<span class="rating-count">${p.reviews}</span></div>
-<div class="stock" id="stock-${p.name}">Only ${p.stock} left in stock</div>
-<div class="old">₹${p.old}</div>
-<div class="price">₹${p.price}</div>
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty('${p.name}',-1)">-</button>
-<span id="qty-${p.name}">0</span>
-<button class="qty-btn" onclick="changeQty('${p.name}',1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('${p.name}')">Add to Cart</button>
-</div>`;
-});
+</section>
 
-function toggleCart(){document.getElementById("cartPanel").classList.toggle("active");}
-
-function changeQty(name,change){
-let el=document.getElementById("qty-"+name);
-let qty=parseInt(el.innerText)+change;
-if(qty<0) qty=0;
-el.innerText=qty;
-}
-
-function addToCart(name){
-let product=products.find(p=>p.name===name);
-let qty=parseInt(document.getElementById("qty-"+name).innerText);
-if(qty===0) qty=1;
-if(product.stock<qty){alert("Only "+product.stock+" left!");return;}
-product.stock-=qty;
-let item=cart.find(p=>p.name===name);
-if(item){item.qty+=qty;}else{cart.push({name,price:product.price,qty});}
-document.getElementById("qty-"+name).innerText=0;
-updateStock(name,product.stock);
-updateCart();
-}
-
-function updateStock(name,stock){
-let el=document.getElementById("stock-"+name);
-el.innerText="Only "+stock+" left in stock";
-if(stock<=3) el.classList.add("low-stock");
-}
-
-function updateCart(){
-let html="";let subtotal=0;
-cart.forEach(item=>{
-subtotal+=item.price*item.qty;
-html+=`${item.name} x${item.qty} = ₹${item.price*item.qty}<br>`;
-});
-let delivery=subtotal>=999?0:49;
-let total=subtotal+delivery;
-document.getElementById("cartItems").innerHTML=html;
-document.getElementById("subtotal").innerText=subtotal;
-document.getElementById("delivery").innerText=delivery;
-document.getElementById("total").innerText=total;
-document.getElementById("cartCount").innerText=cart.length;
-}
-
-function checkout(){
-let name=document.getElementById("name").value.trim();
-let phone=document.getElementById("phone").value.trim();
-let address=document.getElementById("address").value.trim();
-if(!name||!phone||!address||cart.length===0){
-alert("Please complete all details and add products.");
-return;
-}
-document.getElementById("successScreen").style.display="flex";
-let subtotal=0;
-let message="🛍 Ecofy Order\\n\\n";
-cart.forEach(item=>{
-subtotal+=item.price*item.qty;
-message+=`${item.name} x${item.qty} = ₹${item.price*item.qty}\\n`;
-});
-let delivery=subtotal>=999?0:49;
-let total=subtotal+delivery;
-message+=`\\nSubtotal: ₹${subtotal}\\nDelivery: ₹${delivery}\\nTotal: ₹${total}`;
-message+=`\\n\\nName: ${name}\\nPhone: ${phone}\\nAddress: ${address}`;
-setTimeout(()=>{
-window.open("https://wa.me/919075016413?text="+encodeURIComponent(message));
-document.getElementById("successScreen").style.display="none";
-cart=[];updateCart();toggleCart();
-},2000);
-}
-</script>
+<footer>
+© 2026 Ecofy Gifts | Save Plants 🌿 Save Earth
+</footer>
 
 </body>
 </html>
