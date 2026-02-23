@@ -3,299 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecofy Gifts - Next Gen Eco Friendly Gifting</title>
+<title>Ecofy Premium Gifts</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-background:#ffffff;
-color:#222;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  overflow-x:hidden;
 }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 8%;
-background:#fff;
-box-shadow:0 4px 20px rgba(0,0,0,0.05);
-position:sticky;
-top:0;
-z-index:1000;
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
 }
 
-.logo{
-font-size:28px;
-font-weight:700;
-color:#16a34a;
-}
+nav h1{color:#00ffae;font-size:26px;}
+nav a{color:white;text-decoration:none;margin-left:20px;transition:.3s;}
+nav a:hover{color:#00ffae;}
 
-nav a{
-margin-left:30px;
-text-decoration:none;
-color:#333;
-font-weight:500;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#16a34a;
-}
-
-/* HERO */
 .hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:100px 8%;
-background:linear-gradient(to right,#f0fff4,#ffffff);
-flex-wrap:wrap;
+  text-align:center;
+  padding:80px 20px;
 }
+.hero h2{font-size:42px;margin-bottom:15px;}
+.hero p{opacity:.8;}
 
-.hero-text{
-flex:1;
-min-width:300px;
-}
-
-.hero-text h1{
-font-size:48px;
-color:#15803d;
-margin-bottom:20px;
-}
-
-.hero-text p{
-font-size:18px;
-color:#555;
-margin-bottom:30px;
-max-width:500px;
-}
-
-.hero-text button{
-padding:14px 35px;
-border:none;
-border-radius:30px;
-background:linear-gradient(to right,#16a34a,#22c55e);
-color:white;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(22,163,74,0.3);
-transition:0.3s;
-}
-
-.hero-text button:hover{
-transform:translateY(-4px);
-}
-
-.hero-img{
-flex:1;
-text-align:center;
-min-width:300px;
-}
-
-.hero-img img{
-width:90%;
-max-width:500px;
-border-radius:20px;
-}
-
-/* ABOUT */
-.about{
-padding:100px 8%;
-display:flex;
-align-items:center;
-gap:60px;
-flex-wrap:wrap;
-}
-
-.about img{
-width:100%;
-max-width:450px;
-border-radius:20px;
-}
-
-.about-text{
-flex:1;
-min-width:300px;
-}
-
-.about-text h2{
-font-size:36px;
-color:#15803d;
-margin-bottom:20px;
-}
-
-.about-text p{
-color:#555;
-line-height:1.7;
-margin-bottom:15px;
-}
-
-/* PRODUCTS */
 .products{
-padding:100px 8%;
-background:#f9fafb;
-}
-
-.products h2{
-text-align:center;
-font-size:36px;
-color:#15803d;
-margin-bottom:60px;
-}
-
-.product-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
+  padding:60px 10%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:center;
 }
 
 .card{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.06);
-text-align:center;
-transition:0.4s;
+  width:300px;
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  backdrop-filter:blur(15px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.5);
+  transition:.4s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+  transform:translateY(-10px);
 }
 
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:15px;
-margin-bottom:20px;
+.seed-ball{
+  width:120px;
+  height:120px;
+  margin:20px auto;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#6affb4,#008f5a);
+  animation:float 4s ease-in-out infinite;
+  box-shadow:inset -10px -10px 25px rgba(0,0,0,0.4),
+             inset 10px 10px 25px rgba(255,255,255,0.2),
+             0 15px 25px rgba(0,0,0,0.5);
 }
 
-.card h3{
-color:#15803d;
-margin-bottom:10px;
-}
-
-.old{
-text-decoration:line-through;
-color:#aaa;
-font-size:14px;
+@keyframes float{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-15px);}
+  100%{transform:translateY(0px);}
 }
 
 .price{
-font-size:24px;
-color:#e11d48;
-font-weight:700;
-margin:5px 0;
+  font-size:22px;
+  margin:10px 0;
+  color:#00ffae;
 }
 
-.discount{
-background:#16a34a;
-color:white;
-padding:5px 12px;
-border-radius:20px;
-font-size:12px;
-display:inline-block;
-margin-bottom:10px;
+.old{
+  text-decoration:line-through;
+  opacity:.6;
+  font-size:14px;
 }
 
-.card button{
-margin-top:15px;
-padding:12px 25px;
-border:none;
-border-radius:25px;
-background:linear-gradient(to right,#16a34a,#22c55e);
-color:white;
-cursor:pointer;
+.stars{
+  color:gold;
+  margin:8px 0;
+  font-size:18px;
 }
 
-/* FOOTER */
+.stock{
+  margin:10px 0;
+  font-size:14px;
+  color:#ff6b6b;
+}
+
+.buy-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 25px;
+  background:#25D366;
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.buy-btn:hover{
+  transform:scale(1.05);
+}
+
 footer{
-text-align:center;
-padding:40px;
-background:#15803d;
-color:white;
-margin-top:60px;
+  text-align:center;
+  padding:40px 20px;
+  opacity:.7;
+  font-size:14px;
 }
-
 </style>
-</head>
 
+</head>
 <body>
 
-<header>
-<div class="logo">Ecofy 🌿</div>
 <nav>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#products">Products</a>
+  <h1>Ecofy</h1>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+  </div>
 </nav>
-</header>
 
 <section class="hero">
-<div class="hero-text">
-<h1>Gift That Grows 🌱</h1>
-<p>Ecofy is a next-generation eco-friendly gifting brand creating seed-based gifts that reproduce life and help save the environment.</p>
-<button>Shop Now</button>
-</div>
-<div class="hero-img">
-<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Plant">
-</div>
+  <h2>Premium Seed Ball Gift</h2>
+  <p>Grow Plants • Save Earth • Gift Emotion 🌿</p>
 </section>
 
-<section class="about" id="about">
-<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" alt="Eco Gift">
-<div class="about-text">
-<h2>About Ecofy Gifts</h2>
-<p>Ecofy provides eco-friendly seedball gifts shaped like God statues such as Shiva & Ganesh. Once planted, they grow into small plants and can be buried again to reproduce life.</p>
-<p>We also create customized name seed plants and corporate eco gifting solutions — making us the next-gen sustainable gifting company.</p>
-</div>
-</section>
+<section class="products">
 
-<section class="products" id="products">
-<h2>Our Products</h2>
+  <div class="card">
+    <div class="seed-ball"></div>
+    <h3>Eco Seed Ball Combo</h3>
+    <div class="old">₹999</div>
+    <div class="price">₹499</div>
 
-<div class="product-grid">
+    <div class="stars">★★★★★</div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1616627452416-80d8a7bdb1e8" alt="">
-<div class="discount">40% OFF</div>
-<h3>God Statue Seed Plant</h3>
-<div class="old">₹1000</div>
-<div class="price">₹599</div>
-<button>Order Now</button>
-</div>
+    <div class="stock">
+      Only <span id="stockCount">3</span> left in stock!
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="">
-<div class="discount">60% OFF</div>
-<h3>Customized Name Plant</h3>
-<div class="old">₹1220</div>
-<div class="price">₹499</div>
-<button>Order Now</button>
-</div>
+    <a class="buy-btn" 
+       href="https://wa.me/919075016413?text=Hi%20Ecofy%20I%20want%20to%20buy%20Seed%20Ball%20Gift" 
+       target="_blank">
+       Buy on WhatsApp
+    </a>
+  </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1483794344563-d27a8d18014e" alt="">
-<div class="discount">70% OFF</div>
-<h3>Heart & Cute Shapes</h3>
-<div class="old">₹899</div>
-<div class="price">₹299</div>
-<button>Order Now</button>
-</div>
-
-</div>
 </section>
 
 <footer>
-© 2026 Ecofy Gifts | Save Plants 🌿 Save Earth
+  © 2026 Ecofy Gifts | Sustainable Future 🌱
 </footer>
+
+<script>
+let stock = 3;
+setInterval(function(){
+  if(stock > 1){
+    stock--;
+    document.getElementById("stockCount").innerText = stock;
+  }
+}, 8000);
+</script>
 
 </body>
 </html>
