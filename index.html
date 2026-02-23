@@ -18,7 +18,7 @@ scroll-behavior:smooth;
 
 body{ background:#f4f8f5; }
 
-/* ================= FIRST HERO PAGE ================= */
+/* ===== FIRST LANDING HERO ===== */
 
 .first-hero{
 position:relative;
@@ -76,7 +76,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.1);
 font-size:28px;
 }
 
-/* ================= MAIN WEBSITE ================= */
+/* ===== HEADER ===== */
 
 header{
 display:flex;
@@ -119,83 +119,39 @@ border-radius:8px;
 cursor:pointer;
 }
 
-/* HERO SECOND */
-.hero{
-text-align:center;
-padding:120px 20px;
-background:#fafafa;
-}
+/* ===== SECTIONS ===== */
 
-.hero h1{ font-size:60px; }
-
-.hero img{
-width:420px;
-max-width:90%;
-margin-top:20px;
-}
-
-.big-btn{
-display:inline-block;
-margin-top:30px;
-background:#2e7d32;
-color:white;
-padding:15px 40px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* MODERN */
-.modern{
+.modern, .healing-section{
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:100px 8%;
-background:white;
 gap:60px;
 }
 
-.modern-left{ width:45%; }
-.modern-left h1{ font-size:60px; }
+.modern{ background:white; }
+.healing-section{ background:#f2f2f2; }
+
+.modern-left, .healing-left{ width:45%; }
+.modern-right, .healing-right{ width:55%; }
+
+.modern-left h1,
+.healing-right h1{ font-size:55px; }
 
 .modern-right{
-width:55%;
 background:#4caf50;
 padding:20px;
 border-radius:20px;
 }
 
-.modern-right img{
-width:100%;
-border-radius:15px;
-}
-
-/* HEALING */
-.healing-section{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:80px 8%;
-background:#f2f2f2;
-gap:40px;
-}
-
-.healing-left,.healing-right{ width:50%; }
-
+.modern-right img,
 .healing-left img{
 width:100%;
-border-radius:20px;
-}
-
-.healing-card{
-margin-top:20px;
-background:white;
-padding:25px;
 border-radius:15px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
-/* PRODUCTS */
+/* ===== PRODUCTS ===== */
+
 .products{
 padding:100px 8%;
 background:#f8f8f8;
@@ -274,7 +230,8 @@ border-radius:20px;
 cursor:pointer;
 }
 
-/* CART */
+/* ===== CART ===== */
+
 .cart{
 position:fixed;
 right:-350px;
@@ -302,7 +259,6 @@ border-radius:8px;
 
 @media(max-width:900px){
 .first-hero h1{ font-size:45px; }
-.hero h1{ font-size:40px; }
 .modern,.healing-section{ flex-direction:column; }
 .modern-left,.modern-right,
 .healing-left,.healing-right{ width:100%; }
@@ -312,16 +268,16 @@ border-radius:8px;
 
 <body>
 
-<!-- ================= FIRST LANDING PAGE ================= -->
+<!-- ===== FIRST HERO PAGE ===== -->
 
 <section class="first-hero">
 <h1><span class="green">Eco-friendly</span> <span class="red">Gifts</span></h1>
 <img src="images/leaf.png" class="leaf-img">
-<button class="cta-btn" onclick="window.scrollTo(0,document.body.scrollHeight)">Nature’s Healing Gift</button>
+<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">Nature’s Healing Gift</button>
 <div class="heart-box">❤️</div>
 </section>
 
-<!-- ================= MAIN WEBSITE ================= -->
+<!-- ===== HEADER ===== -->
 
 <header>
 <div class="logo">Ecofy<span>gifts.com</span></div>
@@ -335,6 +291,8 @@ border-radius:8px;
 <button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
 </header>
 
+<!-- ===== MODERN ===== -->
+
 <section class="modern" id="modern">
 <div class="modern-left">
 <h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>
@@ -344,26 +302,119 @@ border-radius:8px;
 </div>
 </section>
 
+<!-- ===== HEALING ===== -->
+
 <section class="healing-section">
 <div class="healing-left">
 <img src="images/instructions.png">
 </div>
 <div class="healing-right">
 <h1><span class="red">Healing</span> <span class="green">Power</span></h1>
-<div class="healing-card">
 <p>Offering eco God statues that grow into plants and spread positivity.</p>
 </div>
-</div>
 </section>
+
+<!-- ===== PRODUCTS ===== -->
 
 <section class="products" id="products">
 <h2>Our Eco Products</h2>
+
 <div class="grid">
 
-<!-- ALL YOUR PRODUCT CARDS REMAIN SAME (unchanged) -->
+<!-- Shiva -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-shiva.png">
+<h3>Lord Shiva</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
+</div>
+
+<!-- Ganesha -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-ganesh.png">
+<h3>Lord Ganesha</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
+</div>
+
+<!-- Customised -->
+<div class="card">
+<div class="discount">70% OFF</div>
+<img src="images/customised-names.png">
+<h3>Customised Name</h3>
+<div class="old">₹699</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Customised Name',199,this)">Add to Cart</button>
+</div>
+
+<!-- Teddy -->
+<div class="card">
+<div class="discount">63% OFF</div>
+<img src="images/cute-teddy.png">
+<h3>Cute Teddy</h3>
+<div class="old">₹589</div>
+<div class="new">₹219</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
+</div>
+
+<!-- Hearts -->
+<div class="card">
+<div class="discount">60% OFF</div>
+<img src="images/cute-hearts.png">
+<h3>Cute Hearts</h3>
+<div class="old">₹499</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
+</div>
+
+<!-- Seed Balls -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/only seed balls.png">
+<h3>Seed Balls (6 pcs)</h3>
+<div class="old">₹299</div>
+<div class="new">₹150</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
+</div>
 
 </div>
 </section>
+
+<!-- ===== CART ===== -->
 
 <div id="cart" class="cart">
 <h3>Shopping Cart</h3>
@@ -378,6 +429,37 @@ let total=0;
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("active");
+}
+
+function changeQty(btn,amount){
+let span=btn.parentElement.querySelector("span");
+let qty=parseInt(span.innerText);
+qty+=amount;
+if(qty<1)qty=1;
+span.innerText=qty;
+}
+
+function add(name,price,btn){
+let qty=parseInt(btn.parentElement.querySelector("span").innerText);
+cart.push({name,price,qty});
+update();
+}
+
+function update(){
+let container=document.getElementById("items");
+container.innerHTML="";
+total=0;
+cart.forEach(i=>{
+total+=i.price*i.qty;
+container.innerHTML+=`<div>${i.name} x${i.qty} - ₹${i.price*i.qty}</div>`;
+});
+document.getElementById("count").innerText=cart.length;
+document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+if(cart.length===0){alert("Cart Empty");return;}
+window.open("https://wa.me/919075016413?text=New Order Total ₹"+total);
 }
 </script>
 
