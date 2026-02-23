@@ -6,9 +6,10 @@
 
 <style>
 body{
-    font-family: Arial;
+    font-family: 'Segoe UI', sans-serif;
     margin:0;
     padding:0;
+    background:#f4f8f5;
 }
 
 /* Header */
@@ -16,16 +17,23 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px;
-    background:#222;
+    padding:18px;
+    background:linear-gradient(90deg,#0f5132,#198754);
     color:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header h2{
+    margin:0;
 }
 
 .header button{
     padding:8px 15px;
-    background:green;
-    color:white;
+    background:white;
+    color:#198754;
     border:none;
+    border-radius:20px;
+    font-weight:bold;
     cursor:pointer;
 }
 
@@ -34,20 +42,39 @@ body{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:20px;
-    padding:20px;
+    gap:25px;
+    padding:30px 15px;
 }
 
 .product{
-    border:1px solid #ddd;
-    padding:15px;
+    background:white;
+    padding:20px;
     text-align:center;
-    width:200px;
-    border-radius:10px;
+    width:230px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.15);
 }
 
 .product img{
-    width:150px;
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.product h3{
+    margin:10px 0 5px;
+}
+
+.product p{
+    font-weight:bold;
+    color:#198754;
 }
 
 .qty{
@@ -56,6 +83,20 @@ body{
 
 .qty button{
     padding:5px 10px;
+    border:none;
+    background:#198754;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product button{
+    padding:8px 15px;
+    background:#0f5132;
+    color:white;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
 }
 
 /* Cart */
@@ -63,33 +104,41 @@ body{
     position:fixed;
     right:-350px;
     top:0;
-    width:300px;
+    width:320px;
     height:100%;
-    background:#f9f9f9;
-    padding:15px;
+    background:white;
+    padding:20px;
     overflow:auto;
-    box-shadow:-3px 0 10px rgba(0,0,0,0.2);
-    transition:0.3s;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+    transition:0.4s;
 }
 
 .cart.active{
     right:0;
 }
 
+.cart h3{
+    margin-top:0;
+}
+
 .cart input{
     width:100%;
-    margin:5px 0;
-    padding:8px;
+    margin:6px 0;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
 .cart button{
     width:100%;
-    padding:10px;
+    padding:12px;
     margin-top:10px;
-    background:green;
+    background:#198754;
     color:white;
     border:none;
+    border-radius:8px;
     cursor:pointer;
+    font-weight:bold;
 }
 
 .close-btn{
@@ -98,20 +147,18 @@ body{
     cursor:pointer;
     color:red;
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="header">
-    <h2>Ecofy Store</h2>
+    <h2>Ecofy Store 🌱</h2>
     <button onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
 </div>
 
 <section class="products">
 
-    <!-- Shiva -->
     <div class="product">
         <img src="images/lord-shiva.png">
         <h3>Lord Shiva</h3>
@@ -124,7 +171,6 @@ body{
         <button onclick="addToCart('Lord Shiva',299,this)">Add to Cart</button>
     </div>
 
-    <!-- Ganesh -->
     <div class="product">
         <img src="images/lord-ganesh.png">
         <h3>Lord Ganesh</h3>
@@ -137,20 +183,18 @@ body{
         <button onclick="addToCart('Lord Ganesh',249,this)">Add to Cart</button>
     </div>
 
-    <!-- Hearts -->
     <div class="product">
         <img src="images/cute-hearts.png">
-        <h3>Heart Frame</h3>
+        <h3>Cute Hearts</h3>
         <p>₹199</p>
         <div class="qty">
             <button onclick="changeQty(this,-1)">-</button>
             <span>1</span>
             <button onclick="changeQty(this,1)">+</button>
         </div>
-        <button onclick="addToCart('Heart Frame',199,this)">Add to Cart</button>
+        <button onclick="addToCart('Cute Hearts',199,this)">Add to Cart</button>
     </div>
 
-    <!-- Teddy -->
     <div class="product">
         <img src="images/cute-teddy.png">
         <h3>Cute Teddy</h3>
@@ -163,7 +207,6 @@ body{
         <button onclick="addToCart('Cute Teddy',179,this)">Add to Cart</button>
     </div>
 
-    <!-- Customised -->
     <div class="product">
         <img src="images/customised-names.png">
         <h3>Customised Names</h3>
@@ -194,7 +237,6 @@ body{
 </div>
 
 <script>
-
 let cart = [];
 let total = 0;
 
@@ -230,8 +272,7 @@ function updateCart(){
         <div style="display:flex;justify-content:space-between;margin:8px 0;">
             <span>${item.name} x${item.qty}</span>
             <span>₹${itemTotal}</span>
-        </div>
-        `;
+        </div>`;
     });
 
     document.getElementById("cartCount").innerText = cart.length;
@@ -239,7 +280,6 @@ function updateCart(){
 }
 
 function checkout(){
-
     if(cart.length === 0){
         alert("Cart is empty!");
         return;
@@ -257,21 +297,15 @@ function checkout(){
     }
 
     let message = "New Order%0A";
-
     cart.forEach(item=>{
         message += `${item.name} x${item.qty} - ₹${item.price * item.qty}%0A`;
     });
 
     message += `Total: ₹${total}%0A%0A`;
-    message += `Name: ${name}%0A`;
-    message += `Address: ${address}%0A`;
-    message += `Contact: ${contact}%0A`;
-    message += `Alternate: ${alt}%0A`;
-    message += `Email: ${email}`;
+    message += `Name: ${name}%0AAddress: ${address}%0AContact: ${contact}%0AAlternate: ${alt}%0AEmail: ${email}`;
 
     window.open(`https://wa.me/919075016413?text=${message}`);
 }
-
 </script>
 
 </body>
