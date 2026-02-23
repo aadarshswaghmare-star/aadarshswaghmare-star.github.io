@@ -307,31 +307,7 @@ width:100%;
 <div id="cart" class="cart">
 
 <div class="cart-header">
-<h3>Your Shopping Cart</h3>
-<span class="close-cart" onclick="toggleCart()">✖</span>
-</div>
-
-<div id="items"></div>
-
-<div class="bill-box">
-<p>Subtotal: ₹<span id="subtotal">0</span></p>
-<p>Delivery Charges: ₹99</p>
-<h3>Total: ₹<span id="total">0</span></h3>
-</div>
-
-<div class="checkout-form">
-<input type="text" id="custName" placeholder="Full Name">
-<input type="text" id="custAddress" placeholder="Full Address">
-<input type="tel" id="custPhone" placeholder="Contact Number">
-<input type="email" id="custEmail" placeholder="Email ID">
-</div>
-
-<button onclick="checkout()">Proceed to Payment</button>
-
-</div>
-
-
-<script>
+<h3>Your Shopping<script>
 let cart=[];
 let subtotal=0;
 const deliveryCharge=99;
@@ -392,18 +368,52 @@ return;
 
 let finalTotal=subtotal + deliveryCharge;
 
-let upiID="ecofy@ptyes";
-let paymentLink=`upi://pay?pa=${upiID}&pn=EcofyGifts&am=${finalTotal}&cu=INR`;
+// Build order message
+let orderDetails="🌿 *New Order - Ecofy Gifts* 🌿%0A%0A";
 
-window.location.href=paymentLink;
+cart.forEach(i=>{
+orderDetails += `${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;
+});
+
+orderDetails += `%0A🧾 Subtotal: ₹${subtotal}`;
+orderDetails += `%0A🚚 Delivery: ₹${deliveryCharge}`;
+orderDetails += `%0A💰 Total: ₹${finalTotal}%0A%0A`;
+
+orderDetails += `👤 Name: ${name}%0A`;
+orderDetails += `🏠 Address: ${address}%0A`;
+orderDetails += `📞 Phone: ${phone}%0A`;
+orderDetails += `📧 Email: ${email}%0A`;
+
+let whatsappNumber="919075016413";
+
+window.open(`https://wa.me/${whatsappNumber}?text=${orderDetails}`, "_blank");
 
 cart=[];
 update();
 toggleCart();
 }
-</script>
+</script> Cart</h3>
+<span class="close-cart" onclick="toggleCart()">✖</span>
+</div>
 
-<!-- ================= CART SYSTEM END ================= -->
+<div id="items"></div>
+
+<div class="bill-box">
+<p>Subtotal: ₹<span id="subtotal">0</span></p>
+<p>Delivery Charges: ₹99</p>
+<h3>Total: ₹<span id="total">0</span></h3>
+</div>
+
+<div class="checkout-form">
+<input type="text" id="custName" placeholder="Full Name">
+<input type="text" id="custAddress" placeholder="Full Address">
+<input type="tel" id="custPhone" placeholder="Contact Number">
+<input type="email" id="custEmail" placeholder="Email ID">
+</div>
+
+<button onclick="checkout()">Proceed to Payment</button>
+
+</div>
 
 @media(max-width:900px){
 .first-hero h1{ font-size:45px; }
