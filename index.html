@@ -330,7 +330,234 @@ cart.push({name,price,qty});
 update();
 toggleCart();
 }
+<!-- ================= CART ICON ================= -->
 
+<div class="cart-icon" onclick="toggleCart()">
+🛒 Cart (<span id="count">0</span>)
+</div>
+
+<style>
+.cart-icon{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2e7d32;
+color:#fff;
+padding:12px 18px;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+z-index:999;
+}
+
+.cart{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:#fff;
+box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+padding:20px;
+overflow-y:auto;
+transition:0.4s;
+z-index:1000;
+}
+
+.cart.active{
+right:0;
+}
+
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-header h3{
+margin:0;
+}
+
+.close-cart{
+cursor:pointer;
+font-size:20px;
+}
+
+.bill-box{
+margin-top:15px;
+padding:10px;
+background:#f1f1f1;
+border-radius:8px;
+}
+
+.checkout-form input,
+.checkout-form textarea{
+width:100%;
+padding:8px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#2e7d32;
+color:#fff;
+padding:10px;
+border:none;
+width:100%;
+margin-top:15px;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+.success-msg{
+background:#4caf50;
+color:white;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+display:none;
+text-align:center;
+}
+</style>
+
+<!-- ================= CART PANEL ================= -->
+
+<div id="cart" class="cart">
+
+<div class="cart-header">
+<h3>Your Shopping Cart</h3>
+<span class="close-cart" onclick="toggleCart()">✖</span>
+</div>
+
+<div id="items"></div>
+
+<div class="bill-box">
+<p>Subtotal: ₹<span id="subtotal">0</span></p>
+<p>Delivery Charges: ₹99</p>
+<h3>Total: ₹<span id="total">0</span></h3>
+</div>
+
+<div class="checkout-form">
+<input type="text" id="custName" placeholder="Full Name *" required>
+<textarea id="custAddress" placeholder="Delivery Address *" required></textarea>
+<input type="tel" id="custPhone" placeholder="Contact Number *" required>
+<input type="email" id="custEmail" placeholder="Email ID *" required>
+<textarea id="custRemark" placeholder="Remark (Optional)"></textarea>
+</div>
+
+<button onclick="checkout()">Place Order</button>
+
+<div class="success-msg" id="successMsg">
+✅ Order Placed Successfully!
+</div>
+
+</div>
+
+<script>
+let cart = [];
+let subtotal = 0;
+const deliveryCharge = 99;
+const whatsappNumber = "919075016413";
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("active");
+}
+
+function add(name, price){
+let existing = cart.find(item => item.name === name);
+if(existing){
+existing.qty += 1;
+} else {
+cart.push({name, price, qty:1});
+}
+updateCart();
+toggleCart();
+}
+
+function updateCart(){
+let container = document.getElementById("items");
+container.innerHTML = "";
+subtotal = 0;
+
+cart.forEach((item,index) => {
+subtotal += item.price * item.qty;
+
+container.innerHTML += `
+<div>
+<strong>${item.name}</strong>
+<p>Qty: ${item.qty}</p>
+<p>₹${item.price * item.qty}</p>
+<button onclick="removeItem(${index})" style="background:#d32f2f;">Remove</button>
+<hr>
+</div>
+`;
+});
+
+document.getElementById("subtotal").innerText = subtotal;
+document.getElementById("total").innerText = subtotal + deliveryCharge;
+document.getElementById("count").innerText = cart.length;
+}
+
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+
+function checkout(){
+
+if(cart.length === 0){
+alert("Cart is empty!");
+return;
+}
+
+let name = document.getElementById("custName").value.trim();
+let address = document.getElementById("custAddress").value.trim();
+let phone = document.getElementById("custPhone").value.trim();
+let email = document.getElementById("custEmail").value.trim();
+let remark = document.getElementById("custRemark").value.trim();
+
+if(!name || !address || !phone || !email){
+alert("Please fill all mandatory details.");
+return;
+}
+
+let finalTotal = subtotal + deliveryCharge;
+
+let message = "🌿 *New Order - Ecofy Gifts* 🌿%0A%0A";
+
+cart.forEach(item=>{
+message += `${item.name} x${item.qty} = ₹${item.price * item.qty}%0A`;
+});
+
+message += `%0A🧾 Subtotal: ₹${subtotal}`;
+message += `%0A🚚 Delivery: ₹${deliveryCharge}`;
+message += `%0A💰 Total: ₹${finalTotal}%0A%0A`;
+
+message += `👤 Name: ${name}%0A`;
+message += `🏠 Address: ${address}%0A`;
+message += `📞 Contact: ${phone}%0A`;
+message += `📧 Email: ${email}%0A`;
+message += `📝 Remark: ${remark || "None"}%0A`;
+
+window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+
+document.getElementById("successMsg").style.display="block";
+
+cart = [];
+updateCart();
+
+setTimeout(()=>{
+document.getElementById("successMsg").style.display="none";
+toggleCart();
+},3000);
+}
+</script>
 function update(){
 let container=document.getElementById("items");
 container.innerHTML="";
@@ -355,158 +582,7 @@ function checkout(){
 <div id="cart" class="cart">
 
 <div class="cart-header">
-<h3>Your Shopping Cart</h3>
-<span class="close-cart" onclick="toggleCart()">✖</span>
-</div>
 
-<div id="items"></div>
-
-<div class="bill-box">
-<p>Subtotal: ₹<span id="subtotal">0</span></p>
-<p>Delivery Charges: ₹99</p>
-<h3>Total: ₹<span id="total">0</span></h3>
-</div>
-
-<div class="checkout-form">
-<input type="text" id="custName" placeholder="Full Name *">
-<textarea id="custAddress" placeholder="Delivery Address *"></textarea>
-<input type="tel" id="custPhone" placeholder="Contact Number *">
-<input type="tel" id="custAltPhone" placeholder="Alternate Contact Number *">
-<input type="email" id="custEmail" placeholder="Email ID *">
-<textarea id="custRemark" placeholder="Remark (Optional)"></textarea>
-</div>
-
-<button onclick="checkout()">Proceed to Checkout</button>
-
-</div>
-
-
-<script>
-let cart = [];
-let subtotal = 0;
-const deliveryCharge = 99;
-const whatsappNumber = "919075016413";
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-}
-
-function changeQty(btn, amount){
-let span = btn.parentElement.querySelector("span");
-let qty = parseInt(span.innerText);
-qty += amount;
-if(qty < 1) qty = 1;
-span.innerText = qty;
-}
-
-function add(name, price, btn){
-let qty = parseInt(btn.parentElement.querySelector("span").innerText);
-
-let existing = cart.find(item => item.name === name);
-if(existing){
-existing.qty += qty;
-} else {
-cart.push({name, price, qty});
-}
-
-updateCart();
-toggleCart();
-}
-
-function updateCart(){
-let container = document.getElementById("items");
-container.innerHTML = "";
-subtotal = 0;
-
-cart.forEach((item,index) => {
-subtotal += item.price * item.qty;
-
-container.innerHTML += `
-<div class="cart-item">
-<strong>${item.name}</strong><br>
-
-<div style="display:flex;align-items:center;gap:8px;margin-top:5px;">
-<button onclick="updateQty(${index},-1)">-</button>
-<span>${item.qty}</span>
-<button onclick="updateQty(${index},1)">+</button>
-</div>
-
-<p>₹${item.price * item.qty}</p>
-
-<button onclick="removeItem(${index})" style="background:#d32f2f;margin-top:5px;">Remove</button>
-
-<hr>
-</div>
-`;
-});
-
-document.getElementById("subtotal").innerText = subtotal;
-document.getElementById("total").innerText = subtotal + deliveryCharge;
-document.getElementById("count").innerText = cart.length;
-}
-
-function updateQty(index,change){
-cart[index].qty += change;
-if(cart[index].qty <= 0){
-cart.splice(index,1);
-}
-updateCart();
-}
-
-function removeItem(index){
-cart.splice(index,1);
-updateCart();
-}
-
-function checkout(){
-
-if(cart.length === 0){
-alert("Cart is empty!");
-return;
-}
-
-let name = document.getElementById("custName").value.trim();
-let address = document.getElementById("custAddress").value.trim();
-let phone = document.getElementById("custPhone").value.trim();
-let altPhone = document.getElementById("custAltPhone").value.trim();
-let email = document.getElementById("custEmail").value.trim();
-let remark = document.getElementById("custRemark").value.trim();
-
-if(!name || !address || !phone || !altPhone || !email){
-alert("Please fill all mandatory details.");
-return;
-}
-
-let finalTotal = subtotal + deliveryCharge;
-
-let message = "🌿 *New Order - Ecofy Gifts* 🌿%0A%0A";
-
-cart.forEach(item=>{
-message += `${item.name} x${item.qty} = ₹${item.price * item.qty}%0A`;
-});
-
-message += `%0A🧾 Subtotal: ₹${subtotal}`;
-message += `%0A🚚 Delivery: ₹${deliveryCharge}`;
-message += `%0A💰 Total: ₹${finalTotal}%0A%0A`;
-
-message += `👤 Name: ${name}%0A`;
-message += `🏠 Address: ${address}%0A`;
-message += `📞 Contact: ${phone}%0A`;
-message += `📲 Alt Contact: ${altPhone}%0A`;
-message += `📧 Email: ${email}%0A`;
-message += `📝 Remark: ${remark || "None"}%0A`;
-
-window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
-
-cart = [];
-updateCart();
-toggleCart();
-}
-</script>
-
-<!-- ================= END PREMIUM CART ================= -->
-
-</div>
 
 @media(max-width:900px){
 .first-hero h1{ font-size:45px; }
