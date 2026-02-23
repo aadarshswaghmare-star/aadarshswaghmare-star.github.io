@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecofy Gifts</title>
+<title>Ecofy Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -17,16 +17,17 @@
 }
 
 body{
-    background:#f8f8f8;
+    background:#f4f8f5;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:20px 60px;
-    background:white;
+    background:linear-gradient(90deg,#0f5132,#198754);
+    color:white;
     position:sticky;
     top:0;
     z-index:1000;
@@ -37,194 +38,151 @@ header{
 nav ul{
     list-style:none;
     display:flex;
-    gap:40px;
+    gap:30px;
 }
 
 nav ul li a{
     text-decoration:none;
+    color:white;
     font-weight:500;
-    color:#888;
-    transition:0.3s;
 }
 
-nav ul li a:hover{
-    color:#2e7d32;
-}
-
-/* ================= HERO ================= */
+/* HERO */
 .hero{
-    position:relative;
     text-align:center;
-    padding:100px 20px 140px;
+    padding:100px 20px;
     background:#fafafa;
-    overflow:hidden;
 }
 
 .hero h1{
-    font-size:80px;
-    font-weight:700;
+    font-size:60px;
 }
 
-.green{ color:#4caf50; }
-.red{ color:#d32f2f; }
-
-.leaf-img{
-    margin-top:20px;
-    width:420px;
-    max-width:90%;
-    animation:floatLeaf 4s ease-in-out infinite;
-}
+.green{color:#198754;}
+.red{color:#d32f2f;}
 
 .big-btn{
     display:inline-block;
-    margin-top:35px;
-    background:#2e7d32;
+    margin-top:30px;
+    background:#198754;
     color:white;
-    padding:18px 45px;
-    font-size:20px;
-    font-weight:600;
-    border-radius:14px;
+    padding:15px 40px;
+    border-radius:10px;
     text-decoration:none;
-    transition:0.3s;
+    font-weight:bold;
 }
 
-.big-btn:hover{
-    background:#1b5e20;
-    transform:scale(1.08);
-}
-
-.bottom-strip{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:60px;
-    background:linear-gradient(to right,#4caf50,#a5d6a7);
-}
-
-/* ================= HEALING SECTION ================= */
+/* HEALING */
 .healing-section{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:100px 60px;
+    justify-content:space-between;
+    padding:80px 60px;
     background:#f2f2f2;
-    gap:60px;
+    gap:40px;
 }
 
-.healing-left{
-    background:#6ab04c;
-    padding:25px;
-    border-radius:25px;
+.healing-left, .healing-right{
     width:50%;
 }
 
 .healing-left img{
     width:100%;
-    border-radius:15px;
-    transition:0.4s;
-}
-
-.healing-left img:hover{
-    transform:scale(1.05);
-}
-
-.healing-right{ width:50%; }
-
-.healing-right h1{
-    font-size:70px;
-}
-
-.healing-card{
-    margin-top:30px;
-    background:white;
-    padding:35px;
     border-radius:20px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.1);
-    transition:0.4s;
 }
 
-.healing-card:hover{
-    transform:translateY(-10px);
-}
-
-/* ================= PRODUCTS SECTION ================= */
+/* PRODUCTS */
 .products{
-    padding:100px 8%;
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.product{
     background:white;
-}
-
-.products h2{
+    padding:20px;
+    width:230px;
+    border-radius:15px;
     text-align:center;
-    font-size:50px;
-    margin-bottom:50px;
-    color:#2e7d32;
-}
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:#f9f9f9;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
     transition:0.3s;
-    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
-.card:hover{
-    transform:translateY(-10px);
+.product:hover{
+    transform:translateY(-8px);
 }
 
-.card img{
-    width:100%;
-    height:200px;
-    object-fit:contain;
+.product img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
-.price{
-    color:#2e7d32;
-    font-weight:600;
-    margin:10px 0;
+.product p{
+    font-weight:bold;
+    color:#198754;
 }
 
-.add-btn{
-    background:#2e7d32;
-    color:white;
-    padding:10px 20px;
+.qty button{
+    padding:5px 10px;
     border:none;
-    border-radius:8px;
+    background:#198754;
+    color:white;
+    border-radius:5px;
+}
+
+.product button{
+    padding:8px 15px;
+    background:#0f5132;
+    color:white;
+    border:none;
+    border-radius:20px;
     cursor:pointer;
 }
 
-/* ================= ANIMATIONS ================= */
-@keyframes floatLeaf{
-    0%,100%{ transform:translateY(0px); }
-    50%{ transform:translateY(-15px); }
+/* CART */
+.cart{
+    position:fixed;
+    right:-350px;
+    top:0;
+    width:320px;
+    height:100%;
+    background:white;
+    padding:20px;
+    overflow:auto;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+    transition:0.4s;
 }
 
-/* ================= RESPONSIVE ================= */
+.cart.active{
+    right:0;
+}
+
+.cart input{
+    width:100%;
+    margin:6px 0;
+    padding:10px;
+}
+
+.cart button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#198754;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+
 @media(max-width:900px){
-
-.hero h1{ font-size:42px; }
-.leaf-img{ width:300px; }
-
 .healing-section{
     flex-direction:column;
-    padding:60px 20px;
 }
-
 .healing-left, .healing-right{
     width:100%;
-}
-
-.healing-right h1{
-    font-size:40px;
-    text-align:center;
 }
 }
 </style>
@@ -243,78 +201,111 @@ nav ul li a:hover{
             <li><a href="#products">Products</a></li>
         </ul>
     </nav>
+    <button onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-    <h1>
-        <span class="green">Eco-friendly</span>
-        <span class="red">Gifts</span>
-    </h1>
-
-    <img src="images/leaf.png" class="leaf-img">
-
-    <br>
-
-    <!-- Smooth Scroll Button -->
+    <h1><span class="green">Eco-friendly</span> <span class="red">Gifts</span></h1>
     <a href="#products" class="big-btn">See Products</a>
-
-    <div class="bottom-strip"></div>
 </section>
 
-<!-- HEALING -->
 <section class="healing-section" id="healing">
-
     <div class="healing-left">
         <img src="images/instructions.png">
     </div>
-
     <div class="healing-right">
-        <h1>
-            <span class="red">Healing</span>
-            <span class="green">Power</span>
-        </h1>
-
-        <div class="healing-card">
-            <h3>Positive Feeling</h3>
-            <p>
-                Offering different type of Gods Statue which regrow into plants 
-                spreads positivity by showing continuous growth.
-            </p>
-        </div>
+        <h2>Healing Power</h2>
+        <p>Eco statues that regrow into plants spreading positivity.</p>
     </div>
-
 </section>
 
-<!-- PRODUCTS -->
 <section class="products" id="products">
-    <h2>Our Eco Products</h2>
 
-    <div class="product-grid">
+<div class="product">
+<img src="images/lord-shiva.png">
+<h3>Lord Shiva</h3>
+<p>₹299</p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="addToCart('Lord Shiva',299,this)">Add to Cart</button>
+</div>
 
-        <div class="card">
-            <img src="images/leaf.png">
-            <h3>Plantable Gift Card</h3>
-            <div class="price">₹199</div>
-            <button class="add-btn">Add to Cart</button>
-        </div>
+<div class="product">
+<img src="images/lord-ganesh.png">
+<h3>Lord Ganesh</h3>
+<p>₹249</p>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="addToCart('Lord Ganesh',249,this)">Add to Cart</button>
+</div>
 
-        <div class="card">
-            <img src="images/leaves.png">
-            <h3>Eco Packaging Kit</h3>
-            <div class="price">₹299</div>
-            <button class="add-btn">Add to Cart</button>
-        </div>
-
-        <div class="card">
-            <img src="images/cute-teddy.png">
-            <h3>Organic Cotton Teddy</h3>
-            <div class="price">₹499</div>
-            <button class="add-btn">Add to Cart</button>
-        </div>
-
-    </div>
 </section>
+
+<div id="cart" class="cart">
+<h3>Shopping Cart</h3>
+<div id="cartItems"></div>
+<h3>Total ₹<span id="total">0</span></h3>
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="text" id="address" placeholder="Address">
+<input type="text" id="contact" placeholder="Contact Number">
+<input type="email" id="email" placeholder="Email">
+
+<button onclick="checkout()">Place Order on WhatsApp</button>
+</div>
+
+<script>
+let cart=[];
+let total=0;
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("active");
+}
+
+function changeQty(btn,amount){
+let span=btn.parentElement.querySelector("span");
+let qty=parseInt(span.innerText)||1;
+qty+=amount;
+if(qty<1)qty=1;
+span.innerText=qty;
+}
+
+function addToCart(name,price,btn){
+let span=btn.parentElement.querySelector("span");
+let qty=parseInt(span.innerText)||1;
+cart.push({name,price,qty});
+updateCart();
+}
+
+function updateCart(){
+let container=document.getElementById("cartItems");
+container.innerHTML="";
+total=0;
+
+cart.forEach(item=>{
+let itemTotal=item.price*item.qty;
+total+=itemTotal;
+container.innerHTML+=`<div>${item.name} x${item.qty} - ₹${itemTotal}</div>`;
+});
+
+document.getElementById("cartCount").innerText=cart.length;
+document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+if(cart.length===0){
+alert("Cart is empty!");
+return;
+}
+window.open("https://wa.me/919075016413?text=New Order Total ₹"+total);
+}
+</script>
 
 </body>
 </html>
