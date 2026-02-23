@@ -11,6 +11,25 @@ body{
     padding:0;
 }
 
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#222;
+    color:white;
+}
+
+.header button{
+    padding:8px 15px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* Products */
 .products{
     display:flex;
     flex-wrap:wrap;
@@ -39,16 +58,22 @@ body{
     padding:5px 10px;
 }
 
+/* Cart */
 .cart{
     position:fixed;
-    right:0;
+    right:-350px;
     top:0;
     width:300px;
     height:100%;
     background:#f9f9f9;
     padding:15px;
     overflow:auto;
-    box-shadow:-3px 0 10px rgba(0,0,0,0.1);
+    box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.cart.active{
+    right:0;
 }
 
 .cart input{
@@ -67,51 +92,96 @@ body{
     cursor:pointer;
 }
 
+.close-btn{
+    text-align:right;
+    font-size:18px;
+    cursor:pointer;
+    color:red;
+}
+
 </style>
 </head>
 
 <body>
 
-<h2 style="text-align:center;">Ecofy Store</h2>
+<div class="header">
+    <h2>Ecofy Store</h2>
+    <button onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
+</div>
 
 <section class="products">
 
+    <!-- Shiva -->
     <div class="product">
         <img src="images/lord-shiva.png">
         <h3>Lord Shiva</h3>
         <p>₹299</p>
-
         <div class="qty">
             <button onclick="changeQty(this,-1)">-</button>
             <span>1</span>
             <button onclick="changeQty(this,1)">+</button>
         </div>
-
         <button onclick="addToCart('Lord Shiva',299,this)">Add to Cart</button>
     </div>
 
+    <!-- Ganesh -->
     <div class="product">
         <img src="images/lord-ganesh.png">
         <h3>Lord Ganesh</h3>
         <p>₹249</p>
-
         <div class="qty">
             <button onclick="changeQty(this,-1)">-</button>
             <span>1</span>
             <button onclick="changeQty(this,1)">+</button>
         </div>
-
         <button onclick="addToCart('Lord Ganesh',249,this)">Add to Cart</button>
+    </div>
+
+    <!-- Hearts -->
+    <div class="product">
+        <img src="images/cute-hearts.png">
+        <h3>Heart Frame</h3>
+        <p>₹199</p>
+        <div class="qty">
+            <button onclick="changeQty(this,-1)">-</button>
+            <span>1</span>
+            <button onclick="changeQty(this,1)">+</button>
+        </div>
+        <button onclick="addToCart('Heart Frame',199,this)">Add to Cart</button>
+    </div>
+
+    <!-- Teddy -->
+    <div class="product">
+        <img src="images/cute-teddy.png">
+        <h3>Cute Teddy</h3>
+        <p>₹179</p>
+        <div class="qty">
+            <button onclick="changeQty(this,-1)">-</button>
+            <span>1</span>
+            <button onclick="changeQty(this,1)">+</button>
+        </div>
+        <button onclick="addToCart('Cute Teddy',179,this)">Add to Cart</button>
+    </div>
+
+    <!-- Customised -->
+    <div class="product">
+        <img src="images/customised-names.png">
+        <h3>Customised Names</h3>
+        <p>₹149</p>
+        <div class="qty">
+            <button onclick="changeQty(this,-1)">-</button>
+            <span>1</span>
+            <button onclick="changeQty(this,1)">+</button>
+        </div>
+        <button onclick="addToCart('Customised Names',149,this)">Add to Cart</button>
     </div>
 
 </section>
 
-<div class="cart">
-
-    <h3>Shopping Cart (<span id="cartCount">0</span>)</h3>
-
+<div id="cart" class="cart">
+    <div class="close-btn" onclick="toggleCart()">✖ Close</div>
+    <h3>Shopping Cart</h3>
     <div id="cartItems"></div>
-
     <h3>Total ₹<span id="total">0</span></h3>
 
     <input type="text" id="name" placeholder="Full Name">
@@ -121,13 +191,16 @@ body{
     <input type="email" id="email" placeholder="Email">
 
     <button onclick="checkout()">Place Order on WhatsApp</button>
-
 </div>
 
 <script>
 
 let cart = [];
 let total = 0;
+
+function toggleCart(){
+    document.getElementById("cart").classList.toggle("active");
+}
 
 function changeQty(btn, amount){
     let span = btn.parentElement.querySelector("span");
@@ -140,7 +213,6 @@ function changeQty(btn, amount){
 function addToCart(name, price, btn){
     let span = btn.parentElement.querySelector("span");
     let qty = parseInt(span.innerText) || 1;
-
     cart.push({name, price, qty});
     updateCart();
 }
