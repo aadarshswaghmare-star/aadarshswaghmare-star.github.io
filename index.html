@@ -1,183 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecofy Premium Gifts</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-
-body{
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
-  overflow-x:hidden;
-}
-
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 10%;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  position:sticky;
-  top:0;
-}
-
-nav h1{color:#00ffae;font-size:26px;}
-nav a{color:white;text-decoration:none;margin-left:20px;transition:.3s;}
-nav a:hover{color:#00ffae;}
-
-.hero{
-  text-align:center;
-  padding:80px 20px;
-}
-.hero h2{font-size:42px;margin-bottom:15px;}
-.hero p{opacity:.8;}
-
-.products{
-  padding:60px 10%;
-  display:flex;
-  flex-wrap:wrap;
-  gap:40px;
-  justify-content:center;
-}
-
-.card{
-  width:300px;
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  backdrop-filter:blur(15px);
-  box-shadow:0 15px 35px rgba(0,0,0,0.5);
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-}
-
-.seed-ball{
-  width:120px;
-  height:120px;
-  margin:20px auto;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#6affb4,#008f5a);
-  animation:float 4s ease-in-out infinite;
-  box-shadow:inset -10px -10px 25px rgba(0,0,0,0.4),
-             inset 10px 10px 25px rgba(255,255,255,0.2),
-             0 15px 25px rgba(0,0,0,0.5);
-}
-
-@keyframes float{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-15px);}
-  100%{transform:translateY(0px);}
-}
-
-.price{
-  font-size:22px;
-  margin:10px 0;
-  color:#00ffae;
-}
-
-.old{
-  text-decoration:line-through;
-  opacity:.6;
-  font-size:14px;
-}
-
-.stars{
-  color:gold;
-  margin:8px 0;
-  font-size:18px;
-}
-
-.stock{
-  margin:10px 0;
-  font-size:14px;
-  color:#ff6b6b;
-}
-
-.buy-btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 25px;
-  background:#25D366;
-  color:white;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.buy-btn:hover{
-  transform:scale(1.05);
-}
-
-footer{
-  text-align:center;
-  padding:40px 20px;
-  opacity:.7;
-  font-size:14px;
-}
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Canva Website</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .canva-frame {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <h1>Ecofy</h1>
-  <div>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Contact</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h2>Premium Seed Ball Gift</h2>
-  <p>Grow Plants • Save Earth • Gift Emotion 🌿</p>
-</section>
-
-<section class="products">
-
-  <div class="card">
-    <div class="seed-ball"></div>
-    <h3>Eco Seed Ball Combo</h3>
-    <div class="old">₹999</div>
-    <div class="price">₹499</div>
-
-    <div class="stars">★★★★★</div>
-
-    <div class="stock">
-      Only <span id="stockCount">3</span> left in stock!
-    </div>
-
-    <a class="buy-btn" 
-       href="https://wa.me/919075016413?text=Hi%20Ecofy%20I%20want%20to%20buy%20Seed%20Ball%20Gift" 
-       target="_blank">
-       Buy on WhatsApp
-    </a>
-  </div>
-
-</section>
-
-<footer>
-  © 2026 Ecofy Gifts | Sustainable Future 🌱
-</footer>
-
-<script>
-let stock = 3;
-setInterval(function(){
-  if(stock > 1){
-    stock--;
-    document.getElementById("stockCount").innerText = stock;
-  }
-}, 8000);
-</script>
+  <iframe 
+    class="canva-frame"
+    src="https://www.canva.com/design/DAHCISP5MO4/0AskLiRZWGfBVIBqnyJTNg/view?embed"
+    allowfullscreen>
+  </iframe>
 
 </body>
 </html>
