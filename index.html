@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== ALL YOUR ORIGINAL STYLES (UNCHANGED) ===== */
 *{
 margin:0;
 padding:0;
@@ -74,6 +73,7 @@ font-size:28px;
 }
 
 /* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
@@ -102,6 +102,7 @@ cursor:pointer;
 }
 
 /* SECTIONS */
+
 .modern,.healing-section{
 display:flex;
 align-items:center;
@@ -132,6 +133,7 @@ border-radius:15px;
 }
 
 /* PRODUCTS */
+
 .products{
 padding:100px 8%;
 background:#f8f8f8;
@@ -212,6 +214,7 @@ cursor:pointer;
 }
 
 /* CART */
+
 .cart{
 position:fixed;
 right:-350px;
@@ -237,75 +240,17 @@ border:none;
 border-radius:8px;
 }
 
-/* ABOUT SECTION STYLES */
-.about-section{
-background:#ffffff;
-padding:120px 8%;
-}
-
-.about-container{
-max-width:1100px;
-margin:auto;
-}
-
-.about-section h2{
-text-align:center;
-font-size:45px;
-color:#2e7d32;
-margin-bottom:15px;
-}
-
-.about-tagline{
-text-align:center;
-font-size:18px;
-color:#555;
-margin-bottom:40px;
-}
-
-.about-section h3{
-font-size:26px;
-color:#1b5e20;
-margin-top:40px;
-margin-bottom:15px;
-}
-
-.about-section p{
-font-size:17px;
-line-height:1.8;
-color:#333;
-margin-bottom:18px;
-}
-
-.about-list{
-padding-left:20px;
-margin-bottom:20px;
-}
-
-.about-list li{
-font-size:16px;
-margin-bottom:10px;
-color:#444;
-}
-
-.about-footer{
-margin-top:40px;
-font-size:18px;
-font-weight:600;
-color:#2e7d32;
-}
-
 @media(max-width:900px){
 .first-hero h1{ font-size:45px; }
-.modern{ flex-direction:column; }
-.modern-left,.modern-right{ width:100%; }
-.about-section h2{ font-size:32px; }
+.modern,.healing-section{ flex-direction:column; }
+.modern-left,.modern-right,
+.healing-left,.healing-right{ width:100%; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="first-hero">
 <h1><span class="color:black;">Eco-friendly</span> <span class="red">Gifts</span></h1>
 <img src="images/leaf.png" class="leaf-img">
@@ -318,14 +263,13 @@ color:#2e7d32;
 <nav>
 <ul>
 <li><a href="#">Home</a></li>
-<li><a href="#about">About</a></li>
+<li><a href="#modern">About</a></li>
 <li><a href="#products">Products</a></li>
 </ul>
 </nav>
 <button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
 </header>
 
-<!-- MODERN -->
 <section class="modern" id="modern">
 <div class="modern-left">
 <h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>
@@ -335,24 +279,115 @@ color:#2e7d32;
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about-section" id="about">
-<div class="about-container">
-<h2>About Ecofy Gifts</h2>
-<p class="about-tagline">Sustainable • Meaningful • Eco-Friendly Gifting</p>
-<p><strong>EcofyGifts.com</strong> is a premium eco-friendly gifting brand dedicated to creating meaningful gifts that care for people and the planet.</p>
+<section class="healing-section">
+<div class="healing-left">
+<img src="images/instructions.png">
+</div>
+<div class="healing-right">
+<h1><span class="red">Healing</span> <span class="green">Power</span></h1>
+<p>Offering eco God statues that grow into plants and spread positivity.</p>
 </div>
 </section>
 
 <!-- PRODUCTS -->
+
 <section class="products" id="products">
 <h2>Our Eco Products</h2>
 <div class="grid">
-<!-- (All your product cards remain exactly same) -->
+
+<!-- SHIVA -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-shiva.png">
+<h3>Lord Shiva</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
+</div>
+
+<!-- GANESHA -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-ganesh.png">
+<h3>Lord Ganesha</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
+</div>
+
+<!-- CUSTOMISED -->
+<div class="card">
+<div class="discount">70% OFF</div>
+<img src="images/customised-names.png">
+<h3>Customised Name</h3>
+<div class="old">₹699</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Customised Name',199,this)">Add to Cart</button>
+</div>
+
+<!-- TEDDY -->
+<div class="card">
+<div class="discount">63% OFF</div>
+<img src="images/cute-teddy.png">
+<h3>Cute Teddy</h3>
+<div class="old">₹589</div>
+<div class="new">₹219</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
+</div>
+
+<!-- HEARTS -->
+<div class="card">
+<div class="discount">60% OFF</div>
+<img src="images/cute-hearts.png">
+<h3>Cute Hearts</h3>
+<div class="old">₹499</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
+</div>
+
+<!-- SEED BALLS -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/only seed balls.png">
+<h3>Seed Balls (6 pcs)</h3>
+<div class="old">₹299</div>
+<div class="new">₹150</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
+</div>
+
 </div>
 </section>
 
-<!-- CART -->
 <div id="cart" class="cart">
 <h3>Shopping Cart</h3>
 <div id="items"></div>
@@ -402,3 +437,135 @@ window.open("https://wa.me/919075016413?text=New Order Total ₹"+total);
 
 </body>
 </html>
+<!-- ===== ABOUT SECTION ===== -->
+
+<section class="about-section" id="about">
+  <div class="about-container">
+
+    <h2>About Ecofy Gifts</h2>
+
+    <p class="about-tagline">
+      Sustainable • Meaningful • Eco-Friendly Gifting
+    </p>
+
+    <p>
+      <strong>EcofyGifts.com</strong> is a premium eco-friendly gifting brand dedicated to creating 
+      meaningful gifts that care for people and the planet. We specialize in sustainable, 
+      biodegradable, and plant-based gifting products designed to spread positivity while 
+      reducing environmental impact.
+    </p>
+
+    <p>
+      Our unique eco gifts include <strong>plantable god idols, seed balls, customized eco gifts, 
+      green decor items, and nature-inspired gifting solutions</strong>. Each product is thoughtfully 
+      crafted to promote sustainability, mindfulness, and long-term environmental benefits.
+    </p>
+
+    <h3>🌱 What We Offer</h3>
+
+    <ul class="about-list">
+      <li>Eco-friendly god idols that grow into plants</li>
+      <li>Seed balls and green gifting products</li>
+      <li>Customized eco gifts for all occasions</li>
+      <li>Corporate gifting solutions with branding</li>
+      <li>Festival, wedding, return gifts & bulk gifting</li>
+    </ul>
+
+    <h3>🏢 Corporate & Bulk Gifting</h3>
+
+    <p>
+      Ecofy Gifts is a trusted partner for <strong>corporate gifting</strong>, offering customized 
+      eco-friendly gift solutions for companies, startups, events, and institutions. 
+      Our green corporate gifts help businesses showcase responsibility, sustainability, 
+      and care for the environment.
+    </p>
+
+    <p>
+      From <strong>employee onboarding kits</strong> to <strong>festival hampers, event giveaways, 
+      and corporate return gifts</strong>, we provide end-to-end eco gifting solutions that align 
+      with modern sustainable values.
+    </p>
+
+    <h3>💚 Why Choose Ecofy Gifts?</h3>
+
+    <ul class="about-list">
+      <li>100% eco-friendly and sustainable products</li>
+      <li>Supports green living and environmental awareness</li>
+      <li>Unique gifting concepts with long-term value</li>
+      <li>Custom branding and bulk order support</li>
+      <li>Trusted eco gifting brand in India</li>
+    </ul>
+
+    <p class="about-footer">
+      Choose <strong>Ecofy Gifts</strong> to make every gift meaningful, responsible, and memorable.
+      Together, let’s grow happiness — naturally 🌿
+    </p>
+
+  </div>
+</section>
+
+<style>
+/* ===== ABOUT SECTION STYLES ===== */
+
+.about-section{
+  background:#ffffff;
+  padding:120px 8%;
+}
+
+.about-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.about-section h2{
+  text-align:center;
+  font-size:45px;
+  color:#2e7d32;
+  margin-bottom:15px;
+}
+
+.about-tagline{
+  text-align:center;
+  font-size:18px;
+  color:#555;
+  margin-bottom:40px;
+}
+
+.about-section h3{
+  font-size:26px;
+  color:#1b5e20;
+  margin-top:40px;
+  margin-bottom:15px;
+}
+
+.about-section p{
+  font-size:17px;
+  line-height:1.8;
+  color:#333;
+  margin-bottom:18px;
+}
+
+.about-list{
+  padding-left:20px;
+  margin-bottom:20px;
+}
+
+.about-list li{
+  font-size:16px;
+  margin-bottom:10px;
+  color:#444;
+}
+
+.about-footer{
+  margin-top:40px;
+  font-size:18px;
+  font-weight:600;
+  color:#2e7d32;
+}
+
+@media(max-width:900px){
+  .about-section h2{
+    font-size:32px;
+  }
+}
+</style>
