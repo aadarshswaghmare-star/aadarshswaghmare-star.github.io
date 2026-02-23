@@ -224,7 +224,6 @@ box-shadow:-5px 0 20px rgba(0,0,0,0.2);
 transition:0.4s;
 z-index:2000;
 }
-
 .cart.active{ right:0; }
 
 .cart input,.cart textarea{
@@ -258,17 +257,68 @@ border-radius:50%;
 cursor:pointer;
 }
 
-@media(max-width:900px){
-.first-hero h1{ font-size:45px; }
-.modern,.healing-section{ flex-direction:column; }
-.modern-left,.modern-right,
-.healing-left,.healing-right{ width:100%; }
+/* ABOUT */
+.about-section{
+background:#ffffff;
+padding:120px 8%;
+}
+
+.about-container{
+max-width:1100px;
+margin:auto;
+}
+
+.about-section h2{
+text-align:center;
+font-size:45px;
+color:#2e7d32;
+margin-bottom:15px;
+}
+
+.about-tagline{
+text-align:center;
+font-size:18px;
+color:#555;
+margin-bottom:40px;
+}
+
+.about-section h3{
+font-size:26px;
+color:#1b5e20;
+margin-top:40px;
+margin-bottom:15px;
+}
+
+.about-section p{
+font-size:17px;
+line-height:1.8;
+color:#333;
+margin-bottom:18px;
+}
+
+.about-list{
+padding-left:20px;
+margin-bottom:20px;
+}
+
+.about-list li{
+font-size:16px;
+margin-bottom:10px;
+color:#444;
+}
+
+.about-footer{
+margin-top:40px;
+font-size:18px;
+font-weight:600;
+color:#2e7d32;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="first-hero">
 <h1><span style="color:black;">Eco-friendly</span> <span class="red">Gifts</span></h1>
 <img src="images/leaf.png" class="leaf-img">
@@ -276,6 +326,7 @@ cursor:pointer;
 <div class="heart-box">❤️</div>
 </section>
 
+<!-- HEADER -->
 <header>
 <div class="logo">Ecofy<span>gifts.com</span></div>
 <nav>
@@ -288,6 +339,7 @@ cursor:pointer;
 <button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
 </header>
 
+<!-- MODERN -->
 <section class="modern" id="modern">
 <div class="modern-left">
 <h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>
@@ -297,6 +349,7 @@ cursor:pointer;
 </div>
 </section>
 
+<!-- HEALING -->
 <section class="healing-section">
 <div class="healing-left">
 <img src="images/instructions.png">
@@ -307,29 +360,125 @@ cursor:pointer;
 </div>
 </section>
 
+<!-- PRODUCTS -->
 <section class="products" id="products">
 <h2>Our Eco Products</h2>
 <div class="grid">
 
-<!-- PRODUCTS KEPT SAME AS YOUR ORIGINAL -->
-<!-- (All product cards exactly same as you provided earlier) -->
+<!-- SHIVA -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-shiva.png">
+<h3>Lord Shiva</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
+</div>
+
+<!-- GANESHA -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/lord-ganesh.png">
+<h3>Lord Ganesha</h3>
+<div class="old">₹599</div>
+<div class="new">₹299</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
+</div>
+
+<!-- CUSTOMISED -->
+<div class="card">
+<div class="discount">70% OFF</div>
+<img src="images/customised-names.png">
+<h3>Customised Name</h3>
+<div class="old">₹699</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Customised Name',199,this)">Add to Cart</button>
+</div>
+
+<!-- TEDDY -->
+<div class="card">
+<div class="discount">63% OFF</div>
+<img src="images/cute-teddy.png">
+<h3>Cute Teddy</h3>
+<div class="old">₹589</div>
+<div class="new">₹219</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
+</div>
+
+<!-- HEARTS -->
+<div class="card">
+<div class="discount">60% OFF</div>
+<img src="images/cute-hearts.png">
+<h3>Cute Hearts</h3>
+<div class="old">₹499</div>
+<div class="new">₹199</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
+</div>
+
+<!-- SEED BALLS -->
+<div class="card">
+<div class="discount">50% OFF</div>
+<img src="images/only seed balls.png">
+<h3>Seed Balls (6 pcs)</h3>
+<div class="old">₹299</div>
+<div class="new">₹150</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
+</div>
 
 </div>
 </section>
 
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="about-container">
+<h2>About Ecofy Gifts</h2>
+<p class="about-tagline">Sustainable • Meaningful • Eco-Friendly Gifting</p>
+<p><strong>EcofyGifts.com</strong> is a premium eco-friendly gifting brand dedicated to creating meaningful gifts that care for people and the planet. We specialize in sustainable, biodegradable, and plant-based gifting products designed to spread positivity while reducing environmental impact.</p>
+</div>
+</section>
+
+<!-- CART -->
 <div id="cart" class="cart">
 <button class="close-btn" onclick="toggleCart()">X</button>
 <h3>Shopping Cart</h3>
 <div id="items"></div>
 <p>Delivery: ₹99</p>
 <h3>Total ₹<span id="total">0</span></h3>
-
 <input type="text" id="name" placeholder="Name *">
 <textarea id="address" placeholder="Delivery Address *"></textarea>
 <input type="text" id="contact" placeholder="Contact Number *">
 <input type="email" id="email" placeholder="Email ID *">
 <textarea id="remark" placeholder="Remark"></textarea>
-
 <button onclick="checkout()">Order on WhatsApp</button>
 </div>
 
@@ -340,6 +489,14 @@ let total=0;
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("active");
+}
+
+function changeQty(btn,amount){
+let span=btn.parentElement.querySelector("span");
+let qty=parseInt(span.innerText);
+qty+=amount;
+if(qty<1)qty=1;
+span.innerText=qty;
 }
 
 function add(name,price,btn){
@@ -357,11 +514,7 @@ container.innerHTML="";
 total=0;
 cart.forEach((i,index)=>{
 total+=i.price*i.qty;
-container.innerHTML+=`
-<div>
-${i.name} x${i.qty} - ₹${i.price*i.qty}
-<button onclick="removeItem(${index})">Remove</button>
-</div>`;
+container.innerHTML+=`<div>${i.name} x${i.qty} - ₹${i.price*i.qty} <button onclick="removeItem(${index})">Remove</button></div>`;
 });
 if(cart.length>0){total+=delivery;}
 document.getElementById("count").innerText=cart.length;
