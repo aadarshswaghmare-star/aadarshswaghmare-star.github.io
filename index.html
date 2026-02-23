@@ -21,7 +21,6 @@ body{
     opacity:0;
     transition:opacity 0.6s cubic-bezier(.4,0,.2,1);
 }
-
 body.loaded{
     opacity:1;
 }
@@ -34,31 +33,21 @@ header{
     padding:20px 60px;
     background:white;
 }
-
-.logo img{
-    height:45px;
-}
+.logo img{ height:45px; }
 
 nav ul{
     list-style:none;
     display:flex;
     gap:40px;
 }
-
 nav ul li a{
     text-decoration:none;
     font-weight:500;
     color:#888;
     transition:0.3s;
 }
-
-nav ul li a:hover{
-    color:#2e7d32;
-}
-
-nav ul li a.active{
-    color:#c62828;
-}
+nav ul li a:hover{ color:#2e7d32; }
+nav ul li a.active{ color:#c62828; }
 
 /* ================= HERO ================= */
 .hero{
@@ -68,14 +57,12 @@ nav ul li a.active{
     background:#fafafa;
     overflow:hidden;
 }
-
 .hero h1{
     font-size:80px;
     font-weight:700;
     animation:slideUp 1s ease forwards;
     opacity:0;
 }
-
 .green{ color:#4caf50; }
 .red{ color:#d32f2f; }
 
@@ -87,7 +74,7 @@ nav ul li a.active{
     animation:floatLeaf 4s ease-in-out infinite;
 }
 
-/* ===== Button ===== */
+/* Button */
 .big-btn{
     display:inline-block;
     margin-top:35px;
@@ -101,17 +88,13 @@ nav ul li a.active{
     transition:0.3s;
     box-shadow:0 10px 25px rgba(46,125,50,0.4);
 }
-
 .big-btn:hover{
     background:#1b5e20;
     transform:scale(1.08);
 }
+.big-btn:active{ transform:scale(0.95); }
 
-.big-btn:active{
-    transform:scale(0.95);
-}
-
-/* ===== Floating Heart ===== */
+/* Floating Heart */
 .heart-box{
     position:absolute;
     right:15%;
@@ -125,7 +108,6 @@ nav ul li a.active{
     animation:floatHeart 3s ease-in-out infinite;
 }
 
-/* ===== Bottom Strip ===== */
 .bottom-strip{
     position:absolute;
     bottom:0;
@@ -140,55 +122,80 @@ nav ul li a.active{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:80px 60px;
+    padding:100px 60px;
     background:#f2f2f2;
-    gap:50px;
+    gap:60px;
 }
 
+/* Animation Initial State */
+.healing-left,
+.healing-right{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.8s ease;
+}
+
+.healing-section.show .healing-left{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.healing-section.show .healing-right{
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:0.2s;
+}
+
+/* Left */
 .healing-left{
     background:#6ab04c;
     padding:25px;
-    border-radius:20px;
+    border-radius:25px;
     width:50%;
+    transform:translateX(-80px);
 }
-
 .healing-left img{
     width:100%;
     border-radius:15px;
+    transition:0.5s;
+}
+.healing-left img:hover{
+    transform:scale(1.05);
 }
 
-.healing-right{
-    width:50%;
-}
-
+/* Right */
+.healing-right{ width:50%; }
 .healing-right h1{
     font-size:70px;
     font-weight:700;
 }
 
+/* Card */
 .healing-card{
     margin-top:30px;
     background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.1);
+    transition:0.4s;
 }
-
+.healing-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 60px rgba(0,0,0,0.15);
+}
 .healing-card h3{
     background:#4caf50;
     color:white;
     padding:15px;
-    border-radius:10px;
+    border-radius:12px;
     text-align:center;
     margin-bottom:20px;
 }
-
 .healing-card p{
     font-size:14px;
     color:#555;
-    line-height:1.6;
+    line-height:1.7;
 }
-
 .arrow-text{
     display:flex;
     justify-content:space-between;
@@ -202,12 +209,10 @@ nav ul li a.active{
     from{ transform:translateY(40px); opacity:0; }
     to{ transform:translateY(0); opacity:1; }
 }
-
 @keyframes floatLeaf{
     0%,100%{ transform:translateY(0px); }
     50%{ transform:translateY(-15px); }
 }
-
 @keyframes floatHeart{
     0%,100%{ transform:translateY(-50%); }
     50%{ transform:translateY(-60%); }
@@ -215,19 +220,16 @@ nav ul li a.active{
 
 /* ===== Responsive ===== */
 @media(max-width:900px){
-
 .hero h1{ font-size:42px; }
 .leaf-img{ width:300px; }
 
 .healing-section{
     flex-direction:column;
-    padding:40px 20px;
+    padding:60px 20px;
 }
-
 .healing-left, .healing-right{
     width:100%;
 }
-
 .healing-right h1{
     font-size:40px;
     text-align:center;
@@ -269,8 +271,8 @@ nav ul li a.active{
     <div class="bottom-strip"></div>
 </section>
 
-<!-- HEALING POWER SECTION -->
-<section class="healing-section">
+<!-- HEALING POWER -->
+<section class="healing-section" id="healingSection">
 
     <div class="healing-left">
         <img src="images/instructions.png" alt="Instructions">
@@ -284,12 +286,10 @@ nav ul li a.active{
 
         <div class="healing-card">
             <h3>Positive Feeling</h3>
-
             <p>
                 Offering different type of Gods Statue which regrow into plants 
                 spreads positivity by showing continuous growth.
             </p>
-
             <div class="arrow-text">
                 <span>→</span>
                 <span>Green Earth</span>
@@ -304,13 +304,23 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add("loaded");
 });
 
+/* Page transition */
 document.querySelector(".big-btn").addEventListener("click", function(e){
     e.preventDefault();
     document.body.classList.remove("loaded");
-
     setTimeout(()=>{
         window.location.href = "products.html";
     }, 500);
+});
+
+/* Scroll Reveal Animation */
+const healing = document.getElementById("healingSection");
+window.addEventListener("scroll", ()=>{
+    const position = healing.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+    if(position < screenHeight - 100){
+        healing.classList.add("show");
+    }
 });
 </script>
 
