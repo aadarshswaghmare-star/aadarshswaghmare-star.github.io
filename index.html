@@ -86,38 +86,30 @@ box-shadow:0 10px 30px rgba(0,0,0,0.1);
 font-size:28px;
 }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:white;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
-}
 
-.logo{ font-size:24px; font-weight:700; color:#2e7d32; }
-.logo span{ color:black; font-weight:400; }
-
-nav ul{ list-style:none; display:flex; gap:30px; }
-nav ul li a{ text-decoration:none; color:#2e7d32; font-weight:600; }
-
-header button{
-padding:8px 15px;
-background:#2e7d32;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
 
 /* SECTIONS */
 .modern,.healing-section{
 display:flex;
-align-items:center;
+<!-- HEADER -->
+<header class="navbar">
+
+<div class="logo">
+Ecofy<span>Gifts</span>
+</div>
+
+<nav class="nav-links">
+<a href="#">Home</a>
+<a href="#modern">About</a>
+<a href="#products">Products</a>
+<a href="#about">Contact</a>
+</nav>
+
+<button class="cart-btn" onclick="toggleCart()">
+Cart (<span id="count">0</span>)
+</button>
+
+</header>align-items:center;
 justify-content:space-between;
 padding:100px 8%;
 gap:60px;
