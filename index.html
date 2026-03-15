@@ -1,687 +1,617 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecofy Gifts</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Ecofy Gifts</title>  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  <style>  
+*{  
+margin:0;  
+padding:0;  
+box-sizing:border-box;  
+font-family:'Poppins',sans-serif;  
+scroll-behavior:smooth;  
+}  
+  
+body{ background:#f4f8f5; }  
+  
+/* HERO */  
+.first-hero{  
+position:relative;  
+min-height:30vh;  
+padding:20px 0;  
+display:flex;  
+flex-direction:column;  
+justify-content:center;  
+align-items:center;  
+text-align:center;  
+background:linear-gradient(to bottom,#ffffff 70%, #4caf50 100%);  
+overflow:hidden;  
+}  
+.first-hero h1{ font-size:90px; z-index:2; }  
+  
+.green{color:#2e7d32;}  
+.red{color:#d32f2f;}  
+  
+.leaf-img{  
+position:absolute;  
+bottom:60px;  
+width:420px;  
+animation:floatLeaf 4s ease-in-out infinite;  
+}  
+  
+@keyframes floatLeaf{  
+0%{ transform:translateY(0px); }  
+50%{ transform:translateY(-20px); }  
+100%{ transform:translateY(0px); }  
+}  
+  
+.cta-btn{  
+margin-top:30px;  
+background:#2e7d32;  
+color:white;  
+padding:15px 40px;  
+border-radius:10px;  
+border:none;  
+font-size:18px;  
+cursor:pointer;  
+z-index:2;  
+}  
+  
+.heart-box{  
+position:absolute;  
+right:15%;  
+top:55%;  
+background:white;  
+padding:15px 30px;  
+border-radius:15px;  
+box-shadow:0 10px 30px rgba(0,0,0,0.1);  
+font-size:28px;  
+}  
+  
+/* HEADER */  
+header{  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+padding:20px 60px;  
+background:white;  
+position:sticky;  
+top:0;  
+z-index:1000;  
+box-shadow:0 5px 20px rgba(0,0,0,0.05);  
+}  
+  
+.logo{ font-size:24px; font-weight:700; color:#2e7d32; }  
+.logo span{ color:black; font-weight:400; }  
+  
+nav ul{ list-style:none; display:flex; gap:30px; }  
+nav ul li a{ text-decoration:none; color:#2e7d32; font-weight:600; }  
+  
+header button{  
+padding:8px 15px;  
+background:#2e7d32;  
+color:white;  
+border:none;  
+border-radius:8px;  
+cursor:pointer;  
+}  
+  
+/* SECTIONS */  
+.modern,.healing-section{  
+display:flex;  
+align-items:center;  
+justify-content:space-between;  
+padding:100px 8%;  
+gap:60px;  
+}  
+  
+.modern{ background:white; }  
+.healing-section{ background:#f2f2f2; }  
+  
+.modern-left,.healing-left{ width:45%; }  
+.modern-right,.healing-right{ width:55%; }  
+  
+.modern-left h1,  
+.healing-right h1{ font-size:55px; }  
+  
+.modern-right{  
+background:#4caf50;  
+padding:20px;  
+border-radius:20px;  
+}  
+  
+.modern-right img,  
+.healing-left img{  
+width:100%;  
+border-radius:15px;  
+}  
+  
+/* PRODUCTS */  
+.products{  
+padding:100px 8%;  
+background:#f8f8f8;  
+}  
+  
+.products h2{  
+text-align:center;  
+font-size:45px;  
+margin-bottom:60px;  
+color:#2e7d32;  
+}  
+  
+.grid{  
+display:grid;  
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));  
+gap:30px;  
+}  
+  
+.card{  
+background:white;  
+padding:25px;  
+border-radius:15px;  
+text-align:center;  
+box-shadow:0 10px 30px rgba(0,0,0,0.08);  
+position:relative;  
+transition:0.3s;  
+}  
+  
+.card:hover{ transform:translateY(-8px); }  
+  
+.discount{  
+position:absolute;  
+top:10px;  
+left:10px;  
+background:#d32f2f;  
+color:white;  
+padding:5px 10px;  
+border-radius:20px;  
+font-size:12px;  
+font-weight:bold;  
+}  
+  
+.card img{  
+width:180px;  
+height:180px;  
+object-fit:contain;  
+}  
+  
+.old{  
+text-decoration:line-through;  
+color:gray;  
+font-size:14px;  
+}  
+  
+.new{  
+color:#2e7d32;  
+font-weight:bold;  
+font-size:20px;  
+}  
+  
+.qty button{  
+padding:5px 10px;  
+background:#2e7d32;  
+color:white;  
+border:none;  
+border-radius:5px;  
+cursor:pointer;  
+}  
+  
+.card button{  
+margin-top:8px;  
+padding:8px 15px;  
+background:#1b5e20;  
+color:white;  
+border:none;  
+border-radius:20px;  
+cursor:pointer;  
+}  
+  
+/* CART */  
+.cart{  
+position:fixed;  
+right:-350px;  
+top:0;  
+width:320px;  
+height:100%;  
+background:white;  
+padding:20px;  
+overflow:auto;  
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);  
+transition:0.4s;  
+z-index:2000;  
+}  
+.cart.active{ right:0; }  
+  
+.cart input,.cart textarea{  
+width:100%;  
+padding:8px;  
+margin-top:8px;  
+border:1px solid #ccc;  
+border-radius:6px;  
+}  
+  
+.cart button{  
+width:100%;  
+padding:12px;  
+margin-top:10px;  
+background:#2e7d32;  
+color:white;  
+border:none;  
+border-radius:8px;  
+cursor:pointer;  
+}  
+  
+.close-btn{  
+position:absolute;  
+top:15px;  
+right:15px;  
+background:red;  
+color:white;  
+border:none;  
+padding:6px 10px;  
+border-radius:50%;  
+cursor:pointer;  
+}  
+  
+/* ABOUT */  
+.about-section{  
+background:#ffffff;  
+padding:120px 8%;  
+}  
+  
+.about-container{  
+max-width:1100px;  
+margin:auto;  
+}  
+  
+.about-section h2{  
+text-align:center;  
+font-size:45px;  
+color:#2e7d32;  
+margin-bottom:15px;  
+}  
+  
+.about-tagline{  
+text-align:center;  
+font-size:18px;  
+color:#555;  
+margin-bottom:40px;  
+}  
+  
+.about-section h3{  
+font-size:26px;  
+color:#1b5e20;  
+margin-top:40px;  
+margin-bottom:15px;  
+}  
+  
+.about-section p{  
+font-size:17px;  
+line-height:1.8;  
+color:#333;  
+margin-bottom:18px;  
+}  
+  
+.about-list{  
+padding-left:20px;  
+margin-bottom:20px;  
+}  
+  
+.about-list li{  
+font-size:16px;  
+margin-bottom:10px;  
+color:#444;  
+}  
+  
+.about-footer{  
+margin-top:40px;  
+font-size:18px;  
+font-weight:600;  
+color:#2e7d32;  
+}  
+</style>  </head>  <body>  <!-- HERO -->  <section class="first-hero">  
+<h1><span style="color:black;">Eco-friendly</span> <span class="red">Gifts</span></h1>  
+<img src="images/leaf.png" class="leaf-img">  
+<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">Nature’s Healing Gift</button>  
+<div class="heart-box">❤️</div>  
+</section>  <!-- HEADER -->  <header>  
+<div class="logo">Ecofy<span>gifts.com</span></div>  
+<nav>  
+<ul>  
+<li><a href="#">Home</a></li>  
+<li><a href="#modern">About</a></li>  
+<li><a href="#products">Products</a></li>  
+</ul>  
+</nav>  
+<button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>  
+</header>  <!-- MODERN -->  <section class="modern" id="modern">  
+<div class="modern-left">  
+<h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>  
+</div>  
+<div class="modern-right">  
+<img src="images/modern gifting.png">  
+</div>  
+</section>  <!-- HEALING -->  <section class="healing-section">  
+<div class="healing-left">  
+<img src="images/instructions.png">  
+</div>  
+<div class="healing-right">  
+<h1><span class="red">Healing</span> <span class="green">Power</span></h1>  
+<p>Offering eco God statues that grow into plants and spread positivity.</p>  
+</div>  
+</section>  <!-- PRODUCTS -->  <section class="products" id="products">  
+<h2>Our Eco Products</h2>  
+<div class="grid">  <!-- SHIVA -->  <div class="card">  
+<div class="discount">50% OFF</div>  
+<img src="images/lord-shiva.png">  
+<h3>Lord Shiva</h3>  
+<div class="old">₹599</div>  
+<div class="new">₹299</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>  
+</div>  <!-- GANESHA -->  <div class="card">  
+<div class="discount">50% OFF</div>  
+<img src="images/lord-ganesh.png">  
+<h3>Lord Ganesha</h3>  
+<div class="old">₹599</div>  
+<div class="new">₹299</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>  
+</div>  <!-- CUSTOMISED -->  <div class="card">  
+<div class="discount">70% OFF</div>  
+<img src="images/customised-names.png">  
+<h3>Customised Name</h3>  
+<div class="old">₹699</div>  
+<div class="new">₹199</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Customised Name',199,this)">Add to Cart</button>  
+</div>  <!-- TEDDY -->  <div class="card">  
+<div class="discount">63% OFF</div>  
+<img src="images/cute-teddy.png">  
+<h3>Cute Teddy</h3>  
+<div class="old">₹589</div>  
+<div class="new">₹219</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>  
+</div>  <!-- HEARTS -->  <div class="card">  
+<div class="discount">60% OFF</div>  
+<img src="images/cute-hearts.png">  
+<h3>Cute Hearts</h3>  
+<div class="old">₹499</div>  
+<div class="new">₹199</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>  
+</div>  <!-- SEED BALLS -->  <div class="card">  
+<div class="discount">50% OFF</div>  
+<img src="images/only seed balls.png">  
+<h3>Seed Balls (6 pcs)</h3>  
+<div class="old">₹299</div>  
+<div class="new">₹150</div>  
+<div class="qty">  
+<button onclick="changeQty(this,-1)">-</button>  
+<span>1</span>  
+<button onclick="changeQty(this,1)">+</button>  
+</div>  
+<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>  
+</div>  </div>  
+</section>  <!-- ABOUT SECTION -->  <section class="about-section" id="about">  
+  <div class="about-container">  
+    <h2>About Ecofy Gifts</h2>  
+    <p class="about-tagline">  
+      Sustainable • Meaningful • Eco-Friendly Gifting • Corporate Gifting  
+    </p>  <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">  
+  <div style="flex:1;min-width:300px;">  
+    <p>  
+      <strong>EcofyGifts.com</strong> is a premium brand dedicated to creating   
+      <strong>eco-friendly products</strong> and <strong>eco-friendly gifts</strong>   
+      for every occasion. We specialize in <strong>sustainable, biodegradable,   
+      and plant-based gifts</strong> that spread positivity, promote green living,   
+      and reduce environmental impact.  
+    </p>  
+    <p>  
+      Our collection includes <strong>plantable god idols, seed balls, customized eco gifts,   
+      cute eco-friendly decor, corporate gifting solutions, festival hampers, wedding return gifts,   
+      and bulk gifting options</strong>. Every product uses <strong>eco-friendly packaging</strong>   
+      to ensure a minimal carbon footprint.  
+    </p>  
+    <p>  
+      Whether it’s <strong>personal gifting</strong>, <strong>corporate gifting</strong>, or   
+      <strong>bulk orders</strong>, Ecofy Gifts provides a meaningful, sustainable,   
+      and responsible gifting solution.  
+    </p>  
 
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "Ecofy Gifts",
- "url": "https://ecofygifts.com",
- "logo": "https://ecofygifts.com/images/png/logo.png",
- "founder": {
-   "@type": "Person",
-   "name": "Aadarsh Waghmare",
-   "jobTitle": "Founder"
- }
-}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <h3>🌱 Why Choose Ecofy Gifts?</h3>  
+    <ul class="about-list">  
+      <li>100% eco-friendly products and gifts</li>  
+      <li>Eco-friendly packaging for all items</li>  
+      <li>Supports sustainability and green living</li>  
+      <li>Customized gifting for corporate and personal needs</li>  
+      <li>Trusted eco gifting brand in India</li>  
+    </ul>  
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+    <h3>📞 Contact Us</h3>
 
-body{ background:#f4f8f5; }
-
-/* HERO */
-.first-hero{
-position:relative;
-min-height:30vh;
-padding:20px 0;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:linear-gradient(to bottom,#ffffff 70%, #4caf50 100%);
-overflow:hidden;
-}
-.first-hero h1{ font-size:90px; z-index:2; }
-
-.green{color:#2e7d32;}
-.red{color:#d32f2f;}
-
-.leaf-img{
-position:absolute;
-bottom:60px;
-width:420px;
-animation:floatLeaf 4s ease-in-out infinite;
-}
-
-@keyframes floatLeaf{
-0%{ transform:translateY(0px); }
-50%{ transform:translateY(-20px); }
-100%{ transform:translateY(0px); }
-}
-
-.cta-btn{
-margin-top:30px;
-background:#2e7d32;
-color:white;
-padding:15px 40px;
-border-radius:10px;
-border:none;
-font-size:18px;
-cursor:pointer;
-z-index:2;
-}
-
-.heart-box{
-position:absolute;
-right:15%;
-top:55%;
-background:white;
-padding:15px 30px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-font-size:28px;
-}
-
-
-
-/* SECTIONS */
-.modern,.healing-section{
-display:flex;
-<!-- HEADER -->
-<header class="navbar">
-
-<div class="logo">
-Ecofy<span>Gifts</span>
+<p>Phone: +91 9075016413</p>  <p>Email:</p>  <p>  
+Sales: <a href="mailto:sales@ecofygifts.com">sales@ecofygifts.com</a><br>  
+Info: <a href="mailto:info@ecofygifts.com">info@ecofygifts.com</a><br>  
+HR: <a href="mailto:hr@ecofygifts.com">hr@ecofygifts.com</a>  
+</p>  </div>  <div style="flex:1;min-width:300px;text-align:center;">  
+    <img src="images/about-ecofygifts.png" alt="Ecofy Gifts" style="width:100%;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);">  
+  </div>  
 </div>
 
-<nav class="nav-links">
-<a href="#">Home</a>
-<a href="#modern">About</a>
-<a href="#products">Products</a>
-<a href="#about">Contact</a>
-</nav>
-
-<button class="cart-btn" onclick="toggleCart()">
-Cart (<span id="count">0</span>)
-</button>
-
-</header>align-items:center;
-justify-content:space-between;
-padding:100px 8%;
-gap:60px;
-}
-
-.modern{ background:white; }
-.healing-section{ background:#f2f2f2; }
-
-.modern-left,.healing-left{ width:45%; }
-.modern-right,.healing-right{ width:55%; }
-
-.modern-left h1,
-.healing-right h1{ font-size:55px; }
-
-.modern-right{
-background:#4caf50;
-padding:20px;
-border-radius:20px;
-}
-
-.modern-right img,
-.healing-left img{
-width:100%;
-border-radius:15px;
-}
-
-/* PRODUCTS */
-.products{
-padding:100px 8%;
-background:#f8f8f8;
-}
-
-.products h2{
-text-align:center;
-font-size:45px;
-margin-bottom:60px;
-color:#2e7d32;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-position:relative;
-transition:0.3s;
-}
-
-.card:hover{ transform:translateY(-8px); }
-
-.discount{
-position:absolute;
-top:10px;
-left:10px;
-background:#d32f2f;
-color:white;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
-}
-
-.card img{
-width:180px;
-height:180px;
-object-fit:contain;
-}
-
-.old{
-text-decoration:line-through;
-color:gray;
-font-size:14px;
-}
-
-.new{
-color:#2e7d32;
-font-weight:bold;
-font-size:20px;
-}
-
-.qty button{
-padding:5px 10px;
-background:#2e7d32;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-.card button{
-margin-top:8px;
-padding:8px 15px;
-background:#1b5e20;
-color:white;
-border:none;
-border-radius:20px;
-cursor:pointer;
-}
-
-/* CART */
-.cart{
-position:fixed;
-right:-350px;
-top:0;
-width:320px;
-height:100%;
-background:white;
-padding:20px;
-overflow:auto;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-transition:0.4s;
-z-index:2000;
-}
-.cart.active{ right:0; }
-
-.cart input,.cart textarea{
-width:100%;
-padding:8px;
-margin-top:8px;
-border:1px solid #ccc;
-border-radius:6px;
-}
-
-.cart button{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#2e7d32;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-.close-btn{
-position:absolute;
-top:15px;
-right:15px;
-background:red;
-color:white;
-border:none;
-padding:6px 10px;
-border-radius:50%;
-cursor:pointer;
-}
-
-/* ABOUT */
-.about-section{
-background:#ffffff;
-padding:120px 8%;
-}
-
-.about-container{
-max-width:1100px;
-margin:auto;
-}
-
-.about-section h2{
-text-align:center;
-font-size:45px;
-color:#2e7d32;
-margin-bottom:15px;
-}
-
-.about-tagline{
-text-align:center;
-font-size:18px;
-color:#555;
-margin-bottom:40px;
-}
-
-.about-section h3{
-font-size:26px;
-color:#1b5e20;
-margin-top:40px;
-margin-bottom:15px;
-}
-
-.about-section p{
-font-size:17px;
-line-height:1.8;
-color:#333;
-margin-bottom:18px;
-}
-
-.about-list{
-padding-left:20px;
-margin-bottom:20px;
-}
-
-.about-list li{
-font-size:16px;
-margin-bottom:10px;
-color:#444;
-}
-
-.about-footer{
-margin-top:40px;
-font-size:18px;
-font-weight:600;
-color:#2e7d32;
-}
-</style>
-</head>
-
-<body>
-
-<!-- HERO -->
-<section class="first-hero">
-<h1><span style="color:black;">Eco-friendly</span> <span class="red">Gifts</span></h1>
-<img src="images/leaf.png" class="leaf-img">
-<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">Nature’s Healing Gift</button>
-<div class="heart-box">❤️</div>
-</section>
-
-<!-- HEADER -->
-<header>
-<div class="logo">Ecofy<span>gifts.com</span></div>
-<nav>
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#modern">About</a></li>
-<li><a href="#products">Products</a></li>
-</ul>
-</nav>
-<button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
-</header>
-
-<!-- MODERN -->
-<section class="modern" id="modern">
-<div class="modern-left">
-<h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>
-</div>
-<div class="modern-right">
-<img src="images/modern gifting.png">
-</div>
-</section>
-
-<!-- HEALING -->
-<section class="healing-section">
-<div class="healing-left">
-<img src="images/instructions.png">
-</div>
-<div class="healing-right">
-<h1><span class="red">Healing</span> <span class="green">Power</span></h1>
-<p>Offering eco God statues that grow into plants and spread positivity.</p>
-</div>
-</section>
-
-<!-- PRODUCTS -->
-<section class="products" id="products">
-<h2>Our Eco Products</h2>
-<div class="grid">
-
-<!-- SHIVA -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/lord-shiva.png">
-<h3>Lord Shiva</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
-</div>
-
-<!-- GANESHA -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/lord-ganesh.png">
-<h3>Lord Ganesha</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
-</div>
-
-<!-- CUSTOMISED -->
-<div class="card">
-<div class="discount">70% OFF</div>
-<img src="images/customised-names.png">
-<h3>Customised Name</h3>
-<div class="old">₹699</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Customised Name',199,this)">Add to Cart</button>
-</div>
-
-<!-- TEDDY -->
-<div class="card">
-<div class="discount">63% OFF</div>
-<img src="images/cute-teddy.png">
-<h3>Cute Teddy</h3>
-<div class="old">₹589</div>
-<div class="new">₹219</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Teddy',219,this)">Add to Cart</button>
-</div>
-
-<!-- HEARTS -->
-<div class="card">
-<div class="discount">60% OFF</div>
-<img src="images/cute-hearts.png">
-<h3>Cute Hearts</h3>
-<div class="old">₹499</div>
-<div class="new">₹199</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Cute Hearts',199,this)">Add to Cart</button>
-</div>
-
-<!-- SEED BALLS -->
-<div class="card">
-<div class="discount">50% OFF</div>
-<img src="images/only seed balls.png">
-<h3>Seed Balls (6 pcs)</h3>
-<div class="old">₹299</div>
-<div class="new">₹150</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Seed Balls (6 pcs)',150,this)">Add to Cart</button>
-</div>
-
-</div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section class="about-section" id="about">
-  <div class="about-container">
-    <h2>About Ecofy Gifts</h2>
-    <p class="about-tagline">
-      Sustainable • Meaningful • Eco-Friendly Gifting • Corporate Gifting
-    </p>
-
-    <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
-      <div style="flex:1;min-width:300px;">
-        <p>
-          <strong>EcofyGifts.com</strong> is a premium brand dedicated to creating 
-          <strong>eco-friendly products</strong> and <strong>eco-friendly gifts</strong> 
-          for every occasion. We specialize in <strong>sustainable, biodegradable, 
-          and plant-based gifts</strong> that spread positivity, promote green living, 
-          and reduce environmental impact.
-        </p>
-        <p>
-          Our collection includes <strong>plantable god idols, seed balls, customized eco gifts, 
-          cute eco-friendly decor, corporate gifting solutions, festival hampers, wedding return gifts, 
-          and bulk gifting options</strong>. Every product uses <strong>eco-friendly packaging</strong> 
-          to ensure a minimal carbon footprint.
-        </p>
-        <p>
-          Whether it’s <strong>personal gifting</strong>, <strong>corporate gifting</strong>, or 
-          <strong>bulk orders</strong>, Ecofy Gifts provides a meaningful, sustainable, 
-          and responsible gifting solution.
-        </p>
-
-        <h3>🌱 Why Choose Ecofy Gifts?</h3>
-        <ul class="about-list">
-          <li>100% eco-friendly products and gifts</li>
-          <li>Eco-friendly packaging for all items</li>
-          <li>Supports sustainability and green living</li>
-          <li>Customized gifting for corporate and personal needs</li>
-          <li>Trusted eco gifting brand in India</li>
-        </ul>
-
-        <h3>📞 Contact Us</h3>
-
-<p>Phone: +91 9075016413</p>
-
-<p>Email:</p>
-
-<p>
-Sales: <a href="mailto:sales@ecofygifts.com">sales@ecofygifts.com</a><br>
-Info: <a href="mailto:info@ecofygifts.com">info@ecofygifts.com</a><br>
-HR: <a href="mailto:hr@ecofygifts.com">hr@ecofygifts.com</a>
-</p>
-
-</div>
-
-      <div style="flex:1;min-width:300px;text-align:center;">
-        <img src="images/about-ecofygifts.png" alt="Ecofy Gifts" style="width:100%;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);">
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.about-section{
-  background:#ffffff;
-  padding:120px 8%;
-}
-
-.about-container{
-  max-width:1100px;
-  margin:auto;
-}
-
-.about-section h2{
-  text-align:center;
-  font-size:45px;
-  color:#2e7d32;
-  margin-bottom:15px;
-}
-
-.about-tagline{
-  text-align:center;
-  font-size:18px;
-  color:#555;
-  margin-bottom:40px;
-}
-
-.about-section h3{
-  font-size:26px;
-  color:#1b5e20;
-  margin-top:25px;
-  margin-bottom:15px;
-}
-
-.about-section p{
-  font-size:17px;
-  line-height:1.8;
-  color:#333;
-  margin-bottom:18px;
-}
-
-.about-list{
-  padding-left:20px;
-  margin-bottom:20px;
-}
-
-.about-list li{
-  font-size:16px;
-  margin-bottom:10px;
-  color:#444;
-}
-
-.about-section a{
-  color:#2e7d32;
-  text-decoration:none;
-}
-
-.about-section a:hover{
-  text-decoration:underline;
-}
-
-@media(max-width:900px){
-  .about-section h2{
-    font-size:32px;
-  }
-  .about-container div[style*="display:flex"]{
-    flex-direction:column;
-  }
-}
-</style>
-
-<!-- CART -->
-<div id="cart" class="cart">
-<button class="close-btn" onclick="toggleCart()">X</button>
-<h3>Shopping Cart</h3>
-<div id="items"></div>
-<p>Delivery: ₹99</p>
-<h3>Total ₹<span id="total">0</span></h3>
-<input type="text" id="name" placeholder="Name *">
-<textarea id="address" placeholder="Delivery Address *"></textarea>
-<input type="text" id="contact" placeholder="Contact Number *">
-<input type="email" id="email" placeholder="Email ID *">
-<textarea id="remark" placeholder="Remark"></textarea>
-<button onclick="checkout()">Order on WhatsApp</button>
-</div>
-
-<script>
-let cart=[];
-let delivery=99;
-let total=0;
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-}
-
-function changeQty(btn,amount){
-let span=btn.parentElement.querySelector("span");
-let qty=parseInt(span.innerText);
-qty+=amount;
-if(qty<1)qty=1;
-span.innerText=qty;
-}
-
-function add(name,price,btn){
-let qty=parseInt(btn.parentElement.querySelector("span").innerText);
-let existing=cart.find(p=>p.name===name);
-if(existing){existing.qty+=qty;}
-else{cart.push({name,price,qty});}
-update();
-toggleCart();
-}
-
-function update(){
-let container=document.getElementById("items");
-container.innerHTML="";
-total=0;
-cart.forEach((i,index)=>{
-total+=i.price*i.qty;
-container.innerHTML+=`<div>${i.name} x${i.qty} - ₹${i.price*i.qty} <button onclick="removeItem(${index})">Remove</button></div>`;
-});
-if(cart.length>0){total+=delivery;}
-document.getElementById("count").innerText=cart.length;
-document.getElementById("total").innerText=total;
-}
-
-function removeItem(index){
-cart.splice(index,1);
-update();
-}
-
-function checkout(){
-let name=document.getElementById("name").value.trim();
-let address=document.getElementById("address").value.trim();
-let contact=document.getElementById("contact").value.trim();
-let email=document.getElementById("email").value.trim();
-let remark=document.getElementById("remark").value.trim();
-
-if(!name||!address||!contact||!email){
-alert("Please fill all mandatory details.");
-return;
-}
-if(cart.length===0){
-alert("Cart Empty");
-return;
-}
-
-let message="New Order - Ecofy Gifts\n\n";
-cart.forEach(i=>{
-message+=i.name+" x"+i.qty+" = ₹"+(i.price*i.qty)+"\n";
-});
-message+="\nDelivery: ₹99";
-message+="\nTotal: ₹"+total;
-message+="\n\nName: "+name;
-message+="\nAddress: "+address;
-message+="\nContact: "+contact;
-message+="\nEmail: "+email;
-message+="\nRemark: "+remark;
-
-window.open("https://wa.me/918169929016?text="+encodeURIComponent(message));
-}
-</script>
-
-</body>
+  </div>  
+</section>  <style>  
+.about-section{  
+  background:#ffffff;  
+  padding:120px 8%;  
+}  
+  
+.about-container{  
+  max-width:1100px;  
+  margin:auto;  
+}  
+  
+.about-section h2{  
+  text-align:center;  
+  font-size:45px;  
+  color:#2e7d32;  
+  margin-bottom:15px;  
+}  
+  
+.about-tagline{  
+  text-align:center;  
+  font-size:18px;  
+  color:#555;  
+  margin-bottom:40px;  
+}  
+  
+.about-section h3{  
+  font-size:26px;  
+  color:#1b5e20;  
+  margin-top:25px;  
+  margin-bottom:15px;  
+}  
+  
+.about-section p{  
+  font-size:17px;  
+  line-height:1.8;  
+  color:#333;  
+  margin-bottom:18px;  
+}  
+  
+.about-list{  
+  padding-left:20px;  
+  margin-bottom:20px;  
+}  
+  
+.about-list li{  
+  font-size:16px;  
+  margin-bottom:10px;  
+  color:#444;  
+}  
+  
+.about-section a{  
+  color:#2e7d32;  
+  text-decoration:none;  
+}  
+  
+.about-section a:hover{  
+  text-decoration:underline;  
+}  
+  
+@media(max-width:900px){  
+  .about-section h2{  
+    font-size:32px;  
+  }  
+  .about-container div[style*="display:flex"]{  
+    flex-direction:column;  
+  }  
+}  
+</style>  <!-- CART -->  <div id="cart" class="cart">  
+<button class="close-btn" onclick="toggleCart()">X</button>  
+<h3>Shopping Cart</h3>  
+<div id="items"></div>  
+<p>Delivery: ₹99</p>  
+<h3>Total ₹<span id="total">0</span></h3>  
+<input type="text" id="name" placeholder="Name *">  
+<textarea id="address" placeholder="Delivery Address *"></textarea>  
+<input type="text" id="contact" placeholder="Contact Number *">  
+<input type="email" id="email" placeholder="Email ID *">  
+<textarea id="remark" placeholder="Remark"></textarea>  
+<button onclick="checkout()">Order on WhatsApp</button>  
+</div>  <script>  
+let cart=[];  
+let delivery=99;  
+let total=0;  
+  
+function toggleCart(){  
+document.getElementById("cart").classList.toggle("active");  
+}  
+  
+function changeQty(btn,amount){  
+let span=btn.parentElement.querySelector("span");  
+let qty=parseInt(span.innerText);  
+qty+=amount;  
+if(qty<1)qty=1;  
+span.innerText=qty;  
+}  
+  
+function add(name,price,btn){  
+let qty=parseInt(btn.parentElement.querySelector("span").innerText);  
+let existing=cart.find(p=>p.name===name);  
+if(existing){existing.qty+=qty;}  
+else{cart.push({name,price,qty});}  
+update();  
+toggleCart();  
+}  
+  
+function update(){  
+let container=document.getElementById("items");  
+container.innerHTML="";  
+total=0;  
+cart.forEach((i,index)=>{  
+total+=i.price*i.qty;  
+container.innerHTML+=`<div>${i.name} x${i.qty} - ₹${i.price*i.qty} <button onclick="removeItem(${index})">Remove</button></div>`;  
+});  
+if(cart.length>0){total+=delivery;}  
+document.getElementById("count").innerText=cart.length;  
+document.getElementById("total").innerText=total;  
+}  
+  
+function removeItem(index){  
+cart.splice(index,1);  
+update();  
+}  
+  
+function checkout(){  
+let name=document.getElementById("name").value.trim();  
+let address=document.getElementById("address").value.trim();  
+let contact=document.getElementById("contact").value.trim();  
+let email=document.getElementById("email").value.trim();  
+let remark=document.getElementById("remark").value.trim();  
+  
+if(!name||!address||!contact||!email){  
+alert("Please fill all mandatory details.");  
+return;  
+}  
+if(cart.length===0){  
+alert("Cart Empty");  
+return;  
+}  
+  
+let message="New Order - Ecofy Gifts\n\n";  
+cart.forEach(i=>{  
+message+=i.name+" x"+i.qty+" = ₹"+(i.price*i.qty)+"\n";  
+});  
+message+="\nDelivery: ₹99";  
+message+="\nTotal: ₹"+total;  
+message+="\n\nName: "+name;  
+message+="\nAddress: "+address;  
+message+="\nContact: "+contact;  
+message+="\nEmail: "+email;  
+message+="\nRemark: "+remark;  
+  
+window.open("https://wa.me/918169929016?text="+encodeURIComponent(message));  
+}  
+</script>  </body>  
 </html>
