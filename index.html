@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ecofy Gifts – Eco-Friendly Gifts, Green Products & Sustainable Packaging</title>
+<title>Ecofy Gifts | Eco Friendly Gifts</title>
 
-<meta name="description" content="Ecofy Gifts offers eco-friendly gifts, green products, plantable idols, seed balls and sustainable packaging for corporate gifting, festivals and green living.">
-
-<meta name="keywords" content="eco friendly gifts, eco friendly products, green gifts, sustainable gifts, plantable gifts, eco packaging, recycling products, green products">
+<meta name="description" content="Ecofy Gifts offers eco friendly gifts, plantable idols, seed balls and sustainable gifting products in India.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -19,12 +18,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Poppins,sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
 background:#f4f8f5;
+color:#333;
 }
 
 /* HEADER */
@@ -38,7 +38,7 @@ background:white;
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
 }
 
 .logo{
@@ -47,15 +47,10 @@ font-weight:700;
 color:#2e7d32;
 }
 
-.logo span{
-color:black;
-font-weight:400;
-}
-
 nav ul{
 list-style:none;
 display:flex;
-gap:30px;
+gap:25px;
 }
 
 nav ul li a{
@@ -64,162 +59,102 @@ color:#2e7d32;
 font-weight:600;
 }
 
-header button{
-padding:8px 15px;
+.cart-btn{
 background:#2e7d32;
 color:white;
 border:none;
+padding:8px 15px;
 border-radius:8px;
 cursor:pointer;
 }
 
 /* HERO */
 
-.first-hero{
-position:relative;
-min-height:40vh;
-padding:60px 0;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+.hero{
 text-align:center;
-background:linear-gradient(to bottom,#ffffff 70%, #4caf50 100%);
-overflow:hidden;
+padding:80px 20px;
+background:linear-gradient(#ffffff,#e8f5e9);
 }
 
-.first-hero h1{
-font-size:80px;
-font-weight:700;
+.hero h1{
+font-size:48px;
+color:#2e7d32;
 }
 
-.first-hero h2{
-font-size:22px;
+.hero p{
 margin-top:10px;
-color:#444;
+font-size:18px;
+color:#555;
 }
 
-.green{color:#2e7d32;}
-.red{color:#d32f2f;}
-
-.leaf-img{
-position:absolute;
-bottom:50px;
-width:420px;
-animation:floatLeaf 4s ease-in-out infinite;
-opacity:0.9;
-}
-
-@keyframes floatLeaf{
-0%{transform:translateY(0)}
-50%{transform:translateY(-18px)}
-100%{transform:translateY(0)}
-}
-
-.cta-btn{
-margin-top:25px;
+.hero button{
+margin-top:20px;
+padding:12px 30px;
 background:#2e7d32;
 color:white;
-padding:15px 35px;
-border-radius:12px;
 border:none;
-font-size:18px;
+border-radius:10px;
+font-size:16px;
 cursor:pointer;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-transition:0.3s;
 }
 
-.cta-btn:hover{
-background:#1b5e20;
-transform:translateY(-2px);
-}
+/* FEATURES */
 
-.heart-box{
-position:absolute;
-right:15%;
-top:55%;
-background:white;
-padding:14px 28px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
-font-size:26px;
-}
-
-/* SECTIONS */
-
-.modern,.healing-section{
+.features{
 display:flex;
-align-items:center;
-justify-content:space-between;
-padding:100px 8%;
-gap:60px;
-}
-
-.modern{
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+padding:50px 20px;
 background:white;
 }
 
-.healing-section{
-background:#f2f2f2;
+.feature{
+text-align:center;
+max-width:200px;
 }
 
-.modern-left,.healing-left{
-width:45%;
-}
-
-.modern-right,.healing-right{
-width:55%;
-}
-
-.modern-left h1,
-.healing-right h1{
-font-size:55px;
-}
-
-.modern-right{
-background:#4caf50;
-padding:20px;
-border-radius:20px;
-}
-
-.modern-right img,
-.healing-left img{
-width:100%;
-border-radius:15px;
+.feature h3{
+color:#2e7d32;
+margin-bottom:5px;
 }
 
 /* PRODUCTS */
 
 .products{
-padding:100px 8%;
-background:#f8f8f8;
+padding:80px 8%;
+text-align:center;
 }
 
 .products h2{
-text-align:center;
-font-size:45px;
-margin-bottom:60px;
+font-size:36px;
 color:#2e7d32;
 }
 
 .grid{
+margin-top:40px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .card{
 background:white;
-padding:25px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-position:relative;
+padding:20px;
+border-radius:12px;
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
 transition:0.3s;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
 }
 
 .discount{
@@ -228,62 +163,36 @@ top:10px;
 left:10px;
 background:#d32f2f;
 color:white;
-padding:5px 10px;
+padding:4px 10px;
 border-radius:20px;
 font-size:12px;
-font-weight:bold;
 }
 
-.card img{
-width:180px;
-height:180px;
-object-fit:contain;
-}
-
-.old{
+.price-old{
 text-decoration:line-through;
 color:gray;
 font-size:14px;
 }
 
-.new{
+.price-new{
 color:#2e7d32;
-font-weight:bold;
+font-weight:700;
 font-size:20px;
-}
-
-.qty button{
-padding:5px 10px;
-background:#2e7d32;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-.card button{
-margin-top:8px;
-padding:8px 15px;
-background:#1b5e20;
-color:white;
-border:none;
-border-radius:20px;
-cursor:pointer;
 }
 
 /* CART */
 
 .cart{
 position:fixed;
-right:-350px;
 top:0;
+right:-350px;
 width:320px;
 height:100%;
 background:white;
 padding:20px;
-overflow:auto;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+box-shadow:-5px 0 25px rgba(0,0,0,0.2);
 transition:0.4s;
+overflow:auto;
 z-index:2000;
 }
 
@@ -293,16 +202,16 @@ right:0;
 
 .cart input,.cart textarea{
 width:100%;
-padding:8px;
 margin-top:8px;
+padding:8px;
 border:1px solid #ccc;
 border-radius:6px;
 }
 
 .cart button{
 width:100%;
-padding:12px;
 margin-top:10px;
+padding:12px;
 background:#2e7d32;
 color:white;
 border:none;
@@ -310,16 +219,63 @@ border-radius:8px;
 cursor:pointer;
 }
 
-.close-btn{
-position:absolute;
-top:15px;
-right:15px;
+.close{
 background:red;
 color:white;
 border:none;
 padding:6px 10px;
 border-radius:50%;
+position:absolute;
+top:10px;
+right:10px;
+}
+
+/* PLANT MASCOT */
+
+.plant{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2e7d32;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:white;
 cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+
+footer{
+background:#1b5e20;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:60px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:10px;
+}
+
+nav ul{
+gap:15px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
 }
 
 </style>
@@ -328,60 +284,50 @@ cursor:pointer;
 <body>
 
 <header>
-<div class="logo">Ecofy<span>gifts.com</span></div>
+
+<div class="logo">Ecofy Gifts</div>
 
 <nav>
 <ul>
 <li><a href="#">Home</a></li>
-<li><a href="#modern">About</a></li>
 <li><a href="#products">Products</a></li>
+<li><a href="#about">About</a></li>
 </ul>
 </nav>
 
-<button onclick="toggleCart()">Cart (<span id="count">0</span>)</button>
+<button class="cart-btn" onclick="toggleCart()">
+Cart (<span id="count">0</span>)
+</button>
 
 </header>
 
-<section class="first-hero">
+<section class="hero">
 
-<h1>
-<span style="color:black;">Eco-Friendly</span>
-<span class="red">Gifts</span>
-</h1>
+<h1>Eco Friendly Gifts</h1>
 
-<h2>Green Products • Sustainable Gifts • Eco Packaging</h2>
+<p>Sustainable gifts that grow into plants 🌱</p>
 
-<img src="images/leaf.png" class="leaf-img" alt="eco friendly leaf">
-
-<button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">
-Explore Eco Products
+<button onclick="document.getElementById('products').scrollIntoView()">
+Shop Now
 </button>
 
-<div class="heart-box">❤️</div>
-
 </section>
 
-<section class="modern" id="modern">
+<section class="features">
 
-<div class="modern-left">
-<h1><span class="red">Modern</span><br><span class="green">Gifting</span></h1>
+<div class="feature">
+<h3>🌱 Eco Friendly</h3>
+<p>Sustainable products</p>
 </div>
 
-<div class="modern-right">
-<img src="images/modern gifting.png" alt="modern eco gifts">
+<div class="feature">
+<h3>♻ Recyclable</h3>
+<p>Eco packaging</p>
 </div>
 
-</section>
-
-<section class="healing-section">
-
-<div class="healing-left">
-<img src="images/instructions.png" alt="plantable gift instructions">
-</div>
-
-<div class="healing-right">
-<h1><span class="red">Healing</span> <span class="green">Power</span></h1>
-<p>Eco friendly plantable idols that grow into plants.</p>
+<div class="feature">
+<h3>🚚 Fast Delivery</h3>
+<p>Across India</p>
 </div>
 
 </section>
@@ -394,30 +340,27 @@ Explore Eco Products
 
 <div class="card">
 <div class="discount">50% OFF</div>
-<img src="images/lord-shiva.png" alt="eco friendly lord shiva idol">
-<h3>Lord Shiva</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
-</div>
-<button onclick="add('Lord Shiva',299,this)">Add to Cart</button>
+<img src="https://via.placeholder.com/200">
+<h3>Plantable Ganesha</h3>
+<p class="price-old">₹599</p>
+<p class="price-new">₹299</p>
+<button onclick="add('Plantable Ganesha',299)">Add to Cart</button>
 </div>
 
 <div class="card">
 <div class="discount">50% OFF</div>
-<img src="images/lord-ganesh.png" alt="eco friendly ganesha idol">
-<h3>Lord Ganesha</h3>
-<div class="old">₹599</div>
-<div class="new">₹299</div>
-<div class="qty">
-<button onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button onclick="changeQty(this,1)">+</button>
+<img src="https://via.placeholder.com/200">
+<h3>Plantable Shiva</h3>
+<p class="price-old">₹599</p>
+<p class="price-new">₹299</p>
+<button onclick="add('Plantable Shiva',299)">Add to Cart</button>
 </div>
-<button onclick="add('Lord Ganesha',299,this)">Add to Cart</button>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Seed Balls Pack</h3>
+<p class="price-new">₹150</p>
+<button onclick="add('Seed Balls Pack',150)">Add to Cart</button>
 </div>
 
 </div>
@@ -426,116 +369,109 @@ Explore Eco Products
 
 <div id="cart" class="cart">
 
-<button class="close-btn" onclick="toggleCart()">X</button>
+<button class="close" onclick="toggleCart()">X</button>
 
 <h3>Shopping Cart</h3>
 
 <div id="items"></div>
 
-<p>Delivery: ₹99</p>
+<p>Delivery ₹99</p>
 
 <h3>Total ₹<span id="total">0</span></h3>
 
-<input type="text" id="name" placeholder="Name *">
-
-<textarea id="address" placeholder="Delivery Address *"></textarea>
-
-<input type="text" id="contact" placeholder="Contact Number *">
-
-<input type="email" id="email" placeholder="Email ID *">
-
-<textarea id="remark" placeholder="Remark"></textarea>
+<input id="name" placeholder="Name">
+<textarea id="address" placeholder="Address"></textarea>
+<input id="contact" placeholder="Phone">
 
 <button onclick="checkout()">Order on WhatsApp</button>
 
 </div>
 
+<div class="plant">🌱</div>
+
+<footer>
+
+<h3>Ecofy Gifts</h3>
+
+<p>Eco Friendly Gifts • Sustainable Living</p>
+
+<p>© 2026 Ecofy Gifts</p>
+
+</footer>
+
 <script>
 
-let cart=[];
-let delivery=99;
-let total=0;
+let cart=[]
+let total=0
+let delivery=99
 
 function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
+document.getElementById("cart").classList.toggle("active")
 }
 
-function changeQty(btn,amount){
-let span=btn.parentElement.querySelector("span");
-let qty=parseInt(span.innerText);
-qty+=amount;
-if(qty<1)qty=1;
-span.innerText=qty;
-}
+function add(name,price){
 
-function add(name,price,btn){
-let qty=parseInt(btn.parentElement.querySelector("span").innerText);
-let existing=cart.find(p=>p.name===name);
-if(existing){existing.qty+=qty;}
-else{cart.push({name,price,qty});}
-update();
-toggleCart();
+cart.push({name,price})
+
+update()
+
+toggleCart()
+
 }
 
 function update(){
-let container=document.getElementById("items");
-container.innerHTML="";
-total=0;
+
+let items=document.getElementById("items")
+
+items.innerHTML=""
+
+total=0
 
 cart.forEach((i,index)=>{
-total+=i.price*i.qty;
 
-container.innerHTML+=
-`<div>${i.name} x${i.qty} - ₹${i.price*i.qty} 
-<button onclick="removeItem(${index})">Remove</button>
-</div>`;
-});
+total+=i.price
 
-if(cart.length>0){total+=delivery;}
+items.innerHTML+=
+`<div>${i.name} - ₹${i.price}
+<button onclick="removeItem(${index})">X</button>
+</div>`
 
-document.getElementById("count").innerText=cart.length;
-document.getElementById("total").innerText=total;
+})
+
+if(cart.length>0) total+=delivery
+
+document.getElementById("total").innerText=total
+
+document.getElementById("count").innerText=cart.length
+
 }
 
 function removeItem(index){
-cart.splice(index,1);
-update();
+
+cart.splice(index,1)
+
+update()
+
 }
 
 function checkout(){
 
-let name=document.getElementById("name").value.trim();
-let address=document.getElementById("address").value.trim();
-let contact=document.getElementById("contact").value.trim();
-let email=document.getElementById("email").value.trim();
-let remark=document.getElementById("remark").value.trim();
+let name=document.getElementById("name").value
+let address=document.getElementById("address").value
+let contact=document.getElementById("contact").value
 
-if(!name||!address||!contact||!email){
-alert("Please fill all mandatory details.");
-return;
-}
-
-if(cart.length===0){
-alert("Cart Empty");
-return;
-}
-
-let message="New Order - Ecofy Gifts\n\n";
+let message="New Order - Ecofy Gifts\n\n"
 
 cart.forEach(i=>{
-message+=i.name+" x"+i.qty+" = ₹"+(i.price*i.qty)+"\n";
-});
+message+=i.name+" - ₹"+i.price+"\n"
+})
 
-message+="\nDelivery: ₹99";
-message+="\nTotal: ₹"+total;
+message+="\nTotal ₹"+total
+message+="\n\nName: "+name
+message+="\nAddress: "+address
+message+="\nPhone: "+contact
 
-message+="\n\nName: "+name;
-message+="\nAddress: "+address;
-message+="\nContact: "+contact;
-message+="\nEmail: "+email;
-message+="\nRemark: "+remark;
-
-window.open("https://wa.me/918169929016?text="+encodeURIComponent(message));
+window.open("https://wa.me/918169929016?text="+encodeURIComponent(message))
 
 }
 
