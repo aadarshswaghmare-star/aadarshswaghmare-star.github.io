@@ -450,18 +450,9 @@ img {
 
 .circle-bg {
 
+    display:none;
 
-    position:absolute;
-
-    width:520px;
-
-    height:520px;
-
-
-    background:#dcebc8;
-
-
-    border-radius:50%;
+}
 
 
 }
