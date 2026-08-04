@@ -637,3 +637,84 @@ img {
 
 
 }
+/* =========================
+   Hero Image Enhancement
+========================= */
+
+
+.hero-image {
+
+    position: relative;
+
+}
+
+
+.hero-image img {
+
+    width: 100%;
+    max-width: 550px;
+    object-fit: contain;
+
+    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.15));
+
+    animation: floatGanesh 4s ease-in-out infinite;
+
+}
+
+
+
+@keyframes floatGanesh {
+
+
+    0%,100% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-15px);
+
+    }
+
+
+}
+
+
+
+.circle-bg {
+
+
+    background:
+
+    radial-gradient(circle,
+    #e9f4d8,
+    #cfe6b5);
+
+
+    opacity:0.9;
+
+}
+
+
+
+.hero-image::before {
+
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    background:#f1f7e8;
+
+    border-radius:50%;
+
+    z-index:-1;
+
+}
