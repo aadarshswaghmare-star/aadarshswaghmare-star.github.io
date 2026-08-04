@@ -718,3 +718,40 @@ img {
     z-index:-1;
 
 }
+/* =========================
+   Hero Nature Background
+========================= */
+
+
+.hero::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    90deg,
+    rgba(250,251,247,0.95),
+    rgba(250,251,247,0.55)
+    ),
+    url("../assets/hero/nature-bg.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    z-index:-2;
+
+}
+
+
+
+.hero {
+
+    border-radius:40px;
+
+}
