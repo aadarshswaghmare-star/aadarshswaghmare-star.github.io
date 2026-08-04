@@ -756,7 +756,7 @@ img {
 
 }
 /* =========================
-   Hero Background Fix
+   Strong Nature Background
 ========================= */
 
 .hero::before {
@@ -767,11 +767,12 @@ img {
 
     inset:0;
 
+
     background:
     linear-gradient(
-    90deg,
-    rgba(250,251,247,0.70),
-    rgba(250,251,247,0.25)
+        90deg,
+        rgba(250,251,247,0.35),
+        rgba(250,251,247,0.10)
     ),
     url("../assets/hero/nature-bg.jpg");
 
