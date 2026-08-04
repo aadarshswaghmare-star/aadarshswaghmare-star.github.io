@@ -794,3 +794,50 @@ img {
 .hero-image::after {
     display:none !important;
 }
+/* =========================
+   Hero Floating Badges
+========================= */
+
+
+.floating-badge {
+
+    position:absolute;
+
+    background:white;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:var(--primary-green);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.12);
+
+    z-index:3;
+
+}
+
+
+
+.badge-one {
+
+    top:25%;
+
+    left:5%;
+
+}
+
+
+
+.badge-two {
+
+    bottom:25%;
+
+    right:5%;
+
+}
