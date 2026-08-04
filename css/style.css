@@ -782,3 +782,20 @@ img {
     display:none;
 
 }
+/* =========================
+   REMOVE ALL HERO CIRCLES
+========================= */
+
+.circle-bg {
+    display:none !important;
+}
+
+
+.hero-image::before {
+    display:none !important;
+}
+
+
+.hero-image::after {
+    display:none !important;
+}
