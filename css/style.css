@@ -775,3 +775,10 @@ img {
     z-index:-2;
 
 }
+/* Remove hero white circle */
+
+.hero-image::before {
+
+    display:none;
+
+}
