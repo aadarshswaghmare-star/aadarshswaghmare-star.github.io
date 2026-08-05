@@ -526,3 +526,63 @@ footer h2{
 
 }
 ```
+/* Footer Company Logos */
+
+.footer-links{
+
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin:40px 0;
+    flex-wrap:wrap;
+
+}
+
+
+.footer-company{
+
+    text-align:center;
+    width:260px;
+
+}
+
+
+.footer-company img{
+
+    width:120px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:15px;
+
+}
+
+
+.footer-company h3{
+
+    color:white;
+    margin-bottom:10px;
+
+}
+
+
+.footer-company p{
+
+    color:#d1fae5;
+
+}
+
+
+.footer-company a{
+
+    color:#bbf7d0;
+    text-decoration:none;
+    font-weight:bold;
+
+}
+
+
+.footer-company a:hover{
+
+    color:white;
+
+}
