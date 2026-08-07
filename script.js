@@ -1,19 +1,74 @@
-// Ecofy Website Script
+// =========================================
+// ECOFY WEBSITE SCRIPT
+// =========================================
 
-// Smooth scrolling for navigation links
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// MOBILE MENU
 
-    anchor.addEventListener('click', function(e){
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-        const target = document.querySelector(this.getAttribute('href'));
 
-        if(target){
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("active");
+
+
+        // Change ☰ to ✕ when menu is open
+
+        if (navLinks.classList.contains("active")) {
+
+            menuToggle.innerHTML = "✕";
+
+        } else {
+
+            menuToggle.innerHTML = "☰";
+
+        }
+
+    });
+
+
+    // Close menu after clicking a navigation link
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+
+            menuToggle.innerHTML = "☰";
+
+        });
+
+    });
+
+}
+
+
+
+// =========================================
+// SMOOTH SCROLLING
+// =========================================
+
+
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+
+    anchor.addEventListener("click", function (e) {
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+
+        if (target) {
 
             e.preventDefault();
 
             target.scrollIntoView({
-                behavior: 'smooth'
+                behavior: "smooth"
             });
 
         }
@@ -23,33 +78,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// Simple reveal animation
+
+// =========================================
+// SECTION ANIMATION
+// =========================================
+
 
 const sections = document.querySelectorAll("section");
 
 
-const observer = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver(function (entries) {
 
-    entries.forEach(entry=>{
+    entries.forEach(function (entry) {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
             entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+
+            entry.target.style.transform =
+                "translateY(0)";
 
         }
 
     });
 
+}, {
+
+    threshold: 0.08
 
 });
 
 
-sections.forEach(section=>{
+sections.forEach(function (section) {
 
     section.style.opacity = "0";
-    section.style.transform = "translateY(30px)";
-    section.style.transition = "0.8s ease";
+
+    section.style.transform =
+        "translateY(25px)";
+
+    section.style.transition =
+        "opacity 0.7s ease, transform 0.7s ease";
+
 
     observer.observe(section);
 
