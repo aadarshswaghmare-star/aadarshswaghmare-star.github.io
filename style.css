@@ -1010,3 +1010,31 @@ footer h2{
 .b2b-card:hover {
     border-color: #22C55E;
 }
+/* =====================================
+   FORCE B2B TEXT VISIBILITY FIX
+   ===================================== */
+
+.b2b-card,
+.b2b-card h3,
+.b2b-card p,
+.b2b-solutions h3,
+.b2b-solutions p {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+.b2b-card h3 {
+    color: #14532D !important;
+}
+
+
+.b2b-card p {
+    color: #1F2937 !important;
+}
+
+
+/* If cards use white text from parent */
+.b2b-card * {
+    text-shadow: none !important;
+}
