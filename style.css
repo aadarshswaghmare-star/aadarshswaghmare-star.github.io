@@ -1023,7 +1023,28 @@ footer h2{
     visibility: visible !important;
 }
 
+ /* =====================================
+    B2B CARD TEXT VISIBILITY FIX
+    ===================================== */
 
+.card h3 {
+    color: #14532D !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.card p {
+    color: #1F2937 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.card a {
+    color: #166534 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
 .b2b-card h3 {
     color: #14532D !important;
 }
