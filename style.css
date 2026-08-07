@@ -945,3 +945,33 @@ footer h2{
     }
 
 }
+/* =========================================
+   CATALOGUE SECTION - TEXT VISIBILITY FIX
+   ========================================= */
+
+#catalogue {
+    background: #DCFCE7;
+    text-align: center;
+}
+
+
+#catalogue h2 {
+    color: #14532D;
+}
+
+
+#catalogue p {
+    color: #1F2937;
+}
+
+
+#catalogue .btn {
+    background: #166534;
+    color: #FFFFFF;
+    border: none;
+}
+
+
+#catalogue .btn:hover {
+    background: #14532D;
+}
